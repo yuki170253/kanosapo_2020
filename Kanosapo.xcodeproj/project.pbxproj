@@ -3,18 +3,120 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315AF0D625668C1D00177B9E /* NeedToFix in Resources */ = {isa = PBXBuildFile; fileRef = 315AF0D525668C1D00177B9E /* NeedToFix */; };
+		38A2E1244C0066CF4936233F /* Pods_Kanosapo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DDB002F1CEBEF0A7EC8B47 /* Pods_Kanosapo.framework */; };
+		5BC5F50B98CD91417BB8E6FB /* Pods_KanosapoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */; };
+		874FF9D8256173CA00BC4998 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9D7256173CA00BC4998 /* CustomButton.swift */; };
+		874FF9DD256173E800BC4998 /* EvaluViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9DC256173E800BC4998 /* EvaluViewController.swift */; };
+		874FF9E2256174FE00BC4998 /* EvaluViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9E1256174FE00BC4998 /* EvaluViewController2.swift */; };
+		874FFA082562D48100BC4998 /* AllResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA072562D48100BC4998 /* AllResultsViewController.swift */; };
+		874FFA122562D4C700BC4998 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA112562D4C700BC4998 /* ConfirmationViewController.swift */; };
+		874FFA172562D4F200BC4998 /* EvaluDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA162562D4F200BC4998 /* EvaluDetailsViewController.swift */; };
+		874FFA1C2562D51C00BC4998 /* HomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA1B2562D51C00BC4998 /* HomeNavigationController.swift */; };
+		874FFA212562D53600BC4998 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA202562D53600BC4998 /* HomeViewController.swift */; };
+		874FFA262562D55100BC4998 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA252562D55100BC4998 /* ResultViewController.swift */; };
+		874FFA2F2562D5EF00BC4998 /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA2E2562D5EF00BC4998 /* BasicBarChart.swift */; };
+		874FFA372562D61B00BC4998 /* BasicBarChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA362562D61B00BC4998 /* BasicBarChartPresenter.swift */; };
+		874FFA3C2562D62E00BC4998 /* BasicBarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA3B2562D62E00BC4998 /* BasicBarEntry.swift */; };
+		874FFA432562D67B00BC4998 /* TabmanDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA422562D67B00BC4998 /* TabmanDisplay.swift */; };
+		874FFA4B2562D6AB00BC4998 /* DayResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA4A2562D6AB00BC4998 /* DayResultDetailViewController.swift */; };
+		874FFA532562D6C100BC4998 /* DayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA522562D6C100BC4998 /* DayResultViewController.swift */; };
+		874FFA582562D6D900BC4998 /* SubDayResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA572562D6D900BC4998 /* SubDayResultDetailViewController.swift */; };
+		874FFA5D2562D6F700BC4998 /* SubWeekResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA5C2562D6F700BC4998 /* SubWeekResultDetailViewController.swift */; };
+		874FFA622562D71400BC4998 /* WeekResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA612562D71400BC4998 /* WeekResultDetailViewController.swift */; };
+		874FFA672562D72800BC4998 /* WeekResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA662562D72800BC4998 /* WeekResultViewController.swift */; };
+		874FFA6C2562D74A00BC4998 /* BasicLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA6B2562D74900BC4998 /* BasicLineChart.swift */; };
+		874FFA712562D76300BC4998 /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA702562D76300BC4998 /* CurveAlgorithm.swift */; };
+		874FFA762562D78200BC4998 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA752562D78200BC4998 /* ArrayExtension.swift */; };
+		874FFA7B2562D79F00BC4998 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA7A2562D79F00BC4998 /* CALayerExtension.swift */; };
+		874FFA802562D7D700BC4998 /* CustomSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA7F2562D7D700BC4998 /* CustomSegments.swift */; };
+		874FFA882562D7E600BC4998 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA872562D7E600BC4998 /* DataEntry.swift */; };
+		874FFA8D2562D80700BC4998 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA8C2562D80700BC4998 /* UIBezierPathExtension.swift */; };
+		874FFA922562D82800BC4998 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA912562D82800BC4998 /* CustomTableViewCell.swift */; };
+		874FFA972562D83B00BC4998 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFA962562D83B00BC4998 /* HomeTableViewController.swift */; };
+		874FFAA22562D87E00BC4998 /* NewCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAA12562D87E00BC4998 /* NewCustomTableViewCell.swift */; };
+		874FFAA72562D8AC00BC4998 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAA62562D8AC00BC4998 /* TodoCell.swift */; };
+		874FFAAC2562D8CB00BC4998 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAAB2562D8CB00BC4998 /* TodoTableViewController.swift */; };
+		874FFAB42562D8E600BC4998 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAB32562D8E600BC4998 /* UIView+Border.swift */; };
+		874FFAB92562D8F500BC4998 /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAB82562D8F500BC4998 /* database.swift */; };
+		874FFABE2562D91100BC4998 /* MyTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFABD2562D91100BC4998 /* MyTodo.swift */; };
+		874FFAC72562DBC500BC4998 /* ConfirmationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFAC52562DBC500BC4998 /* ConfirmationTableViewCell.swift */; };
+		874FFAC82562DBC500BC4998 /* ConfirmationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAC62562DBC500BC4998 /* ConfirmationTableViewCell.xib */; };
+		874FFB0A2562E04200BC4998 /* 背景simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAD52562E01800BC4998 /* 背景simple.png */; };
+		874FFB0B2562E04200BC4998 /* box_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAD62562E01900BC4998 /* box_big.png */; };
+		874FFB0C2562E04200BC4998 /* desk.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAD72562E01900BC4998 /* desk.png */; };
+		874FFB0D2562E04200BC4998 /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAD82562E01A00BC4998 /* return.png */; };
+		874FFB0E2562E04200BC4998 /* アセット 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAD92562E01B00BC4998 /* アセット 2.png */; };
+		874FFB0F2562E04200BC4998 /* todo_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADA2562E01B00BC4998 /* todo_label.png */; };
+		874FFB102562E04200BC4998 /* furikaeri.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADB2562E01C00BC4998 /* furikaeri.png */; };
+		874FFB112562E04200BC4998 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADC2562E01C00BC4998 /* book.png */; };
+		874FFB122562E04200BC4998 /* c_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADD2562E01D00BC4998 /* c_icon.png */; };
+		874FFB132562E04200BC4998 /* complete.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADE2562E01E00BC4998 /* complete.png */; };
+		874FFB142562E04200BC4998 /* calendar_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFADF2562E01E00BC4998 /* calendar_home.png */; };
+		874FFB152562E04200BC4998 /* 背景_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE02562E01F00BC4998 /* 背景_test.png */; };
+		874FFB162562E04200BC4998 /* button_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE12562E01F00BC4998 /* button_c.png */; };
+		874FFB172562E04200BC4998 /* ふきだし_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE22562E02000BC4998 /* ふきだし_2.png */; };
+		874FFB182562E04200BC4998 /* セリフ_反転.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE32562E02000BC4998 /* セリフ_反転.png */; };
+		874FFB192562E04200BC4998 /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE42562E02100BC4998 /* run.png */; };
+		874FFB1A2562E04200BC4998 /* icons8-再生ボタン.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE52562E02100BC4998 /* icons8-再生ボタン.png */; };
+		874FFB1B2562E04200BC4998 /* icons8-停止ボタン.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE62562E02200BC4998 /* icons8-停止ボタン.png */; };
+		874FFB1C2562E04200BC4998 /* button_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE72562E02300BC4998 /* button_f.png */; };
+		874FFB1D2562E04200BC4998 /* ふきだし_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE82562E02300BC4998 /* ふきだし_6.png */; };
+		874FFB1E2562E04200BC4998 /* メンヘラ_SD_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAE92562E02400BC4998 /* メンヘラ_SD_0.png */; };
+		874FFB1F2562E04200BC4998 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAEA2562E02400BC4998 /* heart.png */; };
+		874FFB202562E04200BC4998 /* アセット 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAEB2562E02500BC4998 /* アセット 9.png */; };
+		874FFB212562E04200BC4998 /* fill_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAEC2562E02500BC4998 /* fill_heart.png */; };
+		874FFB222562E04200BC4998 /* メンヘラ彼女_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAED2562E02600BC4998 /* メンヘラ彼女_0.png */; };
+		874FFB232562E04200BC4998 /* ふきだし_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAEE2562E02700BC4998 /* ふきだし_1.png */; };
+		874FFB242562E04200BC4998 /* メンヘラ_SD_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAEF2562E02800BC4998 /* メンヘラ_SD_100.png */; };
+		874FFB252562E04200BC4998 /* ふきだし_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF02562E02800BC4998 /* ふきだし_5.png */; };
+		874FFB262562E04200BC4998 /* kanojo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF12562E02900BC4998 /* kanojo.jpg */; };
+		874FFB272562E04200BC4998 /* メンヘラ彼女_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF22562E02A00BC4998 /* メンヘラ彼女_100.png */; };
+		874FFB282562E04200BC4998 /* メンヘラ彼女_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF32562E02B00BC4998 /* メンヘラ彼女_50.png */; };
+		874FFB292562E04200BC4998 /* ふきだし_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF42562E02C00BC4998 /* ふきだし_3.png */; };
+		874FFB2A2562E04200BC4998 /* button_t.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF52562E02E00BC4998 /* button_t.png */; };
+		874FFB2B2562E04200BC4998 /* speechBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF72562E03100BC4998 /* speechBubble@2x.png */; };
+		874FFB2C2562E04200BC4998 /* box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF82562E03200BC4998 /* box@2x.png */; };
+		874FFB2D2562E04200BC4998 /* calendar_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF92562E03400BC4998 /* calendar_2.png */; };
+		874FFB2E2562E04200BC4998 /* button_f2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFA2562E03400BC4998 /* button_f2.png */; };
+		874FFB2F2562E04200BC4998 /* replay_black_192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFB2562E03500BC4998 /* replay_black_192x192.png */; };
+		874FFB302562E04200BC4998 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFC2562E03600BC4998 /* close.png */; };
+		874FFB312562E04200BC4998 /* todolist_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFD2562E03700BC4998 /* todolist_2.png */; };
+		874FFB322562E04200BC4998 /* calendara_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFE2562E03800BC4998 /* calendara_1.png */; };
+		874FFB332562E04200BC4998 /* calendar_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAFF2562E03900BC4998 /* calendar_label.png */; };
+		874FFB342562E04200BC4998 /* 背景ver.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB032562E03A00BC4998 /* 背景ver.2.png */; };
+		874FFB352562E04200BC4998 /* checkbox_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB042562E03B00BC4998 /* checkbox_big.png */; };
+		874FFB362562E04200BC4998 /* checkBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB052562E03C00BC4998 /* checkBox@2x.png */; };
+		874FFB372562E04200BC4998 /* メンヘラ彼女_75.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB062562E03F00BC4998 /* メンヘラ彼女_75.png */; };
+		874FFB382562E04200BC4998 /* save_alt_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB072562E04000BC4998 /* save_alt_black.png */; };
+		874FFB392562E04200BC4998 /* menhera_meter.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB082562E04100BC4998 /* menhera_meter.png */; };
+		874FFB3A2562E04200BC4998 /* メンヘラメーター.png in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB092562E04200BC4998 /* メンヘラメーター.png */; };
+		874FFB3E2562E2BB00BC4998 /* TsukushiAMaruGothic.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 874FFAF62562E03000BC4998 /* TsukushiAMaruGothic.ttc */; };
+		874FFB432562E60100BC4998 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FFB422562E60000BC4998 /* Firebase.swift */; };
+		874FFB482562E6F700BC4998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 874FFB472562E6F700BC4998 /* GoogleService-Info.plist */; };
 		8774EC7E255D0CE700E8F0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC7D255D0CE700E8F0D3 /* AppDelegate.swift */; };
 		8774EC80255D0CE700E8F0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC7F255D0CE700E8F0D3 /* SceneDelegate.swift */; };
-		8774EC82255D0CE700E8F0D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC81255D0CE700E8F0D3 /* ViewController.swift */; };
 		8774EC85255D0CE700E8F0D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8774EC83255D0CE700E8F0D3 /* Main.storyboard */; };
 		8774EC87255D0CEF00E8F0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8774EC86255D0CEF00E8F0D3 /* Assets.xcassets */; };
 		8774EC8A255D0CEF00E8F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8774EC88255D0CEF00E8F0D3 /* LaunchScreen.storyboard */; };
 		8774EC95255D0CEF00E8F0D3 /* KanosapoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC94255D0CEF00E8F0D3 /* KanosapoTests.swift */; };
 		8774ECA0255D0CEF00E8F0D3 /* KanosapoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */; };
+		87FC30A2255E7DDE00651732 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */; };
+		87FC30A7255E7E0900651732 /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A6255E7E0900651732 /* SampleView.swift */; };
+		87FC30B2255E7E4000651732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30B1255E7E4000651732 /* ViewController.swift */; };
+		87FC30B7255E7E5100651732 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30B6255E7E5100651732 /* Menu.swift */; };
+		87FC30BC255E7E6400651732 /* traceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30BB255E7E6400651732 /* traceView.swift */; };
+		87FC30C1255E7E7B00651732 /* reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30C0255E7E7B00651732 /* reload.swift */; };
+		87FC30C6255E7E9300651732 /* getTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30C5255E7E9300651732 /* getTimes.swift */; };
+		87FC30CB255E7EB500651732 /* userDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30CA255E7EB500651732 /* userDefaultData.swift */; };
+		87FC30D0255E7F0200651732 /* craftCalendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30CF255E7F0200651732 /* craftCalendars.swift */; };
+		87FC30D5255E7F1300651732 /* makeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30D4255E7F1300651732 /* makeView.swift */; };
+		87FC30DA255E7F2300651732 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30D9255E7F2300651732 /* Calendar.swift */; };
+		CD235466FF7F99DC73ECD967 /* Pods_Kanosapo_KanosapoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA04A39113456EDA047236F /* Pods_Kanosapo_KanosapoUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +137,103 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16DDB002F1CEBEF0A7EC8B47 /* Pods_Kanosapo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kanosapo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA04A39113456EDA047236F /* Pods_Kanosapo_KanosapoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kanosapo_KanosapoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F8FA9D0F1887E7F065E57B /* Pods-Kanosapo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo.debug.xcconfig"; path = "Target Support Files/Pods-Kanosapo/Pods-Kanosapo.debug.xcconfig"; sourceTree = "<group>"; };
+		315AF0D525668C1D00177B9E /* NeedToFix */ = {isa = PBXFileReference; lastKnownFileType = text; path = NeedToFix; sourceTree = "<group>"; };
+		4D5422898184E249E3D9B18E /* Pods-Kanosapo-KanosapoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo-KanosapoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		707965014416A43C6A24AF60 /* Pods-KanosapoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.debug.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		874FF9D7256173CA00BC4998 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		874FF9DC256173E800BC4998 /* EvaluViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluViewController.swift; sourceTree = "<group>"; };
+		874FF9E1256174FE00BC4998 /* EvaluViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluViewController2.swift; sourceTree = "<group>"; };
+		874FFA072562D48100BC4998 /* AllResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllResultsViewController.swift; sourceTree = "<group>"; };
+		874FFA112562D4C700BC4998 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		874FFA162562D4F200BC4998 /* EvaluDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluDetailsViewController.swift; sourceTree = "<group>"; };
+		874FFA1B2562D51C00BC4998 /* HomeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationController.swift; sourceTree = "<group>"; };
+		874FFA202562D53600BC4998 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		874FFA252562D55100BC4998 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		874FFA2E2562D5EF00BC4998 /* BasicBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBarChart.swift; sourceTree = "<group>"; };
+		874FFA362562D61B00BC4998 /* BasicBarChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBarChartPresenter.swift; sourceTree = "<group>"; };
+		874FFA3B2562D62E00BC4998 /* BasicBarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBarEntry.swift; sourceTree = "<group>"; };
+		874FFA422562D67B00BC4998 /* TabmanDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanDisplay.swift; sourceTree = "<group>"; };
+		874FFA4A2562D6AB00BC4998 /* DayResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayResultDetailViewController.swift; sourceTree = "<group>"; };
+		874FFA522562D6C100BC4998 /* DayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayResultViewController.swift; sourceTree = "<group>"; };
+		874FFA572562D6D900BC4998 /* SubDayResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubDayResultDetailViewController.swift; sourceTree = "<group>"; };
+		874FFA5C2562D6F700BC4998 /* SubWeekResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubWeekResultDetailViewController.swift; sourceTree = "<group>"; };
+		874FFA612562D71400BC4998 /* WeekResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekResultDetailViewController.swift; sourceTree = "<group>"; };
+		874FFA662562D72800BC4998 /* WeekResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekResultViewController.swift; sourceTree = "<group>"; };
+		874FFA6B2562D74900BC4998 /* BasicLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLineChart.swift; sourceTree = "<group>"; };
+		874FFA702562D76300BC4998 /* CurveAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveAlgorithm.swift; sourceTree = "<group>"; };
+		874FFA752562D78200BC4998 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		874FFA7A2562D79F00BC4998 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		874FFA7F2562D7D700BC4998 /* CustomSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegments.swift; sourceTree = "<group>"; };
+		874FFA872562D7E600BC4998 /* DataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
+		874FFA8C2562D80700BC4998 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtension.swift; sourceTree = "<group>"; };
+		874FFA912562D82800BC4998 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		874FFA962562D83B00BC4998 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		874FFAA12562D87E00BC4998 /* NewCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomTableViewCell.swift; sourceTree = "<group>"; };
+		874FFAA62562D8AC00BC4998 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		874FFAAB2562D8CB00BC4998 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
+		874FFAB32562D8E600BC4998 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
+		874FFAB82562D8F500BC4998 /* database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
+		874FFABD2562D91100BC4998 /* MyTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodo.swift; sourceTree = "<group>"; };
+		874FFAC52562DBC500BC4998 /* ConfirmationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationTableViewCell.swift; sourceTree = "<group>"; };
+		874FFAC62562DBC500BC4998 /* ConfirmationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationTableViewCell.xib; sourceTree = "<group>"; };
+		874FFAD52562E01800BC4998 /* 背景simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景simple.png"; sourceTree = "<group>"; };
+		874FFAD62562E01900BC4998 /* box_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_big.png; sourceTree = "<group>"; };
+		874FFAD72562E01900BC4998 /* desk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk.png; sourceTree = "<group>"; };
+		874FFAD82562E01A00BC4998 /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
+		874FFAD92562E01B00BC4998 /* アセット 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アセット 2.png"; sourceTree = "<group>"; };
+		874FFADA2562E01B00BC4998 /* todo_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_label.png; sourceTree = "<group>"; };
+		874FFADB2562E01C00BC4998 /* furikaeri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = furikaeri.png; sourceTree = "<group>"; };
+		874FFADC2562E01C00BC4998 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		874FFADD2562E01D00BC4998 /* c_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c_icon.png; sourceTree = "<group>"; };
+		874FFADE2562E01E00BC4998 /* complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = complete.png; sourceTree = "<group>"; };
+		874FFADF2562E01E00BC4998 /* calendar_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_home.png; sourceTree = "<group>"; };
+		874FFAE02562E01F00BC4998 /* 背景_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景_test.png"; sourceTree = "<group>"; };
+		874FFAE12562E01F00BC4998 /* button_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_c.png; sourceTree = "<group>"; };
+		874FFAE22562E02000BC4998 /* ふきだし_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ふきだし_2.png"; sourceTree = "<group>"; };
+		874FFAE32562E02000BC4998 /* セリフ_反転.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "セリフ_反転.png"; sourceTree = "<group>"; };
+		874FFAE42562E02100BC4998 /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run.png; sourceTree = "<group>"; };
+		874FFAE52562E02100BC4998 /* icons8-再生ボタン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-再生ボタン.png"; sourceTree = "<group>"; };
+		874FFAE62562E02200BC4998 /* icons8-停止ボタン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-停止ボタン.png"; sourceTree = "<group>"; };
+		874FFAE72562E02300BC4998 /* button_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_f.png; sourceTree = "<group>"; };
+		874FFAE82562E02300BC4998 /* ふきだし_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ふきだし_6.png"; sourceTree = "<group>"; };
+		874FFAE92562E02400BC4998 /* メンヘラ_SD_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ_SD_0.png"; sourceTree = "<group>"; };
+		874FFAEA2562E02400BC4998 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		874FFAEB2562E02500BC4998 /* アセット 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アセット 9.png"; sourceTree = "<group>"; };
+		874FFAEC2562E02500BC4998 /* fill_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fill_heart.png; sourceTree = "<group>"; };
+		874FFAED2562E02600BC4998 /* メンヘラ彼女_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ彼女_0.png"; sourceTree = "<group>"; };
+		874FFAEE2562E02700BC4998 /* ふきだし_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ふきだし_1.png"; sourceTree = "<group>"; };
+		874FFAEF2562E02800BC4998 /* メンヘラ_SD_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ_SD_100.png"; sourceTree = "<group>"; };
+		874FFAF02562E02800BC4998 /* ふきだし_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ふきだし_5.png"; sourceTree = "<group>"; };
+		874FFAF12562E02900BC4998 /* kanojo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kanojo.jpg; sourceTree = "<group>"; };
+		874FFAF22562E02A00BC4998 /* メンヘラ彼女_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ彼女_100.png"; sourceTree = "<group>"; };
+		874FFAF32562E02B00BC4998 /* メンヘラ彼女_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ彼女_50.png"; sourceTree = "<group>"; };
+		874FFAF42562E02C00BC4998 /* ふきだし_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ふきだし_3.png"; sourceTree = "<group>"; };
+		874FFAF52562E02E00BC4998 /* button_t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_t.png; sourceTree = "<group>"; };
+		874FFAF62562E03000BC4998 /* TsukushiAMaruGothic.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = TsukushiAMaruGothic.ttc; sourceTree = "<group>"; };
+		874FFAF72562E03100BC4998 /* speechBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speechBubble@2x.png"; sourceTree = "<group>"; };
+		874FFAF82562E03200BC4998 /* box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box@2x.png"; sourceTree = "<group>"; };
+		874FFAF92562E03400BC4998 /* calendar_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_2.png; sourceTree = "<group>"; };
+		874FFAFA2562E03400BC4998 /* button_f2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_f2.png; sourceTree = "<group>"; };
+		874FFAFB2562E03500BC4998 /* replay_black_192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replay_black_192x192.png; sourceTree = "<group>"; };
+		874FFAFC2562E03600BC4998 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		874FFAFD2562E03700BC4998 /* todolist_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todolist_2.png; sourceTree = "<group>"; };
+		874FFAFE2562E03800BC4998 /* calendara_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendara_1.png; sourceTree = "<group>"; };
+		874FFAFF2562E03900BC4998 /* calendar_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_label.png; sourceTree = "<group>"; };
+		874FFB032562E03A00BC4998 /* 背景ver.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景ver.2.png"; sourceTree = "<group>"; };
+		874FFB042562E03B00BC4998 /* checkbox_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_big.png; sourceTree = "<group>"; };
+		874FFB052562E03C00BC4998 /* checkBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox@2x.png"; sourceTree = "<group>"; };
+		874FFB062562E03F00BC4998 /* メンヘラ彼女_75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラ彼女_75.png"; sourceTree = "<group>"; };
+		874FFB072562E04000BC4998 /* save_alt_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_alt_black.png; sourceTree = "<group>"; };
+		874FFB082562E04100BC4998 /* menhera_meter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menhera_meter.png; sourceTree = "<group>"; };
+		874FFB092562E04200BC4998 /* メンヘラメーター.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "メンヘラメーター.png"; sourceTree = "<group>"; };
+		874FFB422562E60000BC4998 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		874FFB472562E6F700BC4998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8774EC7A255D0CE700E8F0D3 /* Kanosapo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kanosapo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8774EC7D255D0CE700E8F0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8774EC7F255D0CE700E8F0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8774EC81255D0CE700E8F0D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8774EC84255D0CE700E8F0D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8774EC86255D0CEF00E8F0D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8774EC89255D0CEF00E8F0D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +244,21 @@
 		8774EC9B255D0CEF00E8F0D3 /* KanosapoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanosapoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanosapoUITests.swift; sourceTree = "<group>"; };
 		8774ECA1255D0CEF00E8F0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		87FC30A6255E7E0900651732 /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
+		87FC30B1255E7E4000651732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87FC30B6255E7E5100651732 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		87FC30BB255E7E6400651732 /* traceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = traceView.swift; sourceTree = "<group>"; };
+		87FC30C0255E7E7B00651732 /* reload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reload.swift; sourceTree = "<group>"; };
+		87FC30C5255E7E9300651732 /* getTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTimes.swift; sourceTree = "<group>"; };
+		87FC30CA255E7EB500651732 /* userDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDefaultData.swift; sourceTree = "<group>"; };
+		87FC30CF255E7F0200651732 /* craftCalendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = craftCalendars.swift; sourceTree = "<group>"; };
+		87FC30D4255E7F1300651732 /* makeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeView.swift; sourceTree = "<group>"; };
+		87FC30D9255E7F2300651732 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KanosapoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD46FA4517BB8E5B662898A /* Pods-Kanosapo-KanosapoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo-KanosapoUITests.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.release.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.release.xcconfig"; sourceTree = "<group>"; };
+		F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo/Pods-Kanosapo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A2E1244C0066CF4936233F /* Pods_Kanosapo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC5F50B98CD91417BB8E6FB /* Pods_KanosapoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,19 +282,115 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD235466FF7F99DC73ECD967 /* Pods_Kanosapo_KanosapoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EDEAB702252598B8E9E722D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16DDB002F1CEBEF0A7EC8B47 /* Pods_Kanosapo.framework */,
+				2CA04A39113456EDA047236F /* Pods_Kanosapo_KanosapoUITests.framework */,
+				BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		874FF9E6256230C700BC4998 /* FeedBackCharts */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA2A2562D57700BC4998 /* BarChart */,
+				874FFA2B2562D58000BC4998 /* ChartsViewController */,
+				874FFA2C2562D59300BC4998 /* LineChart */,
+				874FFA2D2562D59C00BC4998 /* Shared */,
+			);
+			path = FeedBackCharts;
+			sourceTree = "<group>";
+		};
+		874FF9E8256230F200BC4998 /* HomeToDo */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA912562D82800BC4998 /* CustomTableViewCell.swift */,
+				874FFA962562D83B00BC4998 /* HomeTableViewController.swift */,
+				874FFAA12562D87E00BC4998 /* NewCustomTableViewCell.swift */,
+			);
+			path = HomeToDo;
+			sourceTree = "<group>";
+		};
+		874FFA2A2562D57700BC4998 /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA2E2562D5EF00BC4998 /* BasicBarChart.swift */,
+				874FFA362562D61B00BC4998 /* BasicBarChartPresenter.swift */,
+				874FFA3B2562D62E00BC4998 /* BasicBarEntry.swift */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		874FFA2B2562D58000BC4998 /* ChartsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA402562D64800BC4998 /* DayResultVC */,
+				874FFA412562D65C00BC4998 /* WeekResultVC */,
+				874FFA422562D67B00BC4998 /* TabmanDisplay.swift */,
+			);
+			path = ChartsViewController;
+			sourceTree = "<group>";
+		};
+		874FFA2C2562D59300BC4998 /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA6B2562D74900BC4998 /* BasicLineChart.swift */,
+				874FFA702562D76300BC4998 /* CurveAlgorithm.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		874FFA2D2562D59C00BC4998 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA752562D78200BC4998 /* ArrayExtension.swift */,
+				874FFA7A2562D79F00BC4998 /* CALayerExtension.swift */,
+				874FFA7F2562D7D700BC4998 /* CustomSegments.swift */,
+				874FFA872562D7E600BC4998 /* DataEntry.swift */,
+				874FFA8C2562D80700BC4998 /* UIBezierPathExtension.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		874FFA402562D64800BC4998 /* DayResultVC */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA4A2562D6AB00BC4998 /* DayResultDetailViewController.swift */,
+				874FFA522562D6C100BC4998 /* DayResultViewController.swift */,
+				874FFA572562D6D900BC4998 /* SubDayResultDetailViewController.swift */,
+			);
+			path = DayResultVC;
+			sourceTree = "<group>";
+		};
+		874FFA412562D65C00BC4998 /* WeekResultVC */ = {
+			isa = PBXGroup;
+			children = (
+				874FFA5C2562D6F700BC4998 /* SubWeekResultDetailViewController.swift */,
+				874FFA612562D71400BC4998 /* WeekResultDetailViewController.swift */,
+				874FFA662562D72800BC4998 /* WeekResultViewController.swift */,
+			);
+			path = WeekResultVC;
+			sourceTree = "<group>";
+		};
 		8774EC71255D0CE700E8F0D3 = {
 			isa = PBXGroup;
 			children = (
+				315AF0D525668C1D00177B9E /* NeedToFix */,
 				8774EC7C255D0CE700E8F0D3 /* Kanosapo */,
 				8774EC93255D0CEF00E8F0D3 /* KanosapoTests */,
 				8774EC9E255D0CEF00E8F0D3 /* KanosapoUITests */,
 				8774EC7B255D0CE700E8F0D3 /* Products */,
+				D347B3C7AD29491A984E3A2E /* Pods */,
+				7EDEAB702252598B8E9E722D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +407,24 @@
 		8774EC7C255D0CE700E8F0D3 /* Kanosapo */ = {
 			isa = PBXGroup;
 			children = (
+				87FC3094255E7CE100651732 /* Add */,
+				87FC3090255E7CA300651732 /* Calendar */,
+				87FC3096255E7D2B00651732 /* Evalu */,
+				87FC3097255E7D4300651732 /* Evalu2 */,
+				87FC3098255E7D4500651732 /* Font */,
+				87FC3099255E7D4600651732 /* Home */,
+				87FC309A255E7D4700651732 /* Pics */,
+				87FC309B255E7D4900651732 /* ToDoList */,
+				87FC309C255E7D4A00651732 /* commons */,
 				8774EC7D255D0CE700E8F0D3 /* AppDelegate.swift */,
 				8774EC7F255D0CE700E8F0D3 /* SceneDelegate.swift */,
-				8774EC81255D0CE700E8F0D3 /* ViewController.swift */,
 				8774EC83255D0CE700E8F0D3 /* Main.storyboard */,
 				8774EC86255D0CEF00E8F0D3 /* Assets.xcassets */,
 				8774EC88255D0CEF00E8F0D3 /* LaunchScreen.storyboard */,
 				8774EC8B255D0CEF00E8F0D3 /* Info.plist */,
+				874FFB472562E6F700BC4998 /* GoogleService-Info.plist */,
+				874FFABD2562D91100BC4998 /* MyTodo.swift */,
+				874FFB422562E60000BC4998 /* Firebase.swift */,
 			);
 			path = Kanosapo;
 			sourceTree = "<group>";
@@ -128,6 +447,160 @@
 			path = KanosapoUITests;
 			sourceTree = "<group>";
 		};
+		87FC3090255E7CA300651732 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				87FC30A6255E7E0900651732 /* SampleView.swift */,
+				87FC30B1255E7E4000651732 /* ViewController.swift */,
+				87FC30B6255E7E5100651732 /* Menu.swift */,
+				87FC30BB255E7E6400651732 /* traceView.swift */,
+				87FC30C0255E7E7B00651732 /* reload.swift */,
+				87FC30C5255E7E9300651732 /* getTimes.swift */,
+				87FC30CA255E7EB500651732 /* userDefaultData.swift */,
+				87FC30CF255E7F0200651732 /* craftCalendars.swift */,
+				87FC30D4255E7F1300651732 /* makeView.swift */,
+				87FC30D9255E7F2300651732 /* Calendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		87FC3094255E7CE100651732 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		87FC3096255E7D2B00651732 /* Evalu */ = {
+			isa = PBXGroup;
+			children = (
+				874FF9D7256173CA00BC4998 /* CustomButton.swift */,
+				874FF9DC256173E800BC4998 /* EvaluViewController.swift */,
+			);
+			path = Evalu;
+			sourceTree = "<group>";
+		};
+		87FC3097255E7D4300651732 /* Evalu2 */ = {
+			isa = PBXGroup;
+			children = (
+				874FF9E1256174FE00BC4998 /* EvaluViewController2.swift */,
+			);
+			path = Evalu2;
+			sourceTree = "<group>";
+		};
+		87FC3098255E7D4500651732 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				874FFAF62562E03000BC4998 /* TsukushiAMaruGothic.ttc */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		87FC3099255E7D4600651732 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				874FF9E6256230C700BC4998 /* FeedBackCharts */,
+				874FF9E8256230F200BC4998 /* HomeToDo */,
+				874FFAC52562DBC500BC4998 /* ConfirmationTableViewCell.swift */,
+				874FFAC62562DBC500BC4998 /* ConfirmationTableViewCell.xib */,
+				874FFA072562D48100BC4998 /* AllResultsViewController.swift */,
+				874FFA112562D4C700BC4998 /* ConfirmationViewController.swift */,
+				874FFA162562D4F200BC4998 /* EvaluDetailsViewController.swift */,
+				874FFA1B2562D51C00BC4998 /* HomeNavigationController.swift */,
+				874FFA202562D53600BC4998 /* HomeViewController.swift */,
+				874FFA252562D55100BC4998 /* ResultViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		87FC309A255E7D4700651732 /* Pics */ = {
+			isa = PBXGroup;
+			children = (
+				874FFADC2562E01C00BC4998 /* book.png */,
+				874FFAD62562E01900BC4998 /* box_big.png */,
+				874FFAF82562E03200BC4998 /* box@2x.png */,
+				874FFAE12562E01F00BC4998 /* button_c.png */,
+				874FFAE72562E02300BC4998 /* button_f.png */,
+				874FFAFA2562E03400BC4998 /* button_f2.png */,
+				874FFAF52562E02E00BC4998 /* button_t.png */,
+				874FFADD2562E01D00BC4998 /* c_icon.png */,
+				874FFAF92562E03400BC4998 /* calendar_2.png */,
+				874FFADF2562E01E00BC4998 /* calendar_home.png */,
+				874FFAFF2562E03900BC4998 /* calendar_label.png */,
+				874FFAFE2562E03800BC4998 /* calendara_1.png */,
+				874FFB042562E03B00BC4998 /* checkbox_big.png */,
+				874FFB052562E03C00BC4998 /* checkBox@2x.png */,
+				874FFAFC2562E03600BC4998 /* close.png */,
+				874FFADE2562E01E00BC4998 /* complete.png */,
+				874FFAD72562E01900BC4998 /* desk.png */,
+				874FFAEC2562E02500BC4998 /* fill_heart.png */,
+				874FFADB2562E01C00BC4998 /* furikaeri.png */,
+				874FFAEA2562E02400BC4998 /* heart.png */,
+				874FFAE52562E02100BC4998 /* icons8-再生ボタン.png */,
+				874FFAE62562E02200BC4998 /* icons8-停止ボタン.png */,
+				874FFAF12562E02900BC4998 /* kanojo.jpg */,
+				874FFB082562E04100BC4998 /* menhera_meter.png */,
+				874FFAFB2562E03500BC4998 /* replay_black_192x192.png */,
+				874FFAD82562E01A00BC4998 /* return.png */,
+				874FFAE42562E02100BC4998 /* run.png */,
+				874FFB072562E04000BC4998 /* save_alt_black.png */,
+				874FFAF72562E03100BC4998 /* speechBubble@2x.png */,
+				874FFADA2562E01B00BC4998 /* todo_label.png */,
+				874FFAFD2562E03700BC4998 /* todolist_2.png */,
+				874FFAD92562E01B00BC4998 /* アセット 2.png */,
+				874FFAEB2562E02500BC4998 /* アセット 9.png */,
+				874FFAE32562E02000BC4998 /* セリフ_反転.png */,
+				874FFAEE2562E02700BC4998 /* ふきだし_1.png */,
+				874FFAE22562E02000BC4998 /* ふきだし_2.png */,
+				874FFAF42562E02C00BC4998 /* ふきだし_3.png */,
+				874FFAF02562E02800BC4998 /* ふきだし_5.png */,
+				874FFAE82562E02300BC4998 /* ふきだし_6.png */,
+				874FFAE92562E02400BC4998 /* メンヘラ_SD_0.png */,
+				874FFAEF2562E02800BC4998 /* メンヘラ_SD_100.png */,
+				874FFB092562E04200BC4998 /* メンヘラメーター.png */,
+				874FFAED2562E02600BC4998 /* メンヘラ彼女_0.png */,
+				874FFAF32562E02B00BC4998 /* メンヘラ彼女_50.png */,
+				874FFB062562E03F00BC4998 /* メンヘラ彼女_75.png */,
+				874FFAF22562E02A00BC4998 /* メンヘラ彼女_100.png */,
+				874FFAE02562E01F00BC4998 /* 背景_test.png */,
+				874FFAD52562E01800BC4998 /* 背景simple.png */,
+				874FFB032562E03A00BC4998 /* 背景ver.2.png */,
+			);
+			path = Pics;
+			sourceTree = "<group>";
+		};
+		87FC309B255E7D4900651732 /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				874FFAA62562D8AC00BC4998 /* TodoCell.swift */,
+				874FFAAB2562D8CB00BC4998 /* TodoTableViewController.swift */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		87FC309C255E7D4A00651732 /* commons */ = {
+			isa = PBXGroup;
+			children = (
+				874FFAB32562D8E600BC4998 /* UIView+Border.swift */,
+				874FFAB82562D8F500BC4998 /* database.swift */,
+			);
+			path = commons;
+			sourceTree = "<group>";
+		};
+		D347B3C7AD29491A984E3A2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30F8FA9D0F1887E7F065E57B /* Pods-Kanosapo.debug.xcconfig */,
+				F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */,
+				4D5422898184E249E3D9B18E /* Pods-Kanosapo-KanosapoUITests.debug.xcconfig */,
+				CDD46FA4517BB8E5B662898A /* Pods-Kanosapo-KanosapoUITests.release.xcconfig */,
+				707965014416A43C6A24AF60 /* Pods-KanosapoTests.debug.xcconfig */,
+				E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +608,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8774ECA4255D0CEF00E8F0D3 /* Build configuration list for PBXNativeTarget "Kanosapo" */;
 			buildPhases = (
+				D64C6D517B7B9DFC66CF8B11 /* [CP] Check Pods Manifest.lock */,
 				8774EC76255D0CE700E8F0D3 /* Sources */,
 				8774EC77255D0CE700E8F0D3 /* Frameworks */,
 				8774EC78255D0CE700E8F0D3 /* Resources */,
+				A33E4A7CB7E0D2D7F0795309 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +627,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8774ECA7255D0CEF00E8F0D3 /* Build configuration list for PBXNativeTarget "KanosapoTests" */;
 			buildPhases = (
+				9F0E76AC1953F0805ADDCF0B /* [CP] Check Pods Manifest.lock */,
 				8774EC8C255D0CEF00E8F0D3 /* Sources */,
 				8774EC8D255D0CEF00E8F0D3 /* Frameworks */,
 				8774EC8E255D0CEF00E8F0D3 /* Resources */,
@@ -170,9 +646,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8774ECAA255D0CEF00E8F0D3 /* Build configuration list for PBXNativeTarget "KanosapoUITests" */;
 			buildPhases = (
+				66092934C87945BED447462B /* [CP] Check Pods Manifest.lock */,
 				8774EC97255D0CEF00E8F0D3 /* Sources */,
 				8774EC98255D0CEF00E8F0D3 /* Frameworks */,
 				8774EC99255D0CEF00E8F0D3 /* Resources */,
+				4DDB649EB34A3B6566992EE3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,9 +709,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				874FFB3E2562E2BB00BC4998 /* TsukushiAMaruGothic.ttc in Resources */,
+				874FFB302562E04200BC4998 /* close.png in Resources */,
+				874FFB222562E04200BC4998 /* メンヘラ彼女_0.png in Resources */,
+				874FFB2C2562E04200BC4998 /* box@2x.png in Resources */,
+				874FFB242562E04200BC4998 /* メンヘラ_SD_100.png in Resources */,
+				874FFB172562E04200BC4998 /* ふきだし_2.png in Resources */,
+				874FFB252562E04200BC4998 /* ふきだし_5.png in Resources */,
+				874FFB0A2562E04200BC4998 /* 背景simple.png in Resources */,
+				874FFB102562E04200BC4998 /* furikaeri.png in Resources */,
+				874FFB212562E04200BC4998 /* fill_heart.png in Resources */,
+				874FFB132562E04200BC4998 /* complete.png in Resources */,
+				874FFB112562E04200BC4998 /* book.png in Resources */,
+				874FFB272562E04200BC4998 /* メンヘラ彼女_100.png in Resources */,
+				874FFB362562E04200BC4998 /* checkBox@2x.png in Resources */,
 				8774EC8A255D0CEF00E8F0D3 /* LaunchScreen.storyboard in Resources */,
+				874FFB1E2562E04200BC4998 /* メンヘラ_SD_0.png in Resources */,
+				874FFB2A2562E04200BC4998 /* button_t.png in Resources */,
+				874FFB232562E04200BC4998 /* ふきだし_1.png in Resources */,
+				874FFB0F2562E04200BC4998 /* todo_label.png in Resources */,
+				874FFB0C2562E04200BC4998 /* desk.png in Resources */,
+				874FFB342562E04200BC4998 /* 背景ver.2.png in Resources */,
+				874FFB1A2562E04200BC4998 /* icons8-再生ボタン.png in Resources */,
+				874FFB122562E04200BC4998 /* c_icon.png in Resources */,
+				874FFB2B2562E04200BC4998 /* speechBubble@2x.png in Resources */,
+				874FFB152562E04200BC4998 /* 背景_test.png in Resources */,
+				874FFB0B2562E04200BC4998 /* box_big.png in Resources */,
+				874FFB1D2562E04200BC4998 /* ふきだし_6.png in Resources */,
+				874FFB262562E04200BC4998 /* kanojo.jpg in Resources */,
+				874FFB192562E04200BC4998 /* run.png in Resources */,
+				874FFB2F2562E04200BC4998 /* replay_black_192x192.png in Resources */,
+				874FFB182562E04200BC4998 /* セリフ_反転.png in Resources */,
 				8774EC87255D0CEF00E8F0D3 /* Assets.xcassets in Resources */,
+				874FFB1B2562E04200BC4998 /* icons8-停止ボタン.png in Resources */,
+				874FFB392562E04200BC4998 /* menhera_meter.png in Resources */,
+				874FFB382562E04200BC4998 /* save_alt_black.png in Resources */,
+				874FFB2D2562E04200BC4998 /* calendar_2.png in Resources */,
+				874FFB142562E04200BC4998 /* calendar_home.png in Resources */,
+				874FFB3A2562E04200BC4998 /* メンヘラメーター.png in Resources */,
+				874FFB1C2562E04200BC4998 /* button_f.png in Resources */,
+				874FFB1F2562E04200BC4998 /* heart.png in Resources */,
+				874FFB0D2562E04200BC4998 /* return.png in Resources */,
+				874FFB282562E04200BC4998 /* メンヘラ彼女_50.png in Resources */,
+				874FFB312562E04200BC4998 /* todolist_2.png in Resources */,
+				874FFB372562E04200BC4998 /* メンヘラ彼女_75.png in Resources */,
+				874FFB2E2562E04200BC4998 /* button_f2.png in Resources */,
+				874FFB332562E04200BC4998 /* calendar_label.png in Resources */,
+				874FFAC82562DBC500BC4998 /* ConfirmationTableViewCell.xib in Resources */,
+				874FFB162562E04200BC4998 /* button_c.png in Resources */,
 				8774EC85255D0CE700E8F0D3 /* Main.storyboard in Resources */,
+				874FFB352562E04200BC4998 /* checkbox_big.png in Resources */,
+				874FFB322562E04200BC4998 /* calendara_1.png in Resources */,
+				874FFB292562E04200BC4998 /* ふきだし_3.png in Resources */,
+				874FFB482562E6F700BC4998 /* GoogleService-Info.plist in Resources */,
+				874FFB202562E04200BC4998 /* アセット 9.png in Resources */,
+				874FFB0E2562E04200BC4998 /* アセット 2.png in Resources */,
+				315AF0D625668C1D00177B9E /* NeedToFix in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +784,163 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DDB649EB34A3B6566992EE3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66092934C87945BED447462B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kanosapo-KanosapoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F0E76AC1953F0805ADDCF0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KanosapoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A33E4A7CB7E0D2D7F0795309 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kanosapo/Pods-Kanosapo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kanosapo/Pods-Kanosapo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kanosapo/Pods-Kanosapo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D64C6D517B7B9DFC66CF8B11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kanosapo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8774EC76255D0CE700E8F0D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8774EC82255D0CE700E8F0D3 /* ViewController.swift in Sources */,
+				874FF9DD256173E800BC4998 /* EvaluViewController.swift in Sources */,
+				874FFA672562D72800BC4998 /* WeekResultViewController.swift in Sources */,
+				874FFA082562D48100BC4998 /* AllResultsViewController.swift in Sources */,
+				874FFA2F2562D5EF00BC4998 /* BasicBarChart.swift in Sources */,
+				874FFA4B2562D6AB00BC4998 /* DayResultDetailViewController.swift in Sources */,
+				874FF9E2256174FE00BC4998 /* EvaluViewController2.swift in Sources */,
+				874FFA882562D7E600BC4998 /* DataEntry.swift in Sources */,
+				87FC30D0255E7F0200651732 /* craftCalendars.swift in Sources */,
+				87FC30C1255E7E7B00651732 /* reload.swift in Sources */,
+				874FFA212562D53600BC4998 /* HomeViewController.swift in Sources */,
+				874FFAAC2562D8CB00BC4998 /* TodoTableViewController.swift in Sources */,
+				874FFA5D2562D6F700BC4998 /* SubWeekResultDetailViewController.swift in Sources */,
+				874FFA6C2562D74A00BC4998 /* BasicLineChart.swift in Sources */,
+				874FFAB92562D8F500BC4998 /* database.swift in Sources */,
+				87FC30B2255E7E4000651732 /* ViewController.swift in Sources */,
+				874FFA172562D4F200BC4998 /* EvaluDetailsViewController.swift in Sources */,
+				87FC30A7255E7E0900651732 /* SampleView.swift in Sources */,
+				87FC30B7255E7E5100651732 /* Menu.swift in Sources */,
+				874FFAC72562DBC500BC4998 /* ConfirmationTableViewCell.swift in Sources */,
+				874FFA262562D55100BC4998 /* ResultViewController.swift in Sources */,
+				874FFABE2562D91100BC4998 /* MyTodo.swift in Sources */,
+				874FFB432562E60100BC4998 /* Firebase.swift in Sources */,
+				87FC30BC255E7E6400651732 /* traceView.swift in Sources */,
+				874FFA802562D7D700BC4998 /* CustomSegments.swift in Sources */,
+				874FFA7B2562D79F00BC4998 /* CALayerExtension.swift in Sources */,
+				87FC30D5255E7F1300651732 /* makeView.swift in Sources */,
+				87FC30A2255E7DDE00651732 /* AddTodoViewController.swift in Sources */,
+				874FFA922562D82800BC4998 /* CustomTableViewCell.swift in Sources */,
+				874FFAB42562D8E600BC4998 /* UIView+Border.swift in Sources */,
 				8774EC7E255D0CE700E8F0D3 /* AppDelegate.swift in Sources */,
+				874FFA582562D6D900BC4998 /* SubDayResultDetailViewController.swift in Sources */,
+				874FFA622562D71400BC4998 /* WeekResultDetailViewController.swift in Sources */,
+				874FFA762562D78200BC4998 /* ArrayExtension.swift in Sources */,
+				874FFA372562D61B00BC4998 /* BasicBarChartPresenter.swift in Sources */,
+				874FFA122562D4C700BC4998 /* ConfirmationViewController.swift in Sources */,
+				874FFAA22562D87E00BC4998 /* NewCustomTableViewCell.swift in Sources */,
+				874FFA1C2562D51C00BC4998 /* HomeNavigationController.swift in Sources */,
 				8774EC80255D0CE700E8F0D3 /* SceneDelegate.swift in Sources */,
+				874FFAA72562D8AC00BC4998 /* TodoCell.swift in Sources */,
+				87FC30C6255E7E9300651732 /* getTimes.swift in Sources */,
+				87FC30CB255E7EB500651732 /* userDefaultData.swift in Sources */,
+				87FC30DA255E7F2300651732 /* Calendar.swift in Sources */,
+				874FFA3C2562D62E00BC4998 /* BasicBarEntry.swift in Sources */,
+				874FFA972562D83B00BC4998 /* HomeTableViewController.swift in Sources */,
+				874FF9D8256173CA00BC4998 /* CustomButton.swift in Sources */,
+				874FFA532562D6C100BC4998 /* DayResultViewController.swift in Sources */,
+				874FFA8D2562D80700BC4998 /* UIBezierPathExtension.swift in Sources */,
+				874FFA432562D67B00BC4998 /* TabmanDisplay.swift in Sources */,
+				874FFA712562D76300BC4998 /* CurveAlgorithm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,11 +1113,14 @@
 		};
 		8774ECA5255D0CEF00E8F0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30F8FA9D0F1887E7F065E57B /* Pods-Kanosapo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 249MRRL5MK;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,11 +1134,14 @@
 		};
 		8774ECA6255D0CEF00E8F0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 249MRRL5MK;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +1155,7 @@
 		};
 		8774ECA8255D0CEF00E8F0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 707965014416A43C6A24AF60 /* Pods-KanosapoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +1177,7 @@
 		};
 		8774ECA9255D0CEF00E8F0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +1199,7 @@
 		};
 		8774ECAB255D0CEF00E8F0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D5422898184E249E3D9B18E /* Pods-Kanosapo-KanosapoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +1219,7 @@
 		};
 		8774ECAC255D0CEF00E8F0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDD46FA4517BB8E5B662898A /* Pods-Kanosapo-KanosapoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

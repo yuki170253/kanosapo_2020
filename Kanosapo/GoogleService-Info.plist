@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>452455703037-bvnsf5l4ugsrklr1qtlb1ie8rbm1197c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.452455703037-bvnsf5l4ugsrklr1qtlb1ie8rbm1197c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAx38YQoJVTRkb_KqdxrIB8pE_MpcZ0h-A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>452455703037</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>numapro2019.Kanosapo</string>
+	<key>PROJECT_ID</key>
+	<string>kanosapo-336cc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kanosapo-336cc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:452455703037:ios:3ac367e0a320c7fc30f994</string>
+	<key>DATABASE_URL</key>
+	<string>https://kanosapo-336cc.firebaseio.com</string>
+</dict>
+</plist>

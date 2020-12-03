@@ -1,0 +1,6 @@
+framework module Pods_KanosapoTests {
+  umbrella header "Pods-KanosapoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
