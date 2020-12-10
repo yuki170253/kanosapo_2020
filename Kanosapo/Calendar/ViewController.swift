@@ -628,7 +628,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             //ManuViewのタスクが移動された場合
             
             if(sender.view!.tag >= 1000000000 && sender.view!.tag < 10000000000){ //Todo
-                if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > MyScrollView.frame.minY) {
+                print("aakkaa",sender.view!.frame.minY)
+                if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > 0) { //12/8 by 牧内
                     //削除ボタン作成
                     let button :UIButton = UIButton(frame: CGRect(x: 285,y: 0,width: 15,height: 15))
                     button.setImage(UIImage(named:"close_black"), for: .normal)

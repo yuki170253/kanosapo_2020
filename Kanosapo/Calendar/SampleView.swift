@@ -145,6 +145,7 @@ class SampleView :UIView {
     var alltracedView = [SampleView]()
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        print("panGesture")
         let hour = (no23point - no1point)/23
         let minute:Double
         var point: CGPoint
@@ -160,7 +161,11 @@ class SampleView :UIView {
         
         
         if(gestureRecognizer.state == .began){
-            
+            if(gestureRecognizer.location(in: self).y > content.frame.height - 30 && gestureRecognizer.location(in: self).x > circle.center.x - 50 && gestureRecognizer.location(in: self).x < circle.center.x + 50){
+                flag = 1
+            }else {
+                flag = 0
+            }
             for label in self.subviews{
                 if type(of: label) == UILabel.self {
                     title.text = (label as! UILabel).text
@@ -186,50 +191,42 @@ class SampleView :UIView {
                 taskTime.alpha = 1.0
             }
             //移動量を取得する
-            var move = gestureRecognizer.translation(in: self)
-            movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
-            movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
-            if(gestureRecognizer.state == .ended){
-                for i in 0..<92 {
-                    if(Double(movedUnderPoint.y) > Double(no1point) + Double(hour*i/4) && Double(movedUnderPoint.y) <= Double(no1point) + Double(hour/8) + Double(hour*i/4)){
-                        changedheight = Double(hour*i/4)
-                        print("center",movedCenterPoint.y,i)
-                        print(self.frame.origin)
-                    }else if(Double(movedUnderPoint.y) <= Double(no1point) + Double(hour*(i+1)/4) && Double(movedUnderPoint.y) > Double(no1point) + Double(hour/8) + Double(hour*i/4)){
-                        changedheight = Double(hour*(i+1)/4)
-
-                        print("center",movedCenterPoint.y)
-                        print(self.frame.origin)
-                    }
+            //if(gestureRecognizer.state == .changed){
+                var move = gestureRecognizer.translation(in: self)
+                movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
+                movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
+                
+                if(content.frame.size.height + move.y > 15){
+                    self.frame.size.height += move.y
+                    content.frame.size.height += move.y
+                    leftBorder.frame.size.height += move.y
+                }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
+                    //move.y = 0
+                    self.frame.size.height = CGFloat(15 * minute + 20)
+                    content.frame.size.height = CGFloat(15 * minute)
+                    leftBorder.frame.size.height = CGFloat(15 * minute)
                 }
-            }
+                if(content.frame.size.height + move.y > 300){
+                    self.frame.size.height = CGFloat(300 * minute + 20)
+                    content.frame.size.height = CGFloat(300 * minute)
+                    leftBorder.frame.size.height = CGFloat(300 * minute)
+                }
+                
+                //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
+                dotimeLabel.frame.origin.y = content.frame.size.height - 15
+                taskTime.frame.origin.y = content.frame.size.height - 15
+                
+                circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
+                imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
+                //移動量をリセットする
+                gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+            //}
             
-            if(content.frame.size.height + move.y > 15){
-                self.frame.size.height += move.y
-                content.frame.size.height += move.y
-                leftBorder.frame.size.height += move.y
-            }else {
-                self.frame.size.height = CGFloat(300 * minute + 20)
-                content.frame.size.height = CGFloat(300 * minute)
-                leftBorder.frame.size.height = CGFloat(300 * minute)
-            }
             
             
-            if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
-                //move.y = 0
-                self.frame.size.height = CGFloat(15 * minute + 20)
-                content.frame.size.height = CGFloat(15 * minute)
-                leftBorder.frame.size.height = CGFloat(15 * minute)
-            }
             
-            //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-            dotimeLabel.frame.origin.y = content.frame.size.height - 15
-            taskTime.frame.origin.y = content.frame.size.height - 15
             
-            circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
-            imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
-            //移動量をリセットする
-            gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+            
             if(gestureRecognizer.state == .ended){
                 taskTime.alpha = 0.0
                 userDefaultData(view: self)
@@ -257,10 +254,11 @@ class SampleView :UIView {
             movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + point.x, y: gestureRecognizer.view!.center.y + point.y)
             movedPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y - self.frame.size.height/2)
             if(gestureRecognizer.state == .changed){
+                print("gesloc",gestureRecognizer.location(in: self).y)
                 //fakeView.frame.origin.x = movedPoint.x
                 fakeView.frame.origin.y += point.y
                 gestureRecognizer.view!.center.y = fakeView.center.y + (self.superview?.superview as! UIScrollView).contentOffset.y - (self.superview?.superview as! UIScrollView).frame.origin.y +     10
-                print("location",location)
+                //print("location",location)
                 //print(self.frame.origin.y, fakeView.frame.origin.y)
                 print(gestureRecognizer.view!.frame.minY,gestureRecognizer.view!.frame.maxY)
                 //print(movedPoint.y - (self.superview?.superview as! UIScrollView).contentOffset.y)
