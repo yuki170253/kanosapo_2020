@@ -31,11 +31,11 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
         f.timeStyle = .full
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
-        appDelegate.delegateResults = results
         for i in results{
             print("==============-\(f.string(from: i.start))===================")
             print("==============-\(i.start))===================")
         }
+        registration()
     }
     override func viewWillAppear(_ animated: Bool) {
         tableview.reloadData()
@@ -74,6 +74,28 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
         if (segue.identifier == "to_evalu") {
             let vc = segue.destination as! EvaluViewController
             vc.todoid = todoid
+        }
+    }
+    
+    //かける　変更 12/10
+    // AppDelegate -> applicationDidEnterBackgroundの通知
+    func registration(){
+        let results = realm.objects(Calendar24.self).filter("end >= %@ AND end <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
+        var trigger: UNNotificationTrigger
+        let content = UNMutableNotificationContent()
+        var notificationTime = DateComponents()
+        if(results != nil){
+            for item in results{
+                let components = Calendar.current.dateComponents(in: TimeZone.current, from: item.start)
+                notificationTime.hour = components.hour
+                notificationTime.minute = components.minute! - 10
+                trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
+                content.title = item.todo.first!.title
+                content.body = "もうすぐタスクの時間だよ！"
+                content.sound = UNNotificationSound.default
+                var request = UNNotificationRequest(identifier: item.calendarid, content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
         }
     }
 }

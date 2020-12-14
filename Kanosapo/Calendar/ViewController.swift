@@ -338,8 +338,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     override func viewWillDisappear(_ animated: Bool) {
         print("viewWillDisappear")
-        userDefaultData(content: ContentView)
-        test_addEvent()
+//        userDefaultData(content: ContentView)
+//        test_addEvent()
         
         try! realm.write{
             let results = realm.objects(DefaultCalendar.self)

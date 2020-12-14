@@ -85,7 +85,10 @@ func deleteViews(content: UIView, allday: UIView, menu: UIView){
                     y += 1
                 }
                 print("craftAll")
-                
+                let width = 80
+                let height = 20
+                let x = 85
+                let y = 24
                 let frame = CGRect(x: 5 + (cnt * 85), y: 3 + (y * 24), width: 80, height: 20)
                 let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
                 base_view.addSubview(TestView)
@@ -102,6 +105,12 @@ func deleteViews(content: UIView, allday: UIView, menu: UIView){
         f.locale = Locale(identifier: "ja_JP")
         let Now = NSDate() as Date
         let date = f.string(from: Now)
+        
+        let x = 5
+        let y = 25
+        let width = -10
+        let height = 20
+        
         let result_m = realm.objects(Todo.self).filter("datestring == '指定なし'")
         let result_s = realm.objects(Todo.self).filter("datestring == %@", date)
         for item in result_m{
