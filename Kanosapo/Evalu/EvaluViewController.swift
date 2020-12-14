@@ -140,7 +140,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         
         if timerRunning == true {
             //かける追加 12/10 if(result!.dotime! <= countNum){}で囲う
-            if(result!.dotime <= countNum){
+            if(result!.dotime >= countNum){
+                print("中")
                 //目標時間経過時の通知
                 let target = UNMutableNotificationContent()
                 target.title = testlabel.text! //通知のタイトル
