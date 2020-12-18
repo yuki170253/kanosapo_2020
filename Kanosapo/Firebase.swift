@@ -24,6 +24,11 @@ func writeFirebase(){
     let todo = realm.objects(Todo.self)
     let cal24 = realm.objects(Calendar24.self)
     let default_cal = realm.objects(DefaultCalendar.self)
+    if UserDefaults.standard.object(forKey: "line_id") != nil {
+        print("lineIdあり")
+        let line_id = ["Line_id": UserDefaults.standard.object(forKey: "line_id") as! String]
+        DBRef.child("users/" + user_id).updateChildValues(line_id) //更新
+    }
     
     for item in todo {
         var date = ""

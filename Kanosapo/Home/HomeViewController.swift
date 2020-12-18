@@ -9,6 +9,9 @@ import UIKit
 //import YYBottomSheet
 import PullableSheet
 import RealmSwift
+import LineSDK
+import CryptoSwift
+
 class HomeViewController: UIViewController {
     var todoListArray = [MyTodo]()
     var index :Int = 0
@@ -27,8 +30,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() { //切り替えても呼び出されない...
         super.viewDidLoad()
         score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
-//        userDefaults.removeObject(forKey: "todoList")
-//        userDefaults.removeObject(forKey: "CalendarList")
+        //        userDefaults.removeObject(forKey: "todoList")
+        //        userDefaults.removeObject(forKey: "CalendarList")
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         var percent:Double = 0.0
         
@@ -50,35 +53,35 @@ class HomeViewController: UIViewController {
         
         
         /*
-        var calendarListArray = all_data_c()
-        calendarListArray = sort_array(arrays: calendarListArray)
-        todoListArray = all_data()
-        debug(todo_array: todoListArray, c_array: calendarListArray)
-        print("This")
-        //sort_array(arrays: calendarListArray)
-        delete_notcurrent(arrays: calendarListArray)
-        var indexs_c :[Int]
-        indexs_c = search_c_index(array: calendarListArray, date: convert_string(date: Date()))
-        print("indexs_c：\(indexs_c)")
-        if indexs_c.count > 0{
-            task_name = calendarListArray[indexs_c[0]].todoTitle!
-            //let span = convert_date(string: calendarListArray[0].start).timeIntervalSinceNow
-            //print(span)
-            //算出後の日付
-            let modifiedDate = Calendar.current.date(byAdding: .hour, value: 8, to: convert_date_details(string: calendarListArray[indexs_c[0]].start))!
-            let nowDate = Calendar.current.date(byAdding: .hour, value: 8, to: Date())!
-            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: nowDate, to: modifiedDate)
-            print("ここ")
-            print(dateComponents)
-            if dateComponents.hour == 0 {
-                talkcontent = String(dateComponents.minute!) + "分後に\(task_name)のタスクが入っているよ！"
-            }else{
-                talkcontent = "\(dateComponents.hour!)時間\(dateComponents.minute!)分後に\(task_name)のタスクが入っているよ！"
-            }
-            talk.adjustsFontSizeToFitWidth = true
-            talk.text = talkcontent
-        }
-        */
+         var calendarListArray = all_data_c()
+         calendarListArray = sort_array(arrays: calendarListArray)
+         todoListArray = all_data()
+         debug(todo_array: todoListArray, c_array: calendarListArray)
+         print("This")
+         //sort_array(arrays: calendarListArray)
+         delete_notcurrent(arrays: calendarListArray)
+         var indexs_c :[Int]
+         indexs_c = search_c_index(array: calendarListArray, date: convert_string(date: Date()))
+         print("indexs_c：\(indexs_c)")
+         if indexs_c.count > 0{
+         task_name = calendarListArray[indexs_c[0]].todoTitle!
+         //let span = convert_date(string: calendarListArray[0].start).timeIntervalSinceNow
+         //print(span)
+         //算出後の日付
+         let modifiedDate = Calendar.current.date(byAdding: .hour, value: 8, to: convert_date_details(string: calendarListArray[indexs_c[0]].start))!
+         let nowDate = Calendar.current.date(byAdding: .hour, value: 8, to: Date())!
+         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: nowDate, to: modifiedDate)
+         print("ここ")
+         print(dateComponents)
+         if dateComponents.hour == 0 {
+         talkcontent = String(dateComponents.minute!) + "分後に\(task_name)のタスクが入っているよ！"
+         }else{
+         talkcontent = "\(dateComponents.hour!)時間\(dateComponents.minute!)分後に\(task_name)のタスクが入っているよ！"
+         }
+         talk.adjustsFontSizeToFitWidth = true
+         talk.text = talkcontent
+         }
+         */
         
         
         percent = UserDefaults.standard.object(forKey: "score") as! Double
@@ -103,25 +106,25 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         //let realm = try! Realm()
-//        try! realm.write {
-//            print("addされました。")
-//            let todo = Todo()
-//            let todo2 = Todo()
-//            todo.title = "テストデータ"
-//            todo2.title = "勉強"
-//            todo.date = Date()
-//            todo2.date = Date() + 1
-//            let calendar1 = Calendar24()
-//            let calendar2 = Calendar24()
-//            // UserとCommunityに対して
-//            // １対多の関連を作るには、次のようにして、
-//            // List<Community>のプロパティにcommunityオブジェクトを
-//            // 追加します。
-//            todo.calendars.append(calendar1)
-//            todo.calendars.append(calendar2)
-//            realm.add(todo)
-//            realm.add(todo2)
-//        }
+        //        try! realm.write {
+        //            print("addされました。")
+        //            let todo = Todo()
+        //            let todo2 = Todo()
+        //            todo.title = "テストデータ"
+        //            todo2.title = "勉強"
+        //            todo.date = Date()
+        //            todo2.date = Date() + 1
+        //            let calendar1 = Calendar24()
+        //            let calendar2 = Calendar24()
+        //            // UserとCommunityに対して
+        //            // １対多の関連を作るには、次のようにして、
+        //            // List<Community>のプロパティにcommunityオブジェクトを
+        //            // 追加します。
+        //            todo.calendars.append(calendar1)
+        //            todo.calendars.append(calendar2)
+        //            realm.add(todo)
+        //            realm.add(todo2)
+        //        }
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print(daylist7())
         
@@ -146,7 +149,7 @@ class HomeViewController: UIViewController {
         
         // 四角形を描
         rectangleLayer.path = UIBezierPath.init(rect: CGRect.init(x: 0, y: 0, width: rectangleFrame.size.width, height: rectangleFrame.size.height)).cgPath
-
+        
         self.view.layer.addSublayer(rectangleLayer)
         
         // 制限時間バーの高さ・幅
@@ -174,18 +177,42 @@ class HomeViewController: UIViewController {
         // バーをアニメーションさせる
         // 10秒かけてバーを左側から等速で減少させる
         UIView.animate(withDuration: 2, delay: 0.0, options:
-        UIView.AnimationOptions.curveEaseIn, animations: {() -> Void  in
-        // アニメーション終了後の座標とサイズを指定
-        self.barImageView.frame = CGRect(x: barXPositionEnd-barWidth/(100/(100-stop)), y: barYPosition, width: barWidth/(100/(100-stop)), height: barHeight)
-        },
-        completion: {(finished: Bool) -> Void in
-        
-        })
+                        UIView.AnimationOptions.curveEaseIn, animations: {() -> Void  in
+                            // アニメーション終了後の座標とサイズを指定
+                            self.barImageView.frame = CGRect(x: barXPositionEnd-barWidth/(100/(100-stop)), y: barYPosition, width: barWidth/(100/(100-stop)), height: barHeight)
+                        },
+                       completion: {(finished: Bool) -> Void in
+                        
+                       })
     }
     @IBAction func reset_button(_ sender: Any) {
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "todoList")
         userDefaults.removeObject(forKey: "CalendarList")
         print("リセットされました。")
+    }
+    @IBAction func didTapLogin(_ sender: Any) {
+        let key = "12345678901234567890123456789012"
+        LoginManager.shared.login(permissions: [.profile], in: self) {
+            result in
+            switch result {
+            case .success(let loginResult):    //(1)
+                if let profile = loginResult.userProfile {
+                    print("User ID: \(profile.userID)")
+                    print("User Display Name: \(profile.displayName)")
+                    print("encrypt")
+                    let encryptedLineID = hoge(String(profile.userID))
+                    if encryptedLineID != nil {
+                        UserDefaults.standard.set(encryptedLineID, forKey: "line_id")
+                    }
+                    
+                }
+                
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
     }
 }
