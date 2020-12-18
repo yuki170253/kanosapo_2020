@@ -29,6 +29,10 @@ func writeFirebase(){
         let line_id = ["Line_id": UserDefaults.standard.object(forKey: "line_id") as! String]
         DBRef.child("users/" + user_id).updateChildValues(line_id) //更新
     }
+    if UserDefaults.standard.object(forKey: "score") != nil {
+        let score = ["Score": UserDefaults.standard.object(forKey: "score") as! Int]
+        DBRef.child("users/" + user_id).updateChildValues(score) //更新
+    }
     
     for item in todo {
         var date = ""
