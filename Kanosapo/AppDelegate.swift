@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         requestAuthorization()
         checkAuth()
+        
+        tokenUpdate()
         FirebaseApp.configure()
         writeFirebase()
         return true

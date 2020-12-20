@@ -192,27 +192,6 @@ class HomeViewController: UIViewController {
         print("リセットされました。")
     }
     @IBAction func didTapLogin(_ sender: Any) {
-        let key = "12345678901234567890123456789012"
-        LoginManager.shared.login(permissions: [.profile], in: self) {
-            result in
-            switch result {
-            case .success(let loginResult):    //(1)
-                if let profile = loginResult.userProfile {
-                    print("User ID: \(profile.userID)")
-                    print("User Display Name: \(profile.displayName)")
-                    print("encrypt")
-                    let encryptedLineID = hoge(String(profile.userID))
-                    if encryptedLineID != nil {
-                        UserDefaults.standard.set(encryptedLineID, forKey: "line_id")
-                    }
-                    
-                }
-                
-                break
-            case .failure(let error):
-                print(error)
-                break
-            }
-        }
+        authentication(vc: self)
     }
 }
