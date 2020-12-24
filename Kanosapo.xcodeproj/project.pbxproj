@@ -106,6 +106,7 @@
 		8774EC8A255D0CEF00E8F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8774EC88255D0CEF00E8F0D3 /* LaunchScreen.storyboard */; };
 		8774EC95255D0CEF00E8F0D3 /* KanosapoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC94255D0CEF00E8F0D3 /* KanosapoTests.swift */; };
 		8774ECA0255D0CEF00E8F0D3 /* KanosapoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */; };
+		87CBB857258F38F20020845C /* LINELink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CBB856258F38F20020845C /* LINELink.swift */; };
 		87FC30A2255E7DDE00651732 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */; };
 		87FC30A7255E7E0900651732 /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A6255E7E0900651732 /* SampleView.swift */; };
 		87FC30B2255E7E4000651732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30B1255E7E4000651732 /* ViewController.swift */; };
@@ -246,6 +247,7 @@
 		8774EC9B255D0CEF00E8F0D3 /* KanosapoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanosapoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanosapoUITests.swift; sourceTree = "<group>"; };
 		8774ECA1255D0CEF00E8F0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87CBB856258F38F20020845C /* LINELink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LINELink.swift; path = /Users/makiuchihideyuki/Desktop/Kanosapo_git/kanosapo_2020/Kanosapo/LINELink.swift; sourceTree = "<absolute>"; };
 		87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		87FC30A6255E7E0900651732 /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		87FC30B1255E7E4000651732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				8774EC8B255D0CEF00E8F0D3 /* Info.plist */,
 				874FFB472562E6F700BC4998 /* GoogleService-Info.plist */,
 				874FFABD2562D91100BC4998 /* MyTodo.swift */,
+				87CBB856258F38F20020845C /* LINELink.swift */,
 				874FFB422562E60000BC4998 /* Firebase.swift */,
 				8732F4792581E59000A6610E /* Encryption.swift */,
 			);
@@ -898,6 +901,7 @@
 				874FF9DD256173E800BC4998 /* EvaluViewController.swift in Sources */,
 				874FFA672562D72800BC4998 /* WeekResultViewController.swift in Sources */,
 				874FFA082562D48100BC4998 /* AllResultsViewController.swift in Sources */,
+				87CBB857258F38F20020845C /* LINELink.swift in Sources */,
 				874FFA2F2562D5EF00BC4998 /* BasicBarChart.swift in Sources */,
 				874FFA4B2562D6AB00BC4998 /* DayResultDetailViewController.swift in Sources */,
 				874FF9E2256174FE00BC4998 /* EvaluViewController2.swift in Sources */,
@@ -1124,7 +1128,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D3879X4HC8;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1145,7 +1149,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D3879X4HC8;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
