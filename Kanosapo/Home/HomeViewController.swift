@@ -192,6 +192,20 @@ class HomeViewController: UIViewController {
         print("リセットされました。")
     }
     @IBAction func didTapLogin(_ sender: Any) {
-        authentication(vc: self)
+        guard let url = URL(string: "https://line.me/R/ti/p/@718ysyiu") else {
+            return
+        }
+        API.Auth.verifyAccessToken { result in
+            switch result {
+            case .success: //連携済み
+                UIApplication.shared.open(url, options: [:], completionHandler: { (succes) in
+                    
+                })
+            case .failure(let error): //未連携
+                authentication(vc: self)
+                print(error)
+            }
+        }
+        
     }
 }

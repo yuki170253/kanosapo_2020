@@ -506,6 +506,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 })
                 reloadView(content: ContentView)
                 reloadLabel(content: ContentView)
+                writeFirebase()
                 //今あるviewを削除(MyScrollView)
                 for view in ContentView.subviews{
                     if(type(of: view) == SampleView.self){
