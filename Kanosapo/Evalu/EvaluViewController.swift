@@ -48,7 +48,7 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
             notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(EnterBackground(
-            notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         print("viewWillappear")
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
         id = result!.title
@@ -120,12 +120,14 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         print("フォアグラウンド")
         if timerRunning{
             end = Date()
+            print("end~~~~~~")
+            print(end)
             let diff = end.timeIntervalSince(start)
             print("diff")
             print(diff)
-            countNum += Int(diff/2)
-            donetime += Int(diff/2)
-            print(end)
+            countNum += Int(diff)
+            donetime += Int(diff)
+            print(donetime)
         }
     }
     
@@ -134,6 +136,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         print("バックグラウンド")
         if timerRunning{
             start = Date()
+            print(donetime)
+            print("start~~~~~~")
             print(start)
         }
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
@@ -178,6 +182,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         //let m = (countNum - s - ms) / 6000 % 3600
         timeDisplay.text = String(format: "++ %02d:%02d:%02d", h,m,s)
         dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime / 3600), (donetime / 60) % 60, donetime % 60)
+        print("ストップウォッチが動く(updateDisplay)")
+        print(donetime)
     }
     
     
@@ -190,8 +196,10 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
                        animations: { () -> Void in
                                 self.button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0) }, completion: nil)
         if timerRunning == false {
+            """
             NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
                 notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+            """
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(EvaluViewController.updateDisplay), userInfo: nil, repeats: true)
             timerRunning = true
             sender.setImage(image_stop, for: .normal)
