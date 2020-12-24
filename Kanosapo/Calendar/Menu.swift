@@ -75,7 +75,7 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
         if(item.allDay){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
-//            if(dateFormatter.string(from: item.start) == dateFormatter.string(from: Date())){
+            if(dateFormatter.string(from: item.start) == dateFormatter.string(from: Date())){
                 print(item)
                 let frame = CGRect(x: 5 + 120 * task_cnt, y: 18, width: 100, height: 28)
                 let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
@@ -83,7 +83,7 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
                 TestView.backgroundColor = color
                 contentsView.addSubview(TestView)
                 task_cnt += 1
-//            }
+            }
         }
     }
     let cnt = contentsView.subviews.count

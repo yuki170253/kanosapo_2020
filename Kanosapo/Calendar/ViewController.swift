@@ -227,7 +227,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 if(item.tag >= 1000000000 && item.tag < 10000000000){//やることリストのLongPressを無効化
                     longPress.isEnabled = false //longPress無効化
                 }
-                
                 item.addGestureRecognizer(longPress)
             }
         }

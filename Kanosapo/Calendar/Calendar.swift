@@ -12,9 +12,6 @@ import EventKit
 import RealmSwift
 import Foundation
 
-
-
-
 let calendar = Calendar.current
 var calendars = [EKCalendar]()
 var eventArray = [EKEvent]()
@@ -52,6 +49,8 @@ func makeDictionary(){
     //calendaridと対応したEKEventを格納するEventDataを作成
     let d_cal = realm.objects(DefaultCalendar.self)
     for item in d_cal{
+//        Dic.updateValue(item.calendarid, forKey: item.before_event)
+//        Dic_c.updateValue(item.before_event, forKey: item.calendarid)
         Dic.updateValue(item.calendarid, forKey: item.event)
         Dic_c.updateValue(item.event, forKey: item.calendarid)
         let event = eventStore.event(withIdentifier: item.event)
@@ -86,7 +85,7 @@ func test_getCalendar(){
     print("test_getCalendar")
     makeDictionary()
     var componentsOneDayDelay = DateComponents()
-    componentsOneDayDelay.hour = 744 // 今の時刻から1年進めるので1を代入
+    componentsOneDayDelay.hour = 24 // 今の時刻から1年進めるので1を代入
     let startDate = Date()
     let endDate = calendar.date(byAdding: componentsOneDayDelay, to: Date())!
     let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
@@ -99,7 +98,6 @@ func test_getCalendar(){
 //    }
     for event in eventArray{
         print(Dic)
-        print(event.eventIdentifier)
         let cal_id = Dic[event.eventIdentifier]
         print(cal_id)
         //新規calendarのcalendarid用
@@ -176,7 +174,6 @@ func test_getCalendar(){
         print(type(of: event.calendar.type))
         print(event.calendar.type.rawValue)
         print(type(of: print(event.calendar.type.rawValue)))
-        
     }
 }
 
@@ -209,7 +206,8 @@ func new_addEvent(tag: Int){
             //この値を使ってnext_getCalendarで標準カレンダーの変更分を更新する
             
             try! realm.write{
-                result_d.event = event.eventIdentifier
+                result_d.event = new_event.eventIdentifier
+//                result_d.before_event = event.eventIdentifier
             }
             
         } catch let error {
