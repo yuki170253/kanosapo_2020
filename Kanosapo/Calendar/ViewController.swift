@@ -227,7 +227,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 if(item.tag >= 1000000000 && item.tag < 10000000000){//やることリストのLongPressを無効化
                     longPress.isEnabled = false //longPress無効化
                 }
-                
                 item.addGestureRecognizer(longPress)
             }
         }
@@ -338,8 +337,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     override func viewWillDisappear(_ animated: Bool) {
         print("viewWillDisappear")
-        userDefaultData(content: ContentView)
-        test_addEvent()
+//        userDefaultData(content: ContentView)
+//        test_addEvent()
         
         try! realm.write{
             let results = realm.objects(DefaultCalendar.self)

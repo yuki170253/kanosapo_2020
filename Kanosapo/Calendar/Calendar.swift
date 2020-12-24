@@ -1,4 +1,4 @@
-////
+//// テスト 12_8(翔)
 ////  getData.swift
 ////  MyTodoList
 ////
@@ -11,9 +11,6 @@ import UIKit
 import EventKit
 import RealmSwift
 import Foundation
-
-
-
 
 let calendar = Calendar.current
 var calendars = [EKCalendar]()
@@ -52,6 +49,8 @@ func makeDictionary(){
     //calendaridと対応したEKEventを格納するEventDataを作成
     let d_cal = realm.objects(DefaultCalendar.self)
     for item in d_cal{
+//        Dic.updateValue(item.calendarid, forKey: item.before_event)
+//        Dic_c.updateValue(item.before_event, forKey: item.calendarid)
         Dic.updateValue(item.calendarid, forKey: item.event)
         Dic_c.updateValue(item.event, forKey: item.calendarid)
         let event = eventStore.event(withIdentifier: item.event)
@@ -80,17 +79,6 @@ func searchEventData(calendarid: String)-> EKEvent{
     return result
 }
 
-func test(){
-    for event in eventArray{
-        print(type(of: event.title))//String
-        print(type(of: event.location))//String
-        print(type(of: event.calendar))//EKCalendar
-        print(type(of: event.alarms))//EKAlarms
-        print(type(of: event.url))//URL?
-    }
-}
-
-
 //EnterForegroundで呼ばれるgetCalendar
 //addEventにて追加した新Eventのidentifierと対応するrealmデータを更新する
 func test_getCalendar(){
@@ -110,7 +98,6 @@ func test_getCalendar(){
 //    }
     for event in eventArray{
         print(Dic)
-        print(event.eventIdentifier)
         let cal_id = Dic[event.eventIdentifier]
         print(cal_id)
         //新規calendarのcalendarid用
@@ -179,100 +166,63 @@ func test_getCalendar(){
             }
         }
     }
+    print("00000000000000")
+    for cal in d_cal{
+        let event = eventStore.event(withIdentifier: cal.event)!
+        print(event.title)
+        print(event.calendar)
+        print(type(of: event.calendar.type))
+        print(event.calendar.type.rawValue)
+        print(type(of: print(event.calendar.type.rawValue)))
+    }
 }
 
-func test_addEvent(){
-    print("test_addEvent")
-    var eventArray2 = [EKEvent]()
-    let d_cal = realm.objects(DefaultCalendar.self)
-//    var calendarItem = EKCalendarItem()
-    for item in d_cal{
-        let event = eventStore.event(withIdentifier: item.event)!
-        let calendarItem = eventStore.calendarItem(withIdentifier: event.calendarItemIdentifier)!
+func new_addEvent(tag: Int){
+    print("new_addEvent")
+    let result_d = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(tag))!
+    let event = eventStore.event(withIdentifier: result_d.event)!
+    //カケル追加 12/24
+    //カレンダータイプが"Local"の場合のみ変更を加える。
+    //祝日や誕生日などは変更しない rawValue=0がLocal
+    if(event.calendar.type.rawValue == 0){
         let new_event = EKEvent(eventStore: eventStore)
-        //        let new_event = eventStore.event(withIdentifier: item.event)!
-        
-        //かのサポ内で利用する情報の上書き
-//        for i in 0..<calendars.count{
-//            if(item.calendar == calendars[i].calendarIdentifier){
-//                new_event.calendar = calendars[i]
-//
-//            }
-//        }
-        //calendarItemで追加
-//        calendarItem.calendar = eventStore.calendar(withIdentifier: item.calendar)
-        //EKeventで追加
-        new_event.title = item.title
+        new_event.title = result_d.title
         new_event.location = event.location //かのサポでは使わない
-        new_event.calendar = eventStore.calendar(withIdentifier: item.calendar)
+        new_event.calendar = eventStore.calendar(withIdentifier: result_d.calendar)
         new_event.alarms = event.alarms //かのサポでは使わない
         new_event.url = event.url //かのサポでは使わない
-        new_event.startDate = item.start
-        new_event.endDate = item.end
-        new_event.isAllDay = item.allDay
-//        //かのサポ内で利用しない情報を新しいイベントにコピー
+        new_event.startDate = result_d.start
+        new_event.endDate = result_d.end
+        new_event.isAllDay = result_d.allDay
+        //        //かのサポ内で利用しない情報を新しいイベントにコピー
         new_event.recurrenceRules = event.recurrenceRules
         new_event.notes = event.notes
-        
-//        new_event.attendees = []
-//        new_event.lastModifiedDate = item.start
-//        new_event.structuredLocation = EKStructuredLocation
-//
-//        new_event.floating
-//        new_event.travelTime
-//        new_event.startLocation
-        
-//        new_event.attendees = event.attendees  //getで書かなければいけない
-        //        new_event.travelTime  EKEventにtravelTimeがいない
-        //        new_event.startLocation  EKEventにstartLocationがいない
-        eventArray2.append(new_event)
-//        do {
-////            try eventStore.save(calendarItem as! EKEvent, span: .thisEvent, commit: true)
-//            try eventStore.save(new_event, span: .thisEvent, commit: true)
-////            try eventStore.save(calendarItem as! EKReminder, commit: true)
-//        } catch let error{
-//            print("同期失敗")
-//            print(error)
-//        }
-    }
-    
-    //2重ループ　DefaultCalendarのプライマリーキーをeventStore.identifierにすれば解決できそう
-    print("----登録----")
-    for cal in d_cal{
-        for event in eventArray2{
-            if(event.title == cal.title){ //とりあえずtitleで識別
-                print(event)
-                print(type(of:event))
-                do {
-                    try eventStore.save(event, span: .thisEvent, commit: true)
-                    try eventStore.saveCalendar(event.calendar, commit: true)
-//                    try eventStore.save(calendarItem as! EKReminder, commit: true)
-                    //追加したeventの識別子をDefaultCalendarに格納
-                    //この値を使ってnext_getCalendarで標準カレンダーの変更分を更新する
-                    try! realm.write{
-                        cal.event = event.eventIdentifier
-                    }
-                    print("-----~~~~~~~")
-                } catch let error {
-                    print("同期失敗")
-                    print(error)
-                }
-            }else{
-                print("見つかりませんでした")
-            }
-        }
-    }
-    print("----削除----")
-    for item in eventArray{
+        print("登録")
         do {
-            try eventStore.remove(item, span: .thisEvent)
-            print(item)
+            try eventStore.save(new_event, span: .thisEvent, commit: true)
+            print(new_event)
+            //try eventStore.saveCalendar(event.calendar, commit: true)
+            //追加したeventの識別子をDefaultCalendarに格納
+            //この値を使ってnext_getCalendarで標準カレンダーの変更分を更新する
+            
+            try! realm.write{
+                result_d.event = new_event.eventIdentifier
+//                result_d.before_event = event.eventIdentifier
+            }
+            
+        } catch let error {
+            print("同期失敗")
+            print(error)
+        }
+        print("削除")
+        do {
+            try eventStore.remove(event, span: .thisEvent)
+            print(event)
         } catch let error {
             print("削除失敗")
             print(error)
         }
     }
-    print(Dic)
 }
 
 func getCalendar(){
@@ -282,9 +232,8 @@ func getCalendar(){
         let results = realm.objects(DefaultCalendar.self)
         realm.delete(results)
     }
-    
     var componentsOneDayDelay = DateComponents()
-    componentsOneDayDelay.hour = 24 // 今の時刻から1年進めるので1を代入
+    componentsOneDayDelay.hour = 744 // 今の時刻から1年進めるので1を代入
     let startDate = Date()
     let endDate = calendar.date(byAdding: componentsOneDayDelay, to: Date())!
     
@@ -298,7 +247,6 @@ func getCalendar(){
         print(type(of: event))
         try! realm.write{
             let item = DefaultCalendar()
-            
             item.title = event.title
             item.start = event.startDate
             item.end = event.endDate
@@ -329,69 +277,10 @@ func getCalendar(){
     makeDictionary()
 }
 
-
-//func addEvent() {
-//    print("addEvent")
-//    // イベントの情報を準備
-//    var componentsOneDayDelay = DateComponents()
-//    componentsOneDayDelay.hour = 24 // 今の時刻から1年進めるので1を代入
-//    var eventArray2 = [EKEvent]()
-//    let date = NSDate() as Date
-//    let dateFormater = DateFormatter()
-//
-//    dateFormater.locale = Locale(identifier: "ja_JP")
-//    dateFormater.dateFormat = "yyyy/MM/dd"
-//    dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
-//
-//    let d_cal = realm.objects(DefaultCalendar.self)
-//    let defaultCalendar = eventStore.defaultCalendarForNewEvents
-//
-//    for item in d_cal{
-//        let event = EKEvent(eventStore: eventStore)
-//        for i in 0..<calendars.count{
-//            print("~~~~~~~~~")
-//            if(item.calendar == calendars[i].title){
-//                event.calendar = calendars[i]
-//                print(item.calendar)
-//                print(calendars[i])
-//            }
-//        }
-//
-//        event.title = item.title
-//        event.startDate = item.start
-//        event.endDate = item.end
-//        event.isAllDay = item.allDay
-//
-//        eventArray2.append(event)
-//    }
-//
-//    print(eventArray2)
-//    print("----削除----")
-//    //    for item in eventArray{
-//    //        do {
-//    //            try eventStore.remove(item, span: .thisEvent)
-//    //        } catch let error {
-//    //            print("削除失敗")
-//    //            print(error)
-//    //        }
-//    //    }
-//    //イベントの登録
-//    print("----登録----")
-//    for item in eventArray2{
-//        do {
-//            try eventStore.save(item, span: .thisEvent, commit: true)
-//        } catch let error {
-//            print("同期失敗")
-//            print(error)
-//        }
-//    }
-//}
-
 struct CalendarData {
     var EventID: String  //標準カレンダーのEKEventの識別子
     var CalendarID: String //realm(DefaultCalendarのcalendarid)
     var Event: EKEvent //標準カレンダーのEKEvent
-    
     init(eventid: String, calendarid: String, event: EKEvent) {
         self.EventID = eventid
         self.CalendarID = calendarid

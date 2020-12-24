@@ -139,20 +139,24 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
         
         if timerRunning == true {
-            //目標時間経過時の通知
-            let target = UNMutableNotificationContent()
-            target.title = testlabel.text! //通知のタイトル
-            target.body = "目標時間になりました！" //通知の本文
-            var sumTime = result!.dotime - result!.donetime - countNum
-            if sumTime < 0 {
-                sumTime = 1
+            //かける追加 12/10 if(result!.dotime! <= countNum){}で囲う
+            if(result!.dotime >= countNum){
+                print("中")
+                //目標時間経過時の通知
+                let target = UNMutableNotificationContent()
+                target.title = testlabel.text! //通知のタイトル
+                target.body = "目標時間になりました！" //通知の本文
+                var sumTime = result!.dotime - result!.donetime - countNum
+                if sumTime < 0 {
+                    sumTime = 1
+                }
+                target.sound = UNNotificationSound.default //通知の音
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
+                let request = UNNotificationRequest(identifier: id, content: target,
+                                                    trigger: trigger) //通知のリクエスト
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
+                
             }
-            target.sound = UNNotificationSound.default //通知の音
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
-            let request = UNNotificationRequest(identifier: id, content: target,
-                                                trigger: trigger) //通知のリクエスト
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
-            
             //アプリから離れた際の通知
             let outside = UNMutableNotificationContent()
             //outside.title = testlabel.text!
