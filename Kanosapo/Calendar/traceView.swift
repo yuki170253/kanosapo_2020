@@ -76,6 +76,11 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, Retur
         let color = UIColor(displayP3Red: CGFloat(result_d.color_r), green: CGFloat(result_d.color_g), blue: CGFloat(result_d.color_b), alpha: 1.0)
         let add_view = makeView(id: result_d.calendarid, title: result_d.title, color: color)
         content.addSubview(add_view)
+        //かける追加 12/4
+        //追加したViewが標準カレンダーの終日のスケジュールだった場合addEventをする
+        
+        test_userDefaultData(view: add_view)
+        new_addEvent(tag: add_view.tag)
     }
     print("traceView終了")
 }

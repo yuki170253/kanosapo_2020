@@ -230,6 +230,10 @@ class SampleView :UIView {
             if(gestureRecognizer.state == .ended){
                 taskTime.alpha = 0.0
                 userDefaultData(view: self)
+                if(self.tag > 10000000000 && self.tag <= 100000000000){ //default
+                    print("default")
+                    new_addEvent(tag: self.tag)
+                }
             }
             
             
@@ -317,6 +321,10 @@ class SampleView :UIView {
                 stopAutoScrollIfNeeded()
                 imageView.alpha = 0.0
                 userDefaultData(view: self)
+                if(self.tag > 10000000000 && self.tag <= 100000000000){ //default
+                    print("default")
+                    new_addEvent(tag: self.tag)
+                }
             }
         }
         getTaskTime_S()

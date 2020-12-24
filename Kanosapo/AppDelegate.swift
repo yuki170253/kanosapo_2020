@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    //かける　削除予定　12/10
     var delegateResults: Results<Calendar24>?
+    //
     
     var calendarFlag: Bool?
     
@@ -78,24 +80,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("applicationDidEnterBackground")
-        test_addEvent()
-        
-        var trigger: UNNotificationTrigger
-        let content = UNMutableNotificationContent()
-        var notificationTime = DateComponents()
-        if(delegateResults != nil){
-            for item in delegateResults!{
-                let components = Calendar.current.dateComponents(in: TimeZone.current, from: item.start)
-                notificationTime.hour = components.hour
-                notificationTime.minute = components.minute! - 10
-                trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
-                content.title = item.todo.first!.title
-                content.body = "もうすぐタスクの時間だよ！"
-                content.sound = UNNotificationSound.default
-                var request = UNNotificationRequest(identifier: item.calendarid, content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            }
-        }
+        //かける　削除 12/10
+//        var trigger: UNNotificationTrigger
+//        let content = UNMutableNotificationContent()
+//        var notificationTime = DateComponents()
+//        if(delegateResults != nil){
+//            for item in delegateResults!{
+//                let components = Calendar.current.dateComponents(in: TimeZone.current, from: item.start)
+//                notificationTime.hour = components.hour
+//                notificationTime.minute = components.minute! - 10
+//                trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
+//                content.title = item.todo.first!.title
+//                content.body = "もうすぐタスクの時間だよ！"
+//                content.sound = UNNotificationSound.default
+//                var request = UNNotificationRequest(identifier: item.calendarid, content: content, trigger: trigger)
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//            }
+//        }
+        //
         //NotificationCenter.default.post(name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
