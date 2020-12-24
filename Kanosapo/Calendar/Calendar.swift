@@ -86,7 +86,7 @@ func test_getCalendar(){
     print("test_getCalendar")
     makeDictionary()
     var componentsOneDayDelay = DateComponents()
-    componentsOneDayDelay.hour = 24 // 今の時刻から1年進めるので1を代入
+    componentsOneDayDelay.hour = 744 // 今の時刻から1年進めるので1を代入
     let startDate = Date()
     let endDate = calendar.date(byAdding: componentsOneDayDelay, to: Date())!
     let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
@@ -168,45 +168,62 @@ func test_getCalendar(){
             }
         }
     }
+    print("00000000000000")
+    for cal in d_cal{
+        let event = eventStore.event(withIdentifier: cal.event)!
+        print(event.title)
+        print(event.calendar)
+        print(type(of: event.calendar.type))
+        print(event.calendar.type.rawValue)
+        print(type(of: print(event.calendar.type.rawValue)))
+        
+    }
 }
 
 func new_addEvent(tag: Int){
     print("new_addEvent")
     let result_d = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(tag))!
     let event = eventStore.event(withIdentifier: result_d.event)!
-    let new_event = EKEvent(eventStore: eventStore)
-    new_event.title = result_d.title
-    new_event.location = event.location //かのサポでは使わない
-    new_event.calendar = eventStore.calendar(withIdentifier: result_d.calendar)
-    new_event.alarms = event.alarms //かのサポでは使わない
-    new_event.url = event.url //かのサポでは使わない
-    new_event.startDate = result_d.start
-    new_event.endDate = result_d.end
-    new_event.isAllDay = result_d.allDay
-    //        //かのサポ内で利用しない情報を新しいイベントにコピー
-    new_event.recurrenceRules = event.recurrenceRules
-    new_event.notes = event.notes
-    print("登録")
-    do {
-        try eventStore.save(new_event, span: .thisEvent, commit: true)
-        print(new_event)
-        //try eventStore.saveCalendar(event.calendar, commit: true)
-        //追加したeventの識別子をDefaultCalendarに格納
-        //この値を使ってnext_getCalendarで標準カレンダーの変更分を更新する
-        try! realm.write{
-            result_d.event = event.eventIdentifier
+    //カケル追加 12/24
+    //カレンダータイプが"Local"の場合のみ変更を加える。
+    //祝日や誕生日などは変更しない rawValue=0がLocal
+    if(event.calendar.type.rawValue == 0){
+        let new_event = EKEvent(eventStore: eventStore)
+        new_event.title = result_d.title
+        new_event.location = event.location //かのサポでは使わない
+        new_event.calendar = eventStore.calendar(withIdentifier: result_d.calendar)
+        new_event.alarms = event.alarms //かのサポでは使わない
+        new_event.url = event.url //かのサポでは使わない
+        new_event.startDate = result_d.start
+        new_event.endDate = result_d.end
+        new_event.isAllDay = result_d.allDay
+        //        //かのサポ内で利用しない情報を新しいイベントにコピー
+        new_event.recurrenceRules = event.recurrenceRules
+        new_event.notes = event.notes
+        print("登録")
+        do {
+            try eventStore.save(new_event, span: .thisEvent, commit: true)
+            print(new_event)
+            //try eventStore.saveCalendar(event.calendar, commit: true)
+            //追加したeventの識別子をDefaultCalendarに格納
+            //この値を使ってnext_getCalendarで標準カレンダーの変更分を更新する
+            
+            try! realm.write{
+                result_d.event = event.eventIdentifier
+            }
+            
+        } catch let error {
+            print("同期失敗")
+            print(error)
         }
-    } catch let error {
-        print("同期失敗")
-        print(error)
-    }
-    print("削除")
-    do {
-        try eventStore.remove(event, span: .thisEvent)
-        print(event)
-    } catch let error {
-        print("削除失敗")
-        print(error)
+        print("削除")
+        do {
+            try eventStore.remove(event, span: .thisEvent)
+            print(event)
+        } catch let error {
+            print("削除失敗")
+            print(error)
+        }
     }
 }
 
@@ -217,9 +234,8 @@ func getCalendar(){
         let results = realm.objects(DefaultCalendar.self)
         realm.delete(results)
     }
-    
     var componentsOneDayDelay = DateComponents()
-    componentsOneDayDelay.hour = 24 // 今の時刻から1年進めるので1を代入
+    componentsOneDayDelay.hour = 744 // 今の時刻から1年進めるので1を代入
     let startDate = Date()
     let endDate = calendar.date(byAdding: componentsOneDayDelay, to: Date())!
     
@@ -233,7 +249,6 @@ func getCalendar(){
         print(type(of: event))
         try! realm.write{
             let item = DefaultCalendar()
-            
             item.title = event.title
             item.start = event.startDate
             item.end = event.endDate
@@ -268,7 +283,6 @@ struct CalendarData {
     var EventID: String  //標準カレンダーのEKEventの識別子
     var CalendarID: String //realm(DefaultCalendarのcalendarid)
     var Event: EKEvent //標準カレンダーのEKEvent
-    
     init(eventid: String, calendarid: String, event: EKEvent) {
         self.EventID = eventid
         self.CalendarID = calendarid

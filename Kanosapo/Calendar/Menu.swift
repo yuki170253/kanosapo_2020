@@ -70,17 +70,20 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
     let contentsView = UIView.init(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(1000), height: CGFloat(scroll.frame.height)))
     scroll.addSubview(contentsView)
     let result_d = realm.objects(DefaultCalendar.self)
-    
     var task_cnt = 0  //追加したViewの個数を数える
     for item in result_d{
         if(item.allDay){
-            print(item)
-            let frame = CGRect(x: 5 + 120 * task_cnt, y: 18, width: 100, height: 28)
-            let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
-            let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
-            TestView.backgroundColor = color
-            contentsView.addSubview(TestView)
-            task_cnt += 1
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+//            if(dateFormatter.string(from: item.start) == dateFormatter.string(from: Date())){
+                print(item)
+                let frame = CGRect(x: 5 + 120 * task_cnt, y: 18, width: 100, height: 28)
+                let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
+                let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
+                TestView.backgroundColor = color
+                contentsView.addSubview(TestView)
+                task_cnt += 1
+//            }
         }
     }
     let cnt = contentsView.subviews.count
