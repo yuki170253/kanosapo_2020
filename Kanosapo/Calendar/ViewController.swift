@@ -15,7 +15,6 @@ import RealmSwift
 
 class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var dummyAll: NSLayoutConstraint!
     @IBOutlet weak var AllScrollView: UIScrollView!
     @IBOutlet weak var day: UINavigationItem!
     @IBOutlet weak var AnimationView: UIView!
@@ -28,6 +27,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     var startTransform:CGAffineTransform!
     var large = false
+    
+    var screen = ScreenSize()
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -92,6 +95,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         }
     }
     
+    func autoLayout(){
+        print("autoLayout")
+        // ステータスバーの高さを取得する
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // ナビゲーションバーの高さを取得する
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height
+//        print(statusBarHeight,navigationBarHeight)
+        AlldayView.frame.origin.y = navigationBarHeight! + statusBarHeight
+        AlldayView.frame.size = CGSize(width: screen.screenWidth, height: AlldayView.frame.height * screen.calScale)
+        MyScrollView.frame.origin.y = AlldayView.frame.maxY
+        MyScrollView.frame.size = CGSize(width: screen.screenWidth, height: screen.screenHeight - AlldayView.frame.maxY)
+        
+    }
     
     
     @IBAction func calshow(_ sender: Any) {
@@ -173,6 +189,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         //        //
         
         scrollViewFrame()
+        autoLayout()
         NOW = NSDate()
         ContentView.clipsToBounds = true
         setLabel()
@@ -258,10 +275,15 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         
         MyScrollView.delegate = self
         MyScrollView.alwaysBounceVertical = true
+        MyScrollView.frame.origin.y = AllScrollView.frame.maxY
+        MyScrollView.frame.size = CGSize(width: screen.screenWidth, height: screen.screenHeight - MyScrollView.frame.origin.y)
+        print(screen.calScale)
+        ContentView.frame.size = CGSize(width: screen.screenWidth, height: CGFloat(no23point) + 90 * screen.calScale)
+        //        MyScrollView.frame.size.height = self.view.frame.height - (UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)! + AllScrollView.frame.height)
         _ = CGRect(x: 0, y: 115, width: view.frame.width, height:  667)
         //コンテンツのサイズを指定する
         let contentRect = ContentView.bounds
-        MyScrollView.contentSize = CGSize(width: contentRect.width, height: 1720)
+        MyScrollView.contentSize = CGSize(width: contentRect.width, height: ContentView.frame.size.height)
     }
     
     var ini_cnt = 0
@@ -327,18 +349,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             Label.tag = i+1
             ContentView.addSubview(Label)
             //時間軸の直線
-            let topBorder = CALayer()
-            topBorder.frame = CGRect(x: 60, y: 30 + (i * 60), width: 300, height: 1)
-            topBorder.backgroundColor = UIColor.lightGray.cgColor
+            let topBorder = UIView()
+            topBorder.frame = CGRect(x: 60, y: CGFloat(no1point) + CGFloat(i) * 60.0 * screen.calScale, width: ContentView.frame.width - 15 - 60, height: 1)
+            Label.center.y = topBorder.frame.origin.y
+            topBorder.backgroundColor = UIColor.lightGray
             //作成したViewに上線を追加
-            ContentView.layer.addSublayer(topBorder)
+            ContentView.addSubview(topBorder)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         print("viewWillDisappear")
-//        userDefaultData(content: ContentView)
-//        test_addEvent()
+        //        userDefaultData(content: ContentView)
+        //        test_addEvent()
         
         try! realm.write{
             let results = realm.objects(DefaultCalendar.self)
@@ -373,13 +396,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             
             if(sender.superview!.tag > 10000000000 && sender.superview!.tag <= 100000000000){
                 print("デフォルト削除")
-                
-                let result_d = self.realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(sender.superview!.tag))
-                print(result_d)
+                let result_d = self.realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(sender.superview!.tag))!
+                //標準カレンダー削除
+                let event = self.eventStore.event(withIdentifier: result_d.event)!
+                do {
+                    try self.eventStore.remove(event, span: .thisEvent)
+                    print(event)
+                } catch let error {
+                    print("削除失敗")
+                    print(error)
+                }
+                //realmデータ削除
                 try! self.realm.write{
-                    self.realm.cancelWrite() // 処理を止めて
-                    self.realm.beginWrite() // また始める
-                    self.realm.delete(result_d!)
+                    self.realm.delete(result_d)
                 }
             }
             if(sender.superview!.tag > 1000000000 && sender.superview!.tag <= 10000000000){
@@ -520,7 +549,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 }
                 craftCalendar(base_view: ContentView)
                 craftNewAll(all: AlldayView, scroll: AllScrollView)
-//                updateViews(content: ContentView, allday: allContentView)
+                updateViews(content: ContentView, allday: allContentView)
                 day.titleView = getnowTime(content: ContentView)
                 isRefreshing = false
             }
@@ -553,17 +582,17 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         
         if(sender.state == UIGestureRecognizer.State.began) {
             print("長押し開始")
-//            for view in sender.self.view!.superview!.subviews {
-//                print(view.tag)
-//            }
-//            sender.self.view!.superview!.bringSubviewToFront(sender.self.view!)
-//            print("after")
-//            for view in sender.self.view!.superview!.subviews {
-//
-//                print(view.tag)
-//            }
+            //            for view in sender.self.view!.superview!.subviews {
+            //                print(view.tag)
+            //            }
+            //            sender.self.view!.superview!.bringSubviewToFront(sender.self.view!)
+            //            print("after")
+            //            for view in sender.self.view!.superview!.subviews {
+            //
+            //                print(view.tag)
+            //            }
             //sender.self.view!.setNeedsDisplay()
-
+            
             selevtViewCenter = sender.self.view!.center
             moveView1 = sender.self.view!.frame.origin
             
@@ -596,26 +625,26 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             
             //オートスクロール  (dummyAll削除につき変更)
             //print(sender.location(in: self.view))
-//            if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > MenuScrollView.frame.minY) {
-//                if(!scrollFlag){
-//                    if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > self.view.frame.height - 30){
-//                    //if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > 647){
-//                        print("under")
-//                        scrollFlag = true
-//                        startAutoScroll(duration: 0.05, direction: .under)
-//                    }else if(sender.location(in: self.view).y - sender.self.view!.frame.height/2 < MenuScrollView.frame.minY + 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 > MenuScrollView.frame.minY){
-//                        print("upper")
-//                        scrollFlag = true
-//                        startAutoScroll(duration: 0.05, direction: .upper)
-//                    }
-//                }
-//                if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 <= self.view.frame.height - 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 >= MenuScrollView.frame.minY + 30){
-//                    scrollFlag = false
-//                    stopAutoScrollIfNeeded()
-//                }
-//            }
+            //            if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > MenuScrollView.frame.minY) {
+            //                if(!scrollFlag){
+            //                    if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > self.view.frame.height - 30){
+            //                    //if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > 647){
+            //                        print("under")
+            //                        scrollFlag = true
+            //                        startAutoScroll(duration: 0.05, direction: .under)
+            //                    }else if(sender.location(in: self.view).y - sender.self.view!.frame.height/2 < MenuScrollView.frame.minY + 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 > MenuScrollView.frame.minY){
+            //                        print("upper")
+            //                        scrollFlag = true
+            //                        startAutoScroll(duration: 0.05, direction: .upper)
+            //                    }
+            //                }
+            //                if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 <= self.view.frame.height - 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 >= MenuScrollView.frame.minY + 30){
+            //                    scrollFlag = false
+            //                    stopAutoScrollIfNeeded()
+            //                }
+            //            }
             print(sender.location(in: self.view).y - sender.self.view!.frame.height/2, sender.location(in: self.view).y + sender.self.view!.frame.height/2 )
-//            print(sender.view!.frame.maxX,menuContentView.subviews[0].frame.minX,sender.view!.frame.minY, MyScrollView.frame.minY,(self.navigationController?.navigationBar.frame.size.height)!, AlldayView.frame.height)
+            //            print(sender.view!.frame.maxX,menuContentView.subviews[0].frame.minX,sender.view!.frame.minY, MyScrollView.frame.minY,(self.navigationController?.navigationBar.frame.size.height)!, AlldayView.frame.height)
             //sender.self.view!.center = sender.location(in: self.view)
             //長押し終了
         }else if(sender.state == UIGestureRecognizer.State.ended){

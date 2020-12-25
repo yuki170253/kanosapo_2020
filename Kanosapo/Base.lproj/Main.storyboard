@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81D-hV-o7r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81D-hV-o7r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -751,8 +751,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-WE-YbU" userLabel="MyScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-WE-YbU" userLabel="MyScrollView">
                                 <rect key="frame" x="0.0" y="115" width="375" height="800"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4z-wx-2Fj" userLabel="AnimationView">
                                         <rect key="frame" x="0.0" y="-100" width="375" height="100"/>
@@ -768,14 +769,12 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="800" id="1Gc-aR-OwD"/>
-                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="e4l-7p-tHE"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hIW-JM-doe"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-JS-VDP" userLabel="AlldayView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-JS-VDP" userLabel="AlldayView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="終日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1t-8S-zke">
                                         <rect key="frame" x="344" y="4" width="27" height="13"/>
@@ -792,9 +791,6 @@
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="rwH-uP-rUi"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlG-Yj-j9w" userLabel="NewMenuView">
                                 <rect key="frame" x="375" y="0.0" width="180" height="667"/>
@@ -825,14 +821,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nu7-8X-B9p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="fsB-JS-VDP" firstAttribute="leading" secondItem="3oj-Gp-0Uo" secondAttribute="leading" id="5qT-pM-IIF"/>
-                            <constraint firstAttribute="trailing" secondItem="fsB-JS-VDP" secondAttribute="trailing" id="ATI-n2-BKv"/>
-                            <constraint firstItem="bc2-WE-YbU" firstAttribute="leading" secondItem="3oj-Gp-0Uo" secondAttribute="leading" id="QYo-tZ-PDg"/>
-                            <constraint firstItem="fsB-JS-VDP" firstAttribute="top" secondItem="3oj-Gp-0Uo" secondAttribute="top" constant="64" id="ggw-p6-pgh"/>
-                            <constraint firstItem="bc2-WE-YbU" firstAttribute="top" secondItem="fsB-JS-VDP" secondAttribute="bottom" constant="1" id="jAv-Bz-ftN"/>
-                            <constraint firstAttribute="trailing" secondItem="bc2-WE-YbU" secondAttribute="trailing" id="vnL-Wv-U5E"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="QW0-h0-rFV">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tB4-sR-chE">
@@ -855,7 +843,6 @@
                         <outlet property="MyScrollView" destination="bc2-WE-YbU" id="NXU-cL-Uoh"/>
                         <outlet property="NewMenuView" destination="vlG-Yj-j9w" id="JWU-OU-CkR"/>
                         <outlet property="day" destination="QW0-h0-rFV" id="5Hq-ui-zQc"/>
-                        <outlet property="dummyAll" destination="rwH-uP-rUi" id="khj-Ag-o6L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHW-Zs-xn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1181,18 +1168,6 @@
         <image name="メンヘラ_SD_0.png" width="329.14285278320312" height="395"/>
         <image name="メンヘラ彼女_75.png" width="595.337158203125" height="842"/>
         <image name="背景_test.png" width="1145" height="1935"/>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

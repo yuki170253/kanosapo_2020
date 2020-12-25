@@ -17,6 +17,7 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
     
     var currentPoint: CGPoint!
     let button = ViewController().makeButton()
+    let screen = ScreenSize()
     /*
      start 開始時間
      c_dotime タスク幅
@@ -39,8 +40,8 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
         start = result.start
     }
     let now = Date()
-    let no1point = 30
-    let no23point = 1410
+    let no1point = screen.no1point
+    let no23point = screen.no23point
     let hour = (no23point - no1point)/23
     let minute:Double
     minute = Double(hour)/Double(60)
@@ -58,14 +59,14 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
     if(currentPoint != nil){
         y += currentPoint.y
     }
-    let frame:CGRect = CGRect(x: 60, y: y, width: 300, height: CGFloat(minute * Double(diffMin)) + 20)
+    let frame:CGRect = CGRect(x: 60, y: y, width: screen.screenWidth - 15 - 60, height: CGFloat(minute * Double(diffMin) + 20 * minute))
     let calendarView:SampleView = SampleView(frame: frame)
     calendarView.content.backgroundColor = color
     calendarView.leftBorder.backgroundColor = color
     calendarView.fakeView.backgroundColor = color
     calendarView.title.backgroundColor = color
     
-    let titleLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 300,height: 15))
+    let titleLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: calendarView.frame.width,height: 15))
     //titleLabel.text = "  " + item.todo.first!.title
     titleLabel.text = title
     titleLabel.textColor = UIColor.white

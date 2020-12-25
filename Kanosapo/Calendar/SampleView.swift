@@ -11,8 +11,9 @@ import UIKit
 
 class SampleView :UIView {
     
-    var no1point = 30
-    var no23point = 1410
+    var no1point: Int = 30
+    var no23point: Int = 1410
+    let screen = ScreenSize()
     
     var aTouch = UITouch()
     
@@ -34,10 +35,14 @@ class SampleView :UIView {
     let leftBorder = UIView()
     
     
-    var fakeView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 15))
+    var fakeView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
     
     
     override init(frame: CGRect) {
+        
+        no1point = screen.no1point
+        no23point = screen.no23point
+        
         super.init(frame: frame)
         //self.backgroundColor = UIColor.blue
 //        let myLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 50,height: 20))
@@ -58,9 +63,10 @@ class SampleView :UIView {
         title.backgroundColor = color
 //        endTime.textColor = UIColor.white
         
-        imageView.frame = CGRect(x:300, y: 588, width:59, height:59)
-        imageView.alpha = 1.0
-        self.superview?.addSubview(imageView)
+//        imageView.frame = CGRect(x:300, y: 588, width:59, height:59)
+//        imageView.alpha = 1.0
+//        self.superview?.addSubview(imageView)
+        
         //imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
         //taskTime.font = taskTime.font.withSize(15.0)
         
@@ -70,7 +76,7 @@ class SampleView :UIView {
 //        self.addSubview(myLabel)
         
         //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-        content.frame.size = CGSize(width: self.frame.size.width, height: self.frame.size.height - 20)
+        content.frame.size = CGSize(width: self.frame.size.width, height: self.frame.size.height - 20 * screen.calScale)
         
         //content.backgroundColor = color
         content.alpha = 0.3
@@ -107,6 +113,7 @@ class SampleView :UIView {
         
         
         fakeView.backgroundColor = color
+        fakeView.frame = self.content.frame
         fakeView.addSubview(title)
         //fakeView.addSubview(fake_taskTime)
         
@@ -249,7 +256,7 @@ class SampleView :UIView {
                 fakeView.layer.shadowOpacity = 0.6
                 // 影をぼかし
                 fakeView.layer.shadowRadius = 4
-                fakeView.frame = CGRect(x: 60, y: self.frame.origin.y + (self.superview?.superview as! UIScrollView).frame.origin.y - (self.superview?.superview as! UIScrollView).contentOffset.y, width: 300, height: self.content.frame.size.height)
+                fakeView.frame = CGRect(x: 60, y: self.frame.origin.y + (self.superview?.superview as! UIScrollView).frame.origin.y - (self.superview?.superview as! UIScrollView).contentOffset.y, width: self.content.frame.size.width, height: self.content.frame.size.height)
                 
             }
             location = aTouch.location(in: fakeView) //in: には対象となるビューを入れます
@@ -316,7 +323,7 @@ class SampleView :UIView {
                         print(self.frame.origin)
                     }
                 }
-                overLaped()
+//                overLaped()
                 scrollFlag = false
                 stopAutoScrollIfNeeded()
                 imageView.alpha = 0.0
@@ -392,7 +399,7 @@ class SampleView :UIView {
             let start = getTaskTime(y: view.frame.origin.y)
             print("startTime---")
             print(start)
-            let dotime = Int((view.frame.height-20) * 60)
+            let dotime = Int((view.frame.height - (20 * screen.calScale) * 60) / screen.calScale)
             //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
             if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
                 try! realm.write{

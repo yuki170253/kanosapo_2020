@@ -19,7 +19,6 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     print("craftNewMenu")
     let DummyContentView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: menu.frame.size.width, height: 2000))
     
-    
     let WhiteView = UIView.init(frame: CGRect.init(x: 55, y: -500, width: menu.frame.size.width - 55, height: 3000))
     let bgColor = UIColor.white
     WhiteView.backgroundColor = bgColor
@@ -125,8 +124,8 @@ func MoveToLeft(scroll:UIScrollView, cOs:Bool, border:[CGFloat]){
     for i in 0..<border.count {
         if(scroll.contentOffset.y < border[i] || border.count == 1){
             //目標時間にheightを合わせる
-            let no1point = 30
-            let no23point = 1410
+            let no1point = ScreenSize().no1point
+            let no23point = ScreenSize().no23point
             let hour = (no23point - no1point)/23
             let minute:Double
             minute = Double(hour)/Double(60)

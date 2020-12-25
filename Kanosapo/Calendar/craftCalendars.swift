@@ -48,8 +48,8 @@ var View = ViewController()
 func craftCalendar(base_view: UIView){
     print("craftCalendar")
     
-    let no1point = 30
-    let no23point = 1410
+    let no1point = ScreenSize().no1point
+    let no23point = ScreenSize().no23point
     let hour = (no23point - no1point)/23
     let minute:Double
     minute = Double(hour)/Double(60)
