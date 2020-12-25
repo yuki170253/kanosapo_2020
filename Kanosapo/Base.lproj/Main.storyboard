@@ -205,15 +205,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="++ 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-sC-noG">
-                                <rect key="frame" x="116" y="263" width="143" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="目標時間達成まで 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-sC-noG">
+                                <rect key="frame" x="16" y="263" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqp-sl-JJg" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="39" y="385" width="75" height="75"/>
+                                <rect key="frame" x="39" y="412" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="replay_black_192x192.png">
@@ -231,7 +231,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-PI-fZd" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="137" y="304" width="100" height="100"/>
+                                <rect key="frame" x="137" y="331" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icons8-再生ボタン.png"/>
                                 <connections>
@@ -251,7 +251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-z3-jsX" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="260" y="385" width="70" height="70"/>
+                                <rect key="frame" x="260" y="412" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="complete.png"/>
                                 <userDefinedRuntimeAttributes>
@@ -268,14 +268,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="完了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aij-FT-nor">
-                                <rect key="frame" x="274" y="458" width="35" height="21"/>
+                                <rect key="frame" x="274" y="485" width="35" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="リセット" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uu2-oE-heZ">
-                                <rect key="frame" x="42" y="456" width="70" height="21"/>
+                                <rect key="frame" x="42" y="483" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -326,17 +326,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7yz-qd-yh3">
-                                <rect key="frame" x="16" y="563" width="343" height="67"/>
+                                <rect key="frame" x="16" y="547" width="343" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="「タスク中に遊びに行ってはダメって言ったよね......」" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-jF-R8u">
-                                        <rect key="frame" x="8" y="16" width="327" height="51"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="「タスク中に遊びに行ってはダメって言ったよね......」" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-ib-fZv">
+                                        <rect key="frame" x="9" y="20" width="337" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -346,7 +345,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdB-3b-BXG">
-                                <rect key="frame" x="16" y="556" width="114" height="26"/>
+                                <rect key="frame" x="16" y="540" width="114" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="メンヘラ彼女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2i-yd-52V">
@@ -376,9 +375,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="c53-pC-Zvg">
                         <barButtonItem key="backBarButtonItem" title=" " id="HH7-Ph-MmE"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="HaT-mj-Jqv">
+                            <connections>
+                                <action selector="backButtonAction:" destination="f4W-7C-tTc" id="QQK-VS-Iyt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="button" destination="YZe-PI-fZd" id="gYI-BW-Lzi"/>
+                        <outlet property="dialogueTextLabel" destination="6Km-ib-fZv" id="Sw1-03-ual"/>
                         <outlet property="dotimeDisply" destination="W71-Dy-jN2" id="Tgf-4L-a6z"/>
                         <outlet property="replay_button" destination="sqp-sl-JJg" id="OfW-Sw-5jC"/>
                         <outlet property="save_button" destination="ddv-z3-jsX" id="1ts-j2-8mh"/>
@@ -1184,6 +1189,14 @@
             <point key="canvasLocation" x="455" y="-305"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="54K-2E-t8j">
+            <size key="intrinsicContentSize" width="205" height="40"/>
+        </designable>
+        <designable name="XNZ-Te-s4K">
+            <size key="intrinsicContentSize" width="286" height="46"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="2sU-ig-1d1"/>
     </inferredMetricsTieBreakers>
@@ -1193,6 +1206,7 @@
         <image name="button_t.png" width="371" height="259"/>
         <image name="c_icon.png" width="512" height="512"/>
         <image name="calendar" width="25" height="25"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="close.png" width="96" height="96"/>
         <image name="complete.png" width="512" height="512"/>
         <image name="desk.png" width="604" height="533"/>
@@ -1221,9 +1235,6 @@
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

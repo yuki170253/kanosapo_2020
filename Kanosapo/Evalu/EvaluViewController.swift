@@ -10,10 +10,11 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class EvaluViewController: UIViewController, UIApplicationDelegate  {
+class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigationControllerDelegate  {
     var animationTimer: Timer?
-    var countNum = 0
-    var donetime = 0
+    var countNum = 0 //経過時間
+    var donetime = 0 //総合の時間
+    var dotime = 0 //目標時間
     var store_donetime = 0
     var timerRunning = false
     var timer = Timer()
@@ -32,6 +33,7 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var replay_button: UIButton!
     @IBOutlet weak var save_button: UIButton!
+    @IBOutlet weak var dialogueTextLabel: UILabel!
     
     var vc: EvaluViewController2?
     let userDefaults = UserDefaults.standard
@@ -39,7 +41,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
     let image_stop:UIImage = UIImage(named:"icons8-停止ボタン")!
     var backText: String?
     let realm = try! Realm()
-    
+    let texts: [String] = ["「タスク中に遊びに行ってはダメって言ったよね......」", "b", "c", "d"]
+    let dialog: UIAlertController = UIAlertController(title: "経過を保存しました", message: "ストップウォッチを停止ました", preferredStyle: .alert)
     override func viewDidLoad() {
         super.viewDidLoad()
         vc = storyboard?.instantiateViewController(withIdentifier: "popupmenu") as? EvaluViewController2
@@ -53,6 +56,7 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
         id = result!.title
         donetime = result!.donetime
+        dotime = result!.dotime
         store_donetime = donetime
         let s = donetime % 60
         let m = (donetime / 60) % 60
@@ -60,6 +64,11 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
         testlabel.text = result!.title
         dotimeDisply.text = String(format: "%02d:%02d:%02d",  h, m, s)
         target_time_label.text = String(format: "%02d:%02d:%02d", (result!.dotime / 3600), (result!.dotime / 60) % 60, result!.dotime % 60)
+        if (dotime - donetime) <= 0 {
+            timeDisplay.text = "目標時間に達しました。"
+        }else{
+            timeDisplay.text = String(format: "目標時間達成まであと %02d:%02d:%02d", (dotime - donetime) / 3600 , ((dotime - donetime) / 60) % 60, (dotime - donetime) % 60)
+        }
         
         //スマホのロック状態の把握
         NotificationCenter.default
@@ -117,28 +126,21 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
     
     // AppDelegate -> applicationWillEnterForegroundの通知
     @objc func EnterForeground(notification: Notification) { //ここのメソッドが２回はしる
-        print("フォアグラウンド")
         if timerRunning{
             end = Date()
-            print("end~~~~~~")
-            print(end)
             let diff = end.timeIntervalSince(start)
-            print("diff")
-            print(diff)
             countNum += Int(diff)
             donetime += Int(diff)
             print(donetime)
+            let randn = Int.random(in: 0 ... texts.count-1)
+            dialogueTextLabel.text = texts[randn]
         }
     }
     
     // AppDelegate -> applicationDidEnterBackgroundの通知
     @objc func EnterBackground(notification: Notification) {
-        print("バックグラウンド")
         if timerRunning{
             start = Date()
-            print(donetime)
-            print("start~~~~~~")
-            print(start)
         }
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
         
@@ -173,17 +175,13 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
     
     @objc func updateDisplay(){
         countNum += 1
-        donetime += 1
-        let s = countNum % 60
-        let m = (countNum / 60) % 60
-        let h = (countNum / 3600)
-        //let ms = countNum % 100
-        //let s = (countNum - ms) / 100 % 60
-        //let m = (countNum - s - ms) / 6000 % 3600
-        timeDisplay.text = String(format: "++ %02d:%02d:%02d", h,m,s)
-        dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime / 3600), (donetime / 60) % 60, donetime % 60)
-        print("ストップウォッチが動く(updateDisplay)")
-        print(donetime)
+        if (dotime - donetime - countNum) <= 0 {
+            timeDisplay.text = "目標時間に達しました。"
+        }else {
+            timeDisplay.text = String(format: "目標時間達成まであと %02d:%02d:%02d", (dotime - donetime - countNum) / 3600 , ((dotime - donetime - countNum) / 60) % 60, (dotime - donetime - countNum) % 60)
+        }
+        //timeDisplay.text = String(format: "目標時間達成まであと %02d:%02d:%02d", h,m,s)
+        dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime + countNum) / 3600, ((donetime + countNum) / 60) % 60, (donetime + countNum) % 60)
     }
     
     
@@ -196,10 +194,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
                        animations: { () -> Void in
                                 self.button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0) }, completion: nil)
         if timerRunning == false {
-            """
-            NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
-                notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-            """
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(EvaluViewController.updateDisplay), userInfo: nil, repeats: true)
             timerRunning = true
             sender.setImage(image_stop, for: .normal)
@@ -209,7 +203,23 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
             sender.setImage(image_play, for: .normal)
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
             let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
-            timeDisplay.text = String(format: "++ %02d:%02d:%02d", 0 ,0 , 0)
+            try! realm.write {
+                donetime = result!.donetime
+                donetime += countNum
+                result!.donetime = donetime
+                countNum = 0
+                //result!.selfEvaluation = 3.0
+            }
+            self.present(dialog, animated: true, completion: {
+                // アラートを閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.dialog.dismiss(animated: true, completion: nil)
+                })
+            })
+            
+            """
+            let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+            timeDisplay.text = String(format: "目標時間達成まで %02d:%02d:%02d", 0 ,0 , 0)
             try! realm.write {
                 var donetime:Int = result!.donetime
                 donetime += countNum
@@ -217,28 +227,72 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
                 result!.selfEvaluation = 3.0
             }
             countNum = 0
+            """
         }
     }
     
     @IBAction func Reset(_ sender: UIButton) {
-        countNum = 0
-        donetime = store_donetime
-        timeDisplay.text = "++ 00:00.00"
-        dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime / 3600), (donetime / 60) % 60, donetime % 60)
+        let alert: UIAlertController = UIAlertController(title: "リセット", message: "本当に最初から始めますか？", preferredStyle:  UIAlertController.Style.alert)
+    
+        if timerRunning {
+            timer.invalidate()
+            timerRunning = false
+            button.setImage(self.image_play, for: .normal)
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+            let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+            try! realm.write {
+                donetime = result!.donetime
+                donetime += countNum
+                result!.donetime = donetime
+                countNum = 0
+            }
+            self.present(dialog, animated: true, completion: {
+                // アラートを閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.dialog.dismiss(animated: true, completion: nil)
+                })
+            })
+        }
+
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+            self.resetMethod()
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    
     }
     
     @IBAction func TaskSaveButton(_ sender: Any) {
-        //performSegue(withIdentifier: "EvaluDetails", sender: nil)
-        //performSegue(withIdentifier: "toEvalu2", sender: nil)
+        print("save")
+        if timerRunning {
+            timer.invalidate()
+            timerRunning = false
+            button.setImage(image_play, for: .normal)
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+            let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+            try! realm.write {
+                donetime = result!.donetime
+                donetime += countNum
+                result!.donetime = donetime
+                countNum = 0
+            }
+            self.present(dialog, animated: true, completion: {
+                // アラートを閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.dialog.dismiss(animated: true, completion: nil)
+                })
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         /*
-         let evaludetailsviewcontroller = segue.destination as! EvaluDetailsViewController
-         evaludetailsviewcontroller.sepatime = countNum
-         evaludetailsviewcontroller.index = index
-         */
-        
         if (segue.identifier == "toResultViewController") {
             let vc = segue.destination as! ResultViewController
             vc.toDoId = todoid
@@ -248,5 +302,40 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
             vc.countNum = countNum
             vc.usedCount = usedCount
         }
+    }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        print("backボタンのアクション")
+        if timerRunning{
+            timer.invalidate()
+            timerRunning = false
+            button.setImage(image_play, for: .normal)
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+            let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+            try! realm.write {
+                donetime = result!.donetime
+                donetime += countNum
+                result!.donetime = donetime
+                countNum = 0
+            }
+            self.present(dialog, animated: true, completion: {
+                // アラートを閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.dialog.dismiss(animated: true, completion: nil)
+                })
+            })
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func resetMethod(){
+        countNum = 0
+        let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+        try! self.realm.write {
+            result!.donetime = 0
+            donetime = 0
+        }
+        timeDisplay.text = String(format: "目標時間達成まであと %02d:%02d:%02d", (dotime - donetime) / 3600 , ((dotime - donetime) / 60) % 60, (dotime - donetime) % 60)
+        dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime / 3600), (donetime / 60) % 60, donetime % 60)
     }
 }
