@@ -106,6 +106,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         AlldayView.frame.size = CGSize(width: screen.screenWidth, height: AlldayView.frame.height * screen.calScale)
         MyScrollView.frame.origin.y = AlldayView.frame.maxY
         MyScrollView.frame.size = CGSize(width: screen.screenWidth, height: screen.screenHeight - AlldayView.frame.maxY)
+        AnimationView.frame.size = CGSize(width: screen.screenWidth, height: 100 * screen.calScale)
         
     }
     
