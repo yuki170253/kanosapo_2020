@@ -553,7 +553,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 }
                 craftCalendar(base_view: ContentView)
                 craftNewAll(all: AlldayView, scroll: AllScrollView)
-                updateViews(content: ContentView, allday: allContentView)
+                //
+                for item in AllScrollView.subviews{
+                    if type(of: item) ==  UIView.self {
+                        allContentView = item
+                    }
+                }
+                addLongPressed(view: allContentView)
+//                updateViews(content: ContentView, allday: allContentView)
                 day.titleView = getnowTime(content: ContentView)
                 isRefreshing = false
             }
