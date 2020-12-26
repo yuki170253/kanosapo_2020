@@ -22,8 +22,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     @IBOutlet weak var ContentView: UIView!
     @IBOutlet weak var NewMenuView: UIView!
     @IBOutlet weak var MenuScrollView: UIScrollView!
+    @IBOutlet weak var MenuLabel: UILabel!
     var MenuFlag = false
     @IBOutlet weak var AlldayView: UIView!
+    @IBOutlet weak var AlldayLabel: UILabel!
     
     var startTransform:CGAffineTransform!
     var large = false
@@ -39,60 +41,60 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     
     @IBAction func EnlargeScreen(_ sender: UITapGestureRecognizer) {
-        print(sender.location(in: self.view))
-        if (sender.state == UIGestureRecognizer.State.ended) {
-            
-            var currentTransform = ContentView.transform
-            var doubleTapStartCenter = ContentView.center
-            
-            var transform: CGAffineTransform! = nil
-            var scale: CGFloat = 1.5 // ダブルタップでは現在のスケールの2倍にする
-            
-            
-            // 現在の拡大率を取得する
-            let currentScale = sqrt(abs(ContentView.transform.a * ContentView.transform.d - ContentView.transform.b * ContentView.transform.c))
-            let tapPoint = sender.location(in: self.view)
-            
-            var newCenter: CGPoint = CGPoint(
-                x: self.view.frame.size.width / 2,
-                y: doubleTapStartCenter.y - ((tapPoint.y - doubleTapStartCenter.y) * scale - (tapPoint.y - doubleTapStartCenter.y)))
-            
-            // 拡大済みのサイズがmaxScaleを超えていた場合は、初期サイズに戻す
-            //if (MyScrollView.zoomScale > MyScrollView.maximumZoomScale) {
-            if(large == true){
-                scale = 1
-                
-                transform = .identity
-                newCenter.y = self.view.frame.size.height / 2 + MyScrollView.contentOffset.y
-                doubleTapStartCenter.y = newCenter.y
-                
-                large = false
-            } else {
-                transform = currentTransform.concatenating(CGAffineTransform(scaleX: 1, y: scale))
-                
-                newCenter.y = doubleTapStartCenter.y - ((tapPoint.y - doubleTapStartCenter.y) * scale - (tapPoint.y - doubleTapStartCenter.y)) - MyScrollView.contentOffset.y/2
-                
-                large = true
-            }
-            
-            // ズーム（イン/アウト）と中心点の移動
-            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {() -> Void in
-                if(self.large == false){
-                    //self.MyScrollView.contentSize.height = 1720
-                    //                    self.ContentView.frame.size.height /= scale
-                    self.ContentView.center.y = CGFloat(840)
-                    
-                }else {
-                    self.ContentView.center = newCenter
-                    //self.MyScrollView.contentSize.height = self.MyScrollView.contentSize.height * scale
-                    //                    self.ContentView.frame.size.height *= scale
-                    
-                }
-                self.ContentView.transform = transform
-                
-            }, completion: {(finished: Bool) -> Void in
-            })
-        }
+//        print(sender.location(in: self.view))
+//        if (sender.state == UIGestureRecognizer.State.ended) {
+//            
+//            var currentTransform = ContentView.transform
+//            var doubleTapStartCenter = ContentView.center
+//            
+//            var transform: CGAffineTransform! = nil
+//            var scale: CGFloat = 1.5 // ダブルタップでは現在のスケールの2倍にする
+//            
+//            
+//            // 現在の拡大率を取得する
+//            let currentScale = sqrt(abs(ContentView.transform.a * ContentView.transform.d - ContentView.transform.b * ContentView.transform.c))
+//            let tapPoint = sender.location(in: self.view)
+//            
+//            var newCenter: CGPoint = CGPoint(
+//                x: self.view.frame.size.width / 2,
+//                y: doubleTapStartCenter.y - ((tapPoint.y - doubleTapStartCenter.y) * scale - (tapPoint.y - doubleTapStartCenter.y)))
+//            
+//            // 拡大済みのサイズがmaxScaleを超えていた場合は、初期サイズに戻す
+//            //if (MyScrollView.zoomScale > MyScrollView.maximumZoomScale) {
+//            if(large == true){
+//                scale = 1
+//                
+//                transform = .identity
+//                newCenter.y = self.view.frame.size.height / 2 + MyScrollView.contentOffset.y
+//                doubleTapStartCenter.y = newCenter.y
+//                
+//                large = false
+//            } else {
+//                transform = currentTransform.concatenating(CGAffineTransform(scaleX: 1, y: scale))
+//                
+//                newCenter.y = doubleTapStartCenter.y - ((tapPoint.y - doubleTapStartCenter.y) * scale - (tapPoint.y - doubleTapStartCenter.y)) - MyScrollView.contentOffset.y/2
+//                
+//                large = true
+//            }
+//            
+//            // ズーム（イン/アウト）と中心点の移動
+//            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {() -> Void in
+//                if(self.large == false){
+//                    //self.MyScrollView.contentSize.height = 1720
+//                    //                    self.ContentView.frame.size.height /= scale
+//                    self.ContentView.center.y = CGFloat(840)
+//                    
+//                }else {
+//                    self.ContentView.center = newCenter
+//                    //self.MyScrollView.contentSize.height = self.MyScrollView.contentSize.height * scale
+//                    //                    self.ContentView.frame.size.height *= scale
+//                    
+//                }
+//                self.ContentView.transform = transform
+//                
+//            }, completion: {(finished: Bool) -> Void in
+//            })
+//        }
     }
     
     func autoLayout(){
@@ -104,9 +106,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
 //        print(statusBarHeight,navigationBarHeight)
         AlldayView.frame.origin.y = navigationBarHeight! + statusBarHeight
         AlldayView.frame.size = CGSize(width: screen.screenWidth, height: AlldayView.frame.height * screen.calScale)
+        AlldayLabel.frame = CGRect(x: 5, y: 1, width: AlldayLabel.frame.size.width * screen.calScale, height: AlldayLabel.frame.size.height * screen.calScale)
         MyScrollView.frame.origin.y = AlldayView.frame.maxY
         MyScrollView.frame.size = CGSize(width: screen.screenWidth, height: screen.screenHeight - AlldayView.frame.maxY)
+        
         AnimationView.frame.size = CGSize(width: screen.screenWidth, height: 100 * screen.calScale)
+        ContentView.frame.size = CGSize(width: screen.screenWidth, height: CGFloat(no23point) + 90 * screen.calScale)
+        MyScrollView.contentSize = CGSize(width: screen.screenWidth, height: ContentView.frame.height)
+        NewMenuView.frame = CGRect(x: self.view.frame.maxX, y: AlldayView.frame.origin.y, width: NewMenuView.frame.width * screen.calScale, height: screen.screenHeight)
+        MenuScrollView.frame = CGRect(x: 0, y: 0, width: 180 * screen.calScale, height: screen.screenHeight - AlldayView.frame.origin.y)
+        MenuLabel.frame = CGRect(x: 55 * screen.calScale, y: MenuScrollView.frame.origin.y, width: MenuScrollView.frame.size.width - 55 * screen.calScale, height: MenuLabel.frame.size.height * screen.calScale)
         
     }
     
@@ -265,7 +274,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     @objc func taskSelect(_ sender: UITapGestureRecognizer){
         MoveToRight(scroll: MenuScrollView, animation: true)
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.MenuScrollView.contentOffset.y = sender.view!.center.y - 250
+            self.MenuScrollView.contentOffset.y = sender.view!.center.y - self.MenuScrollView.frame.height/2
             
         }, completion: nil)
         MoveToLeft(scroll: MenuScrollView, cOs: true, border: taskBorder)

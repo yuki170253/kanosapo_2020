@@ -399,7 +399,7 @@ class SampleView :UIView {
             let start = getTaskTime(y: view.frame.origin.y)
             print("startTime---")
             print(start)
-            let dotime = Int((view.frame.height - (20 * screen.calScale) * 60) / screen.calScale)
+            let dotime = Int((view.frame.height - (20 * screen.calScale)) * 60 / screen.calScale)
             //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
             if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
                 try! realm.write{

@@ -769,6 +769,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="e4l-7p-tHE"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hIW-JM-doe"/>
                             </scrollView>
@@ -836,9 +837,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AllScrollView" destination="m3M-Iz-dpg" id="FHu-0q-z0T"/>
+                        <outlet property="AlldayLabel" destination="l1t-8S-zke" id="WTa-r6-Ntf"/>
                         <outlet property="AlldayView" destination="fsB-JS-VDP" id="CxU-fg-gGP"/>
                         <outlet property="AnimationView" destination="i4z-wx-2Fj" id="b6x-RC-16n"/>
                         <outlet property="ContentView" destination="DYX-OW-t61" id="ALp-5s-dLt"/>
+                        <outlet property="MenuLabel" destination="hgh-eL-6ow" id="V4S-hY-n6F"/>
                         <outlet property="MenuScrollView" destination="PB5-PZ-1ag" id="2tI-Rq-hKK"/>
                         <outlet property="MyScrollView" destination="bc2-WE-YbU" id="NXU-cL-Uoh"/>
                         <outlet property="NewMenuView" destination="vlG-Yj-j9w" id="JWU-OU-CkR"/>
@@ -1138,14 +1141,6 @@
             <point key="canvasLocation" x="455" y="-305"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="54K-2E-t8j">
-            <size key="intrinsicContentSize" width="205" height="40"/>
-        </designable>
-        <designable name="XNZ-Te-s4K">
-            <size key="intrinsicContentSize" width="286" height="46"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="2sU-ig-1d1"/>
     </inferredMetricsTieBreakers>

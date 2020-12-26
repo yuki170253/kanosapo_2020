@@ -19,13 +19,15 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     print("craftNewMenu")
     let DummyContentView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: menu.frame.size.width, height: 2000))
     
-    let WhiteView = UIView.init(frame: CGRect.init(x: 55, y: -500, width: menu.frame.size.width - 55, height: 3000))
+    let WhiteView = UIView.init(frame: CGRect.init(x: 55 * screen.calScale, y: -500, width: menu.frame.size.width, height: 30000))
+    WhiteView.frame.size.width -= WhiteView.frame.origin.x
     let bgColor = UIColor.white
     WhiteView.backgroundColor = bgColor
     print(DummyContentView.tag)
     print(WhiteView.tag)
     scroll.clipsToBounds = false // scrollview外に出ても表示される
     scroll.addSubview(DummyContentView)
+    
     DummyContentView.addSubview(WhiteView)
     
     //かける追加
@@ -39,8 +41,9 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     let result_s = realm.objects(Todo.self).filter("datestring == %@", date)
     var task_cnt = 0  //追加したViewの個数を数える
     for item in result_m{
-        let frame = CGRect(x: Int(startPosi), y: task_cnt * 100 + 250, width: 100, height: 45)
+        let frame = CGRect(x: startPosi * screen.calScale, y: CGFloat(task_cnt) * 100 * screen.calScale + scroll.frame.size.height/2, width: 100 * screen.calScale, height: 45 * screen.calScale)
         let TestView = makeTaskView(frame: frame, tag: Int(item.todoid)!, title: item.title)
+        TestView.center.x = WhiteView.center.x
         TestView.backgroundColor = UIColor.orange
         DummyContentView.addSubview(TestView)
         task_cnt += 1
@@ -51,8 +54,9 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
         if(item.base != ""){
             continue
         }
-        let frame = CGRect(x: Int(startPosi), y: task_cnt * 100 + 250, width: 100, height: 45)
+        let frame = CGRect(x: startPosi * screen.calScale, y: CGFloat(task_cnt) * 100 * screen.calScale + scroll.frame.size.height/2, width: 100 * screen.calScale, height: 45 * screen.calScale)
         let TestView = makeTaskView(frame: frame, tag: Int(item.todoid)!, title: item.title)
+        TestView.center.x = WhiteView.center.x
         TestView.backgroundColor = UIColor.blue
         DummyContentView.addSubview(TestView)
         task_cnt += 1
@@ -60,7 +64,9 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     //かける追加終了
     //スクロールViewサイズ確定
     let cnt = DummyContentView.subviews.count
-    scroll.contentSize = CGSize(width:scroll.frame.size.width , height:CGFloat((cnt - 1) * 100 + 500 + 35))
+//    scroll.frame.size.height = (CGFloat(CGFloat((cnt - 1) * 100) * screen.calScale) + screen.screenHeight - screen.screenHeight/5) * screen.calScale
+    scroll.contentSize = CGSize(width:scroll.frame.size.width , height:CGFloat(CGFloat(CGFloat((cnt - 1)) * CGFloat(100)) * screen.calScale) + screen.screenHeight - screen.screenHeight/5)
+    DummyContentView.frame.size.height = CGFloat(CGFloat((cnt - 1)) * CGFloat(100) * screen.calScale) + screen.screenHeight - screen.screenHeight/5
     //    scroll.contentSize = CGSize(width:scroll.frame.size.width , height:CGFloat(680))
 }
 
@@ -76,7 +82,7 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
             dateFormatter.dateFormat = "dd"
             if(dateFormatter.string(from: item.start) == dateFormatter.string(from: Date())){
                 print(item)
-                let frame = CGRect(x: 5 + 120 * task_cnt, y: 18, width: 100, height: 28)
+                let frame = CGRect(x: CGFloat(5 + 120 * Int(screen.calScale) * task_cnt), y: 18, width: 100 * screen.calScale, height: 28 * screen.calScale)
                 let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
                 let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
                 TestView.backgroundColor = color
@@ -86,7 +92,7 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
         }
     }
     let cnt = contentsView.subviews.count
-    scroll.contentSize = CGSize(width: CGFloat(cnt * 120 + 60), height: scroll.frame.size.height)
+    scroll.contentSize = CGSize(width: CGFloat(CGFloat(cnt * 120) + screen.screenWidth/5), height: scroll.frame.size.height)
     //    scroll.contentSize = contentsView.frame.size
 }
 
@@ -258,13 +264,14 @@ func MoveToRight(scroll:UIScrollView, animation:Bool){
             views = view.subviews
         }
     }
+    print("views",views[0])
     if(views.count > 1){
         for i in 1 ..< views.count{
             if(views[0].frame.minX > views[i].frame.minX){
                 
                 let h = views[i].frame.size.height
                 let center = views[i].center
-                let size = CGFloat(45)
+                let size = CGFloat(45) * screen.calScale
                 let result = realm.object(ofType: Todo.self, forPrimaryKey: String(views[i].tag))
                 
                 if(animation){ //アニメーションあり
@@ -284,7 +291,7 @@ func MoveToRight(scroll:UIScrollView, animation:Bool){
                         }
                         views[i].frame.size.height = size
                         views[i].center = center
-                        views[i].frame.origin.x = startPosi
+                        views[i].frame.origin.x = startPosi * screen.calScale
                         views[i].layer.borderWidth = 0
                         for gesture in views[i].gestureRecognizers! {
                             if type(of: gesture) ==  UILongPressGestureRecognizer.self {
@@ -309,7 +316,7 @@ func MoveToRight(scroll:UIScrollView, animation:Bool){
                     }
                     views[i].frame.size.height = size
                     views[i].center = center
-                    views[i].frame.origin.x = startPosi
+                    views[i].frame.origin.x = startPosi * screen.calScale
                     views[i].layer.borderWidth = 0
                     for gesture in views[i].gestureRecognizers! {
                         if type(of: gesture) ==  UILongPressGestureRecognizer.self {

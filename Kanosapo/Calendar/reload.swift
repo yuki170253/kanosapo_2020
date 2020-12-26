@@ -89,6 +89,7 @@ func updateViews(content: UIView, allday: UIView){
             let add_view = makeView(id: item.calendarid, title: item.title, color: color)
             content.addSubview(add_view)
     }
+    craftCalendar(base_view: content)
 //    for view in content.subviews{
 //        if(realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(view.tag)) != nil){
 //            if(view.tag >= 1000000000 && view.tag < 10000000000){ //Todo
