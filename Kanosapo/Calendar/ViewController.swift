@@ -111,6 +111,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         NewMenuView.frame = CGRect(x: self.view.frame.maxX, y: AlldayView.frame.origin.y, width: NewMenuView.frame.width * screen.calScale, height: screen.screenHeight)
         MenuScrollView.frame = CGRect(x: 0, y: 0, width: 180 * screen.calScale, height: screen.screenHeight - AlldayView.frame.origin.y)
         MenuLabel.frame = CGRect(x: 55 * screen.calScale, y: MenuScrollView.frame.origin.y, width: MenuScrollView.frame.size.width - 55 * screen.calScale, height: MenuLabel.frame.size.height * screen.calScale)
+        if(screen.calScale >= 2){
+            MenuLabel.font = MenuLabel.font.withSize(20)
+            AlldayLabel.font = AlldayLabel.font.withSize(20)
+        }else{
+            MenuLabel.font = MenuLabel.font.withSize(11)
+            AlldayLabel.font = AlldayLabel.font.withSize(11)
+        }
         
     }
     
@@ -329,13 +336,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     func setLabel(){
         print("setLabel")
+        let screen = ScreenSize()
         let calendar = Calendar.current
         let date = Date()
         let hour = calendar.component(.hour, from: date)
         for i in 0..<24{
             let Label = UILabel(frame: CGRect(x: 10, y: 10 + (i * 60), width: 100, height: 40))
             Label.backgroundColor = UIColor.clear
-            Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 11)
+            if(screen.calScale >= 2){
+                Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 15)
+            }else{
+                Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 11)
+            }
             //Label.font = UIFont.systemFont(ofSize: 11)
             Label.text = String((hour+i) % 24) + ":00"
             Label.tag = i+1
