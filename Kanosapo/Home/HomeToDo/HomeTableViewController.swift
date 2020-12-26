@@ -36,8 +36,8 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
             print("==============-\(i.start))===================")
         }
         //スコアの取得
-        var score:Double = 20.0
-//        score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
+        var score:Double = 0.0
+        score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
         if score <= 25{
             registration(value:10)
             registration(value:5)
