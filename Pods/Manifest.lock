@@ -75,6 +75,7 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - Onboard (2.3.3)
   - Pageboy (3.6.2)
   - PromisesObjC (1.2.11)
   - PullableSheet (0.1.0)
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Database
   - LineSDKSwift (~> 5.0)
+  - Onboard
   - Pageboy (~> 3.2)
   - PullableSheet
   - RealmSwift (~> 5.4.3)
@@ -121,6 +123,7 @@ SPEC REPOS:
     - leveldb-library
     - LineSDKSwift
     - nanopb
+    - Onboard
     - Pageboy
     - PromisesObjC
     - PullableSheet
@@ -147,6 +150,7 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   LineSDKSwift: f9c232f89185b887b5725aa278325f3a23e33bbc
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  Onboard: 4d6e943e20bdd6bc229df967a347dd7514bc2a6f
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PullableSheet: fbe75b796cb3ca31808fffc3e63418dc7d4c57e2
@@ -156,6 +160,6 @@ SPEC CHECKSUMS:
   UBottomSheet: 8a3665cc42c20637815f119fe31bceff4433e2e3
   YYBottomSheet: 4d392551718f2297c41232f1d57282cba7263eee
 
-PODFILE CHECKSUM: 1fa94c163948c3401736feae068711db9a4e2dd4
+PODFILE CHECKSUM: 6f4d558fb86c7a1bda770e400d4da039030ac13e
 
 COCOAPODS: 1.10.0

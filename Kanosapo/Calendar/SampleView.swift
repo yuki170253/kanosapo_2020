@@ -168,7 +168,7 @@ class SampleView :UIView {
         
         
         if(gestureRecognizer.state == .began){
-            if(gestureRecognizer.location(in: self).y > content.frame.height - 30 && gestureRecognizer.location(in: self).x > circle.center.x - 50 && gestureRecognizer.location(in: self).x < circle.center.x + 50){
+            if(gestureRecognizer.location(in: self).y > content.frame.height - 30 * screen.calScale && gestureRecognizer.location(in: self).x > circle.center.x - 50 * screen.calScale && gestureRecognizer.location(in: self).x < circle.center.x + 50 * screen.calScale){
                 flag = 1
             }else {
                 flag = 0
@@ -203,18 +203,18 @@ class SampleView :UIView {
                 movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
                 movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
                 
-                if(content.frame.size.height + move.y > 15){
+                if(content.frame.size.height + move.y > CGFloat(15 * minute)){
                     self.frame.size.height += move.y
                     content.frame.size.height += move.y
                     leftBorder.frame.size.height += move.y
                 }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
                     //move.y = 0
-                    self.frame.size.height = CGFloat(15 * minute + 20)
+                    self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
                     content.frame.size.height = CGFloat(15 * minute)
                     leftBorder.frame.size.height = CGFloat(15 * minute)
                 }
-                if(content.frame.size.height + move.y > 300){
-                    self.frame.size.height = CGFloat(300 * minute + 20)
+                if(content.frame.size.height + move.y > CGFloat(300 * minute)){
+                    self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
                     content.frame.size.height = CGFloat(300 * minute)
                     leftBorder.frame.size.height = CGFloat(300 * minute)
                 }
@@ -275,18 +275,18 @@ class SampleView :UIView {
                 //print(movedPoint.y - (self.superview?.superview as! UIScrollView).contentOffset.y)
                 imageView.alpha = 1.0
                 if(!scrollFlag){
-                    if(gestureRecognizer.view!.frame.maxY - (self.superview?.superview as! UIScrollView).contentOffset.y > 560){
+                    if(fakeView.frame.maxY > (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute)){
                             print("under")
                             scrollFlag = true
                             startAutoScroll(duration: 0.05, direction: .under)
-                    }else if(gestureRecognizer.view!.frame.minY - (self.superview?.superview as! UIScrollView).contentOffset.y < 30){
+                    }else if(fakeView.frame.minY < (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
 
                             print("upper")
                             scrollFlag = true
                             startAutoScroll(duration: 0.05, direction: .upper)
                     }
                 }
-                if(gestureRecognizer.view!.frame.maxY - (self.superview?.superview as! UIScrollView).contentOffset.y <= 560 && gestureRecognizer.view!.frame.minY - (self.superview?.superview as! UIScrollView).contentOffset.y >= 30){
+                if(fakeView.frame.maxY <= (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute) && fakeView.frame.minY >= (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
                     scrollFlag = false
                     stopAutoScrollIfNeeded()
                 }

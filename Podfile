@@ -17,6 +17,7 @@ target 'Kanosapo' do
   pod 'Firebase/Database'
   pod 'LineSDKSwift', '~> 5.0'
   pod 'CryptoSwift'
+  pod 'Onboard'
   # Pods for Kanosapo
 
   target 'KanosapoTests' do

@@ -49,10 +49,10 @@ func getnowTime(content: UIView)->UILabel{
     let calendar = Calendar(identifier: .gregorian)
     let m = calendar.component(.minute, from: now as Date)
     let weeks = ["日","月","火","水","木","金","土"]
-    nowtimeBar.frame = CGRect(x: 50, y: m % 60 + Int(no1point), width: Int(screen.screenWidth) - 15 - 50, height: 1)
+    nowtimeBar.frame = CGRect(x: 50, y: (m % 60) * Int(screen.calScale) + Int(no1point), width: Int(screen.screenWidth) - 15 - 50, height: 1)
     nowtimeBar.backgroundColor = UIColor.red.cgColor
     nowtimeMark.frame.size = CGSize(width: 11, height: 15)
-    nowtimeMark.center = CGPoint(x: 50, y: m % 60 + Int(no1point))
+    nowtimeMark.center = CGPoint(x: 50, y: (m % 60) * Int(screen.calScale) + Int(no1point))
     content.addSubview(nowtimeMark)
     content.layer.addSublayer(nowtimeBar)
     let component = calendar.component(.weekday, from: now as Date)
