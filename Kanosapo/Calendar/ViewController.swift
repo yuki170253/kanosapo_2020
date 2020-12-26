@@ -624,7 +624,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             
             if(sender.view!.tag >= 1000000000 && sender.view!.tag < 10000000000){ //Todo
                 sender.self.view!.center.x = sender.location(in: self.view).x - NewMenuView.frame.minX
-                sender.self.view!.center.y = sender.location(in: self.view).y - MenuScrollView.frame.minY + MenuScrollView.contentOffset.y
+                sender.self.view!.center.y = sender.location(in: self.view).y  + MenuScrollView.contentOffset.y - NewMenuView.frame.minY
             }else if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 sender.self.view!.center.x = sender.location(in: self.view).x
                 sender.self.view!.center.y = sender.location(in: self.view).y - AlldayView.frame.minY + MenuScrollView.contentOffset.y
