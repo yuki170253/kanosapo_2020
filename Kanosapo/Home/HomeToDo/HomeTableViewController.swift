@@ -35,7 +35,24 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
             print("==============-\(f.string(from: i.start))===================")
             print("==============-\(i.start))===================")
         }
-        registration()
+        //スコアの取得
+        var score:Double = 20.0
+//        score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
+        if score <= 25{
+            registration(value:10)
+            registration(value:5)
+            registration(value:3)
+            registration(value:1)
+        }else if score <= 50{
+            registration(value:10)
+            registration(value:5)
+        }else if score <= 75{
+            registration(value:5)
+        }else{
+            registration(value:5)
+        }
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         tableview.reloadData()
@@ -57,7 +74,7 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
         let rate = resultArray[indexPath.row].rate
         
         cell.set(taskname: resultArray[indexPath.row].title, target_time: "\(rate)％", achi_rate: resultArray[indexPath.row].dotime_string)
-
+        
         return cell
     }
     
@@ -79,8 +96,12 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
     
     //かける　変更 12/10
     // AppDelegate -> applicationDidEnterBackgroundの通知
-    func registration(){
+    func registration(value: Int){
         let results = realm.objects(Calendar24.self).filter("end >= %@ AND end <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
+        
+        //デバッグよう
+        var identifier = String()
+        
         var trigger: UNNotificationTrigger
         let content = UNMutableNotificationContent()
         var notificationTime = DateComponents()
@@ -88,13 +109,16 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
             for item in results{
                 let components = Calendar.current.dateComponents(in: TimeZone.current, from: item.start)
                 notificationTime.hour = components.hour
-                notificationTime.minute = components.minute! - 10
+                notificationTime.minute = components.minute! - value
                 trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
                 content.title = item.todo.first!.title
                 content.body = "もうすぐタスクの時間だよ！"
                 content.sound = UNNotificationSound.default
-                var request = UNNotificationRequest(identifier: item.calendarid, content: content, trigger: trigger)
+                identifier = item.calendarid + "\(value)"
+                print(identifier)
+                let request = UNNotificationRequest(identifier: item.calendarid + "\(value)", content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
             }
         }
     }
