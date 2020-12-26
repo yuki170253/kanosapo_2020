@@ -122,16 +122,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="背景_test.png" translatesAutoresizingMaskIntoConstraints="NO" id="h8J-gh-8dR">
-                                <rect key="frame" x="-61" y="-140" width="496" height="849"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="背景_test.png" translatesAutoresizingMaskIntoConstraints="NO" id="h8J-gh-8dR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desk.png" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-qI-Uye">
-                                <rect key="frame" x="-21" y="293" width="261" height="193"/>
+                                <rect key="frame" x="0.0" y="330" width="240" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8I0-tE-jdW" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="270" y="70" width="94" height="109"/>
+                                <rect key="frame" x="264" y="94" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="button_c.png"/>
                                 <connections>
@@ -139,7 +138,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZf-dz-mnf" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="278" y="320" width="86" height="147"/>
+                                <rect key="frame" x="271" y="356" width="80" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="button_f2.png"/>
                                 <connections>
@@ -147,24 +146,26 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fii-Od-7k1" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
-                                <rect key="frame" x="-3" y="250" width="109" height="82"/>
+                                <rect key="frame" x="7" y="275" width="107" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ToDoリストへ" image="button_t.png"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="kgd-2Q-DLi"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menhera_meter.png" translatesAutoresizingMaskIntoConstraints="NO" id="uXZ-iz-6XK">
-                                <rect key="frame" x="20" y="20" width="334" height="51"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menhera_meter.png" translatesAutoresizingMaskIntoConstraints="NO" id="uXZ-iz-6XK">
+                                <rect key="frame" x="30" y="30" width="317" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ふきだし_6.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-2l-DNi">
-                                <rect key="frame" x="0.0" y="70" width="144" height="120"/>
+                                <rect key="frame" x="0.0" y="74" width="144" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="メンヘラ彼女_75.png" translatesAutoresizingMaskIntoConstraints="NO" id="nAv-P7-OpH">
-                                <rect key="frame" x="20" y="0.0" width="363" height="624"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="メンヘラ彼女_75.png" translatesAutoresizingMaskIntoConstraints="NO" id="nAv-P7-OpH">
+                                <rect key="frame" x="62.5" y="80" width="290" height="485"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nAv-P7-OpH" secondAttribute="height" multiplier="58:97" id="zVB-nJ-0gn"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24時間以内のタスクが入ってないよ！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9p-R3-U7z">
                                 <rect key="frame" x="7" y="103" width="117" height="56"/>
@@ -173,23 +174,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZa-AL-Axx">
-                                <rect key="frame" x="40" y="30" width="30" height="30"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKM-Rm-QrK">
+                                <rect key="frame" x="91" y="49" width="200" height="4"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="reset_button:" destination="M6u-wY-6mI" eventType="touchUpInside" id="CfI-1D-9dh"/>
-                                </connections>
-                            </button>
+                                <color key="progressTintColor" red="0.96078431369999995" green="0.60784313729999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="037-q1-eai"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nAv-P7-OpH" firstAttribute="top" secondItem="037-q1-eai" secondAttribute="top" constant="36" id="4j5-g4-I7T"/>
+                            <constraint firstItem="037-q1-eai" firstAttribute="bottom" secondItem="nAv-P7-OpH" secondAttribute="bottom" constant="102" id="5h5-0E-IWm"/>
+                            <constraint firstItem="h8J-gh-8dR" firstAttribute="top" secondItem="PjH-0H-p7t" secondAttribute="top" id="M6c-A0-vWa"/>
+                            <constraint firstAttribute="bottom" secondItem="h8J-gh-8dR" secondAttribute="bottom" id="aeM-Ve-0pF"/>
+                            <constraint firstItem="h8J-gh-8dR" firstAttribute="leading" secondItem="PjH-0H-p7t" secondAttribute="leading" id="kzn-J8-ka4"/>
+                            <constraint firstAttribute="trailing" secondItem="h8J-gh-8dR" secondAttribute="trailing" id="olS-HW-5vW"/>
+                            <constraint firstItem="nAv-P7-OpH" firstAttribute="centerX" secondItem="PjH-0H-p7t" secondAttribute="centerX" constant="20" id="onc-ai-h7g"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p9t-ZS-BWr">
                         <barButtonItem key="backBarButtonItem" title=" " id="Vph-Kh-Ed9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarButton" destination="8I0-tE-jdW" id="I4e-hp-vMy"/>
+                        <outlet property="desk" destination="HT2-qI-Uye" id="fIB-TA-Q8F"/>
+                        <outlet property="feedbackButton" destination="dZf-dz-mnf" id="ltt-KU-e1N"/>
                         <outlet property="menhera" destination="nAv-P7-OpH" id="4g1-ys-tJC"/>
+                        <outlet property="menheraKanojo" destination="nAv-P7-OpH" id="oxY-ml-rDX"/>
+                        <outlet property="menheraMeter" destination="xKM-Rm-QrK" id="SkZ-xX-snk"/>
+                        <outlet property="meterBackground" destination="uXZ-iz-6XK" id="OKF-T1-iPl"/>
+                        <outlet property="speechZone" destination="0Z0-2l-DNi" id="tuq-p2-NgA"/>
                         <outlet property="talk" destination="G9p-R3-U7z" id="G6a-Ck-CS6"/>
+                        <outlet property="todoButton" destination="fii-Od-7k1" id="MXk-AT-4IW"/>
                         <segue destination="f4W-7C-tTc" kind="show" identifier="toEvaluViewController" id="2sU-ig-1d1"/>
                     </connections>
                 </viewController>
@@ -202,7 +219,7 @@
             <objects>
                 <viewController id="f4W-7C-tTc" customClass="EvaluViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OD1-Nx-Qbe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="目標時間達成まで 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-sC-noG">
@@ -479,7 +496,7 @@
             <objects>
                 <viewController storyboardIdentifier="popupmenu" id="pwJ-dE-l7X" customClass="EvaluViewController2" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhf-Ji-ty8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORF-GJ-DL1">
@@ -687,7 +704,7 @@
             <objects>
                 <viewController id="qpW-sV-xfi" customClass="ResultViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1kg-YK-fOI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="メンヘラ_SD_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="0US-ar-Gu0">
@@ -1033,6 +1050,7 @@
                         <color key="backgroundColor" red="0.90980392156862744" green="0.71372549019607845" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="handleBar" destination="agH-22-zpx" id="myW-8a-zky"/>
                         <outlet property="tableview" destination="ypM-VH-0X1" id="swK-HD-und"/>
                         <segue destination="f4W-7C-tTc" kind="show" identifier="to_evalu" id="KWS-zU-rAs"/>
                     </connections>
@@ -1198,7 +1216,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="2sU-ig-1d1"/>
+        <segue reference="KWS-zU-rAs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="button_c.png" width="345" height="372"/>
