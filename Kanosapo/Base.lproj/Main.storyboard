@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81D-hV-o7r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -179,10 +180,12 @@
                                     <action selector="reset_button:" destination="M6u-wY-6mI" eventType="touchUpInside" id="CfI-1D-9dh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-La-PRy">
-                                <rect key="frame" x="47" y="191" width="32" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-La-PRy">
+                                <rect key="frame" x="48" y="189" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LINE"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapLogin:" destination="M6u-wY-6mI" eventType="touchUpInside" id="Wea-yt-65v"/>
                                 </connections>
@@ -195,6 +198,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Vph-Kh-Ed9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="lineButton" destination="uaU-La-PRy" id="HSc-Bd-iNr"/>
                         <outlet property="menhera" destination="nAv-P7-OpH" id="4g1-ys-tJC"/>
                         <outlet property="talk" destination="G9p-R3-U7z" id="G6a-Ck-CS6"/>
                         <segue destination="f4W-7C-tTc" kind="show" identifier="toEvaluViewController" id="2sU-ig-1d1"/>
@@ -825,7 +829,7 @@
                     <navigationItem key="navigationItem" title="Title" id="QW0-h0-rFV">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tB4-sR-chE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ox9-CU-KqS">
-                                <rect key="frame" x="284" y="0.0" width="0.0" height="60"/>
+                                <rect key="frame" x="323" y="0.0" width="36" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="menu"/>
                                 <connections>
@@ -1140,6 +1144,14 @@
             <point key="canvasLocation" x="455" y="-305"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="54K-2E-t8j">
+            <size key="intrinsicContentSize" width="205" height="40"/>
+        </designable>
+        <designable name="XNZ-Te-s4K">
+            <size key="intrinsicContentSize" width="286" height="46"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="2sU-ig-1d1"/>
     </inferredMetricsTieBreakers>
@@ -1155,7 +1167,7 @@
         <image name="heart.png" width="100" height="100"/>
         <image name="icons8-再生ボタン.png" width="100" height="100"/>
         <image name="menhera_meter.png" width="820" height="129"/>
-        <image name="menu" width="18" height="18"/>
+        <image name="menu" width="36" height="36"/>
         <image name="replay_black_192x192.png" width="192" height="192"/>
         <image name="speechBubble.png" width="200" height="150.5"/>
         <image name="ふきだし_6.png" width="247" height="132.47999572753906"/>

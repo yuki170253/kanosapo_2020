@@ -26,10 +26,20 @@ class HomeViewController: UIViewController {
     let scHei: CGFloat = UIScreen.main.bounds.height    //画面の高さ
     var barImageView: UIImageView!
     @IBOutlet weak var talk: UILabel!
+    
+    @IBOutlet weak var lineButton: UIButton!
+    
     let realm = try! Realm()
     var score:Double = 50.0
     override func viewDidLoad() { //切り替えても呼び出されない...
         super.viewDidLoad()
+        
+        //かける追加 12/27
+        let screen = ScreenSize()
+        lineButton.frame = CGRect(x: 50 * screen.calScale, y: 200, width: 25 * screen.calScale, height: 25 * screen.calScale)
+        let picture = UIImage(named: "LINE_APP")
+        lineButton.setImage(picture, for: .normal)
+        
         score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
         //        userDefaults.removeObject(forKey: "todoList")
         //        userDefaults.removeObject(forKey: "CalendarList")
