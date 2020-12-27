@@ -34,21 +34,7 @@ class HomeViewController: UIViewController {
         //        userDefaults.removeObject(forKey: "todoList")
         //        userDefaults.removeObject(forKey: "CalendarList")
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        let results = realm.objects(Calendar24.self).filter("start >= %@ AND start <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
-        let task = results.first
-        var task_name :String = ""
-        var talkcontent :String = ""
-        if results.count > 0 {
-            task_name = task!.todo.first!.title
-            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: Date(), to: task!.start)
-            if dateComponents.hour == 0 {
-                talkcontent = String(dateComponents.minute!) + "分後に\(task_name)のタスクが入っているよ！"
-            }else{
-                talkcontent = "\(dateComponents.hour!)時間\(dateComponents.minute!)分後に\(task_name)のタスクが入っているよ！"
-            }
-            talk.adjustsFontSizeToFitWidth = true
-            talk.text = talkcontent
-        }
+        changeMessage()
         
         score = UserDefaults.standard.object(forKey: "score") as! Double
         drawgauge(stop: CGFloat(score))
@@ -65,6 +51,8 @@ class HomeViewController: UIViewController {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTableViewController") as! HomeTableViewController
         vc.attach(to: self)
     }
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -95,6 +83,88 @@ class HomeViewController: UIViewController {
     }
     @IBAction func restart(_ segue: UIStoryboardSegue){
         print(segue)
+    }
+    
+    @IBAction func pushed_Girl2Button(_ sender: Any) {
+        changeMessage()
+    }
+    @IBAction func pushed_GirlButton(_ sender: Any) {
+        changeMessage()
+    }
+    
+    
+    func changeMessage(){
+        let Messages50 = ["会いに来てくれてありがとう！",
+                        "今日は何する？"]
+        let Messages25 = ["もっと会いに来てくれないと寂しいよ...",
+                          "やるべきことは早めに取り組まないとだよ？"]
+        let Messages0 = ["ちゃんとやってるの最近あんまり見ないな、、、どうして？",
+                         "わたし、だらしない人は嫌いかも"]
+        
+        var body = ""
+        if score < 25{
+            let index = Int.random(in: 0..<Messages0.count + 2)
+            if index >= Messages0.count {
+                if index == Messages0.count {
+                    talk.text = String(setTaskMessage().dropLast(1))
+                }else if index == Messages0.count + 1 {
+                    let lineMessage = NSMutableAttributedString(string: "なんでLINEしてくれないの？")
+                    lineMessage.addAttribute(.foregroundColor, value: UIColor.green, range: NSMakeRange(3, 4))
+                    talk.attributedText = lineMessage
+                }
+            }else{
+                talk.text = Messages0[index]
+            }
+        }else if score < 50{
+            let index = Int.random(in: 0..<Messages25.count + 2)
+            if index >= Messages25.count {
+                if index == Messages25.count {
+                    talk.text = String(setTaskMessage().dropLast(1))
+                }else if index == Messages25.count + 1 {
+                    let lineMessage = NSMutableAttributedString(string: "たまにはLINEしてよね")
+                    lineMessage.addAttribute(.foregroundColor, value: UIColor.green, range: NSMakeRange(4, 4))
+                    talk.attributedText = lineMessage
+                }
+            }else{
+                talk.text = Messages25[index]
+            }
+        }else{
+            let index = Int.random(in: 0..<Messages50.count + 2)
+            if index >= Messages50.count {
+                if index == Messages50.count {
+                    talk.text = setTaskMessage()
+                }else if index == Messages50.count + 1 {
+                    let lineMessage = NSMutableAttributedString(string: "LINEしよ！")
+                    lineMessage.addAttribute(.foregroundColor, value: UIColor.green, range: NSMakeRange(0, 4))
+                    talk.attributedText = lineMessage
+                }
+            }else{
+                talk.text = Messages50[index]
+            }
+        }
+        talk.adjustsFontSizeToFitWidth = true
+    }
+    
+    func setTaskMessage() -> String {
+        let results = realm.objects(Calendar24.self).filter("start >= %@ AND start <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
+        let task = results.first
+        var task_name :String = ""
+        var talkcontent :String = "今のところ24時間以内のタスクはないよ！"
+        if results.count > 0 {
+            task_name = task!.todo.first!.title
+            if task!.todo.first?.todoDone == false {
+                let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: Date(), to: task!.start)
+                if dateComponents.hour == 0 {
+                    talkcontent = String(dateComponents.minute!) + "分後に\(task_name)のタスクが入っているよ！"
+                }else{
+                    talkcontent = "\(dateComponents.hour!)時間\(dateComponents.minute!)分後に\(task_name)のタスクが入っているよ！"
+                }
+            }
+            
+            
+//            talk.text = talkcontent
+        }
+        return talkcontent
     }
     
     func drawgauge(stop:CGFloat){
