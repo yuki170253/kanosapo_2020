@@ -118,7 +118,8 @@ func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
             TaskView.layer.borderColor = UIColor.black.cgColor
             TaskView.layer.borderWidth = 1
             let image = UIImageView(image:UIImage(named:"timeTask")!)
-            image.frame = CGRect(x: (ContentView.frame.maxX - 16) * screen.calScale, y: (ContentView.frame.maxY - 32) * screen.calScale, width: 15 * screen.calScale, height: 15 * screen.calScale)
+            image.frame = CGRect(x: ContentView.frame.maxX - 16 * screen.calScale, y: 0, width: 15 * screen.calScale, height: 15 * screen.calScale)
+            image.frame.origin.y = ContentView.frame.maxY - image.frame.size.height - 16 - 1 * screen.calScale
             ContentView.addSubview(image)
         }
         

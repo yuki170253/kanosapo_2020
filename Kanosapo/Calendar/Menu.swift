@@ -221,7 +221,7 @@ func MoveToLeft(scroll:UIScrollView, cOs:Bool, border:[CGFloat]){
                         view.frame.size.height = size-16
                         for item in view.subviews{
                             if(type(of: item) == UIImageView.self){
-                                item.frame.origin.y = view.frame.maxY - 32 //時計マーク
+                                item.frame.origin.y = view.frame.maxY - item.frame.size.height - 16 - 1 * screen.calScale //時計マーク
                             }
                         }
                         
@@ -304,7 +304,7 @@ func MoveToRight(scroll:UIScrollView, animation:Bool){
                                 view.frame.size.height = size-16
                                 for item in view.subviews{
                                     if(type(of: item) == UIImageView.self){
-                                        item.frame.origin.y = view.frame.maxY - 32 //時計マーク
+                                        item.frame.origin.y = view.frame.maxY - item.frame.size.height - 16 - 1 * screen.calScale //時計マーク
                                     }
                                 }
                             }
@@ -336,7 +336,7 @@ func MoveToRight(scroll:UIScrollView, animation:Bool){
                             view.frame.size.height = size-16
                             for item in view.subviews{
                                 if(type(of: item) == UIImageView.self){
-                                    item.frame.origin.y = view.frame.maxY - 32 //時計マーク
+                                    item.frame.origin.y = view.frame.maxY - item.frame.size.height - 16 - 1 * screen.calScale //時計マーク
                                 }
                             }
                         }
