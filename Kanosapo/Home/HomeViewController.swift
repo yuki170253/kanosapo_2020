@@ -52,11 +52,12 @@ class HomeViewController: UIViewController {
         
         score = UserDefaults.standard.object(forKey: "score") as! Double
         drawgauge(stop: CGFloat(score))
-        if score <= 25{
+        //修正　by牧内　12/26
+        if score < 25{
             menhera.image = menhera_100
-        }else if score <= 50{
+        }else if score < 50{
             menhera.image = menhera_75
-        }else if score <= 75{
+        }else if score < 75{
             menhera.image = menhera_50
         }else{
             menhera.image = menhera_0

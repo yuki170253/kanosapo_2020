@@ -790,7 +790,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="iFR-8o-Lzk"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlG-Yj-j9w" userLabel="NewMenuView">
                                 <rect key="frame" x="375" y="0.0" width="180" height="667"/>
@@ -805,8 +805,8 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="やることリスト" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-eL-6ow">
                                         <rect key="frame" x="60" y="64" width="120" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <fontDescription key="fontDescription" name="TsukuARdGothic-Regular" family="Tsukushi A Round Gothic" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -825,9 +825,9 @@
                     <navigationItem key="navigationItem" title="Title" id="QW0-h0-rFV">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tB4-sR-chE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ox9-CU-KqS">
-                                <rect key="frame" x="309" y="0.0" width="50" height="44"/>
+                                <rect key="frame" x="284" y="0.0" width="0.0" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="calendar"/>
+                                <state key="normal" image="menu"/>
                                 <connections>
                                     <action selector="calshow:" destination="sLZ-Dh-aqk" eventType="touchUpInside" id="g6J-qT-mYA"/>
                                 </connections>
@@ -1148,7 +1148,6 @@
         <image name="button_f2.png" width="260" height="452"/>
         <image name="button_t.png" width="371" height="259"/>
         <image name="c_icon.png" width="512" height="512"/>
-        <image name="calendar" width="25" height="25"/>
         <image name="close.png" width="96" height="96"/>
         <image name="complete.png" width="512" height="512"/>
         <image name="desk.png" width="604" height="533"/>
@@ -1156,6 +1155,7 @@
         <image name="heart.png" width="100" height="100"/>
         <image name="icons8-再生ボタン.png" width="100" height="100"/>
         <image name="menhera_meter.png" width="820" height="129"/>
+        <image name="menu" width="18" height="18"/>
         <image name="replay_black_192x192.png" width="192" height="192"/>
         <image name="speechBubble.png" width="200" height="150.5"/>
         <image name="ふきだし_6.png" width="247" height="132.47999572753906"/>
@@ -1176,6 +1176,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableCellGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -59,6 +59,7 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, Retur
             cal.start = startTime
             cal.default_allday = false
             cal.c_dotime = result_t.dotime
+            cal.end = Calendar.current.date(byAdding: .second, value: result_t.dotime, to: startTime)!
             new_cal?.InFlag = true
             new_cal!.calendars.append(cal)
             let add_view = makeView(id: cal.calendarid, title: result_t.title, color: UIColor.black)

@@ -89,18 +89,29 @@ class EvaluViewController2: UIViewController {
             doneRate = Double(result!.donetime/result!.dotime)
         }
         
+        if score < 25{
+            score -= Double(result!.usedCount * 5)
+        }else if score < 50{
+            score -= Double(result!.usedCount * 3)
+        }else if score < 75{
+            score -= Double(result!.usedCount)
+        }else{
+            
+        }
+        
         let rate:Double = slideview.rating
+        
         switch rate {
             case 1.0:
-                score += -15.0 - Double(result!.usedCount) + Double(overTime) * 0.1
+                score += -15.0 + Double(overTime) * 0.1
             case 2.0:
-                score += (-1.5+doneRate) * 10.0 - Double(result!.usedCount) + Double(overTime)*0.1
+                score += (-1.5+doneRate) * 10.0 + Double(overTime)*0.1
             case 3.0:
-                score += (-0.5+doneRate) * 10.0 - Double(result!.usedCount) + Double(overTime)*0.1
+                score += (-0.5+doneRate) * 10.0 + Double(overTime)*0.1
             case 4.0:
-                score += (0.5+doneRate) * 10.0 - Double(result!.usedCount) + Double(overTime)*0.1
+                score += (0.5+doneRate) * 10.0 + Double(overTime)*0.1
             case 5.0:
-                score += 15.0-Double(result!.usedCount) + Double(overTime)*0.1
+                score += 15.0 + Double(overTime)*0.1
         default: break
         }
         
@@ -115,9 +126,6 @@ class EvaluViewController2: UIViewController {
             result!.selfEvaluation = slideview.rating
             result?.todoDone = true
             
-            var usedCount2:Int = result!.usedCount
-            usedCount2 = usedCount + usedCount2
-            result!.usedCount = usedCount2
         }
         print("保存しました。new")
         //画面遷移の処理 以下

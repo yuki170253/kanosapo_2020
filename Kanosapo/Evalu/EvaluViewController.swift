@@ -137,6 +137,7 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
             print(start)
         }
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+        let score = UserDefaults.standard.object(forKey: "score") as! Double
         
         if timerRunning == true {
             //かける追加 12/10 if(result!.dotime! <= countNum){}で囲う
@@ -160,12 +161,38 @@ class EvaluViewController: UIViewController, UIApplicationDelegate  {
             //アプリから離れた際の通知
             let outside = UNMutableNotificationContent()
             //outside.title = testlabel.text!
-            outside.body = "アプリに戻って！"
+            let happyMessage = ["それは急用なの？",
+                                "わたしと一緒にがんばろう？",
+                                "集中して取り組む姿をわたしに見せて！"]
+            let menheraMessage = ["集中して取り組まないとおこだぞ！！",
+                                  "わたしと一緒じゃがんばれないって言うの...？"]
+            var body = "アプリに戻って！"
+            
+            if usedCount > 0 { //アプリを離れて２度目以降
+                if score < 25{
+                    let index = Int.random(in: 0..<menheraMessage.count)
+                    body = menheraMessage[index]
+                }else if score < 50{
+                    let index = Int.random(in: 0..<menheraMessage.count)
+                    body = menheraMessage[index]
+                }else if score < 75{
+                    let index = Int.random(in: 0..<happyMessage.count)
+                    body = happyMessage[index]
+                }else{
+                    let index = Int.random(in: 0..<happyMessage.count)
+                    body = happyMessage[index]
+                }
+            }
+            
+            outside.body = body
             outside.sound = UNNotificationSound.default
-            let outsideTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let outsideTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.2, repeats: false)
             let outsideRequest = UNNotificationRequest(identifier: "outside", content: outside, trigger: outsideTrigger)
             UNUserNotificationCenter.current().add(outsideRequest, withCompletionHandler: nil)
             usedCount = usedCount + 1
+            try! realm.write { //ここにメンヘラメーターを変化させるような式を記述
+                result!.usedCount += 1
+            }
         }
     }
     

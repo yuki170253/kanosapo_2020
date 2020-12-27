@@ -84,11 +84,11 @@ func updateViews(content: UIView, allday: UIView){
         }
     }
     //DefaultCalendarからスケジュールを作成
-    for item in result_d{
-            let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
-            let add_view = makeView(id: item.calendarid, title: item.title, color: color)
-            content.addSubview(add_view)
-    }
+//    for item in result_d{
+//            let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
+//            let add_view = makeView(id: item.calendarid, title: item.title, color: color)
+//            content.addSubview(add_view)
+//    }
     craftCalendar(base_view: content)
 //    for view in content.subviews{
 //        if(realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(view.tag)) != nil){
