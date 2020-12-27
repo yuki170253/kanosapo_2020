@@ -220,12 +220,17 @@ extension AppDelegate {
             image = image.reSizeImage(reSize: reSize)
             let content3 = OnboardingContentViewController(
                 title: "",
-                body: "◯やることリスト\nToDoリストで追加したタスクを表示\n◯標準カレンダーデータ\n標準カレンダーのデータを参照\n◯削除ボタン\n削除する\n◯実行時間\n実行時間を伸縮する",
+                body: "◯やることリスト\nToDoリストで追加したタスクを表示\n◯標準カレンダーデータ\n標準カレンダーのデータを参照\n◯実行時間\n実行時間を伸縮する\n◯削除ボタン\n削除する",
                 image: image,
                 buttonText: "カレンダー",
                 action: nil
             )
-
+            content3.topPadding = 20
+            content3.underIconPadding = 5
+            content3.underTitlePadding = 0
+            content3.bottomPadding = 0
+            content3.bodyLabel.font = content1.bodyLabel.font.withSize(15)
+            content3.bodyLabel.textAlignment = NSTextAlignment.left
             image = UIImage(named: "カレンダー7")!
             reSize = CGSize(width: 250, height: 450)
             image = image.reSizeImage(reSize: reSize)
@@ -244,9 +249,10 @@ extension AppDelegate {
             content4.bodyLabel.textAlignment = NSTextAlignment.left
             var bgImage = UIImage(named:"画面フレーム")
 //            let screen = ScreenSize() * screen.calScale
-            reSize = CGSize(width: 375, height: 600)
+            reSize = CGSize(width: 700, height: 1200)
             bgImage = bgImage!.reSizeImage(reSize: reSize)
 //            let bgImage = UIImage(data: NSData(contentsOf: bgImageURL as URL)! as Data)
+            
             let vc = OnboardingViewController(
                 backgroundImage: bgImage,
                 contents: [content1, content2, content3, content4]
@@ -264,14 +270,13 @@ extension AppDelegate {
                 UserDefaults.standard.set(true, forKey: "firstLaunch")
             }
 
-
             // 最後のページが表示されるとき, skipボタンを消す
-            content3.viewWillAppearBlock = {
+            content4.viewWillAppearBlock = {
                     vc?.skipButton.isHidden = true
             }
 
             // 最後のページが消えるとき, skipボタンを表示(前ページに戻った場合のため)
-            content3.viewDidDisappearBlock = {
+            content4.viewDidDisappearBlock = {
                     vc?.skipButton.isHidden = false
             }
 
