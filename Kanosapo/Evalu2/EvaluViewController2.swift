@@ -18,27 +18,67 @@ class EvaluViewController2: UIViewController {
     let realm = try! Realm()
     var usedCount = 0
 
+    @IBOutlet weak var pinkView: UIView!
     @IBOutlet weak var slideview: CosmosView!
     @IBOutlet weak var speech_label: UILabel!
     @IBOutlet weak var cant_label: UILabel!
     @IBOutlet weak var can_label: UILabel!
     @IBOutlet weak var menherakanojo: UIImageView!
-
+    @IBOutlet weak var evaluButton: CustomButton!
+    @IBOutlet weak var speechBubble: UIImageView!
+    
+    @IBOutlet weak var closeButton: CustomButton!
+    
     var speech_flag = false
     var animationTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        autoLayout()
+        var score = UserDefaults.standard.object(forKey: "score") as! Double
+        if score < 25 {
+            menherakanojo.image = UIImage(named:"メンヘラ_SD_100")
+        }
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
         speech_label.text = ""
         self.animationTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.animate), userInfo: nil, repeats: true)
+        
+    }
+    
+    func autoLayout(){
+        let screen = ScreenSize()
+        let ratio = screen.ratio
+        pinkView.frame.size = CGSize(width: pinkView.frame.size.width * ratio, height:  pinkView.frame.size.height * ratio)
+        pinkView.center = self.view.center
+        closeButton.frame = CGRect(x: 0, y: 0, width: closeButton.frame.size.width * ratio, height: closeButton.frame.size.height * ratio)
+        speechBubble.frame = CGRect(x: 0, y: closeButton.frame.maxY, width: speechBubble.frame.size.width * ratio, height: speechBubble.frame.size.height * ratio)
+        speechBubble.frame.origin.x = pinkView.frame.size.width - speechBubble.frame.size.width
+        speech_label.frame.size = CGSize(width: speech_label.frame.size.width * ratio, height: speech_label.frame.size.height * ratio)
+        speech_label.center = speechBubble.center
+        speech_label.frame.origin = CGPoint(x: speech_label.frame.origin.x + 10 * ratio, y: speech_label.frame.origin.y - 5 * ratio)
+        menherakanojo.frame = CGRect(x: 0, y: 0, width: menherakanojo.frame.size.width * ratio, height: menherakanojo.frame.size.height * ratio)
+        menherakanojo.center = CGPoint(x: pinkView.frame.size.width/6, y: pinkView.frame.size.height/2)
+        
+        slideview.frame.size = CGSize(width: slideview.frame.size.width * ratio, height: slideview.frame.size.height * ratio)
+        slideview.settings.starSize *= Double(ratio)
+        slideview.center = CGPoint(x: pinkView.frame.size.width/2, y: pinkView.frame.size.height/4 * 3)
+        
+        cant_label.frame = CGRect(x: slideview.frame.origin.x, y: slideview.frame.maxY, width: cant_label.frame.size.width * ratio, height: cant_label.frame.size.height * ratio)
+        can_label.frame = CGRect(x: 0, y: slideview.frame.maxY, width: can_label.frame.size.width * ratio, height: can_label.frame.size.height * ratio)
+        can_label.frame.origin.x = slideview.frame.maxX - can_label.frame.size.width
+        evaluButton.frame.size = CGSize(width: evaluButton.frame.size.width * ratio, height: evaluButton.frame.size.height * ratio)
+        
+        evaluButton.frame.origin.y = slideview.frame.maxY + slideview.frame.size.height/3 * 2
+        evaluButton.frame.origin.x = pinkView.frame.size.width - evaluButton.frame.size.width - (pinkView.frame.size.height - evaluButton.frame.maxY)
+            
+        
     }
 
     @objc func animate() {
         UIView.animate(withDuration: 0.5) {
-            if self.menherakanojo.frame.origin.y == 135.0 {
+            if self.menherakanojo.frame.origin.y == 135.0 * ScreenSize().ratio {
                    self.menherakanojo.frame.origin.y += 10
             } else {
-                   self.menherakanojo.frame.origin.y = 135.0
+                   self.menherakanojo.frame.origin.y = 135.0 * ScreenSize().ratio
             }
         }
     }
@@ -47,7 +87,8 @@ class EvaluViewController2: UIViewController {
         super.viewDidAppear(animated)
         presentingViewController?.endAppearanceTransition()
         speech_label.numberOfLines = 3;
-        speech_label.text = "集中はできたかな？\n現状までのタスクの達\n成度を教えてね♡"
+        speech_label.text = "集中はできたかな？\nタスクの達成度を\n教えてね♡"
+        speech_label.adjustsFontSizeToFitWidth = true
         //animated_label(text: "集中はできたかな？\n現状までのタスクの達\n成度を教えてね♡")
     }
 
