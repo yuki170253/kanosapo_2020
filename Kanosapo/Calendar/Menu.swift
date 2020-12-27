@@ -90,7 +90,7 @@ func craftNewAll(all: UIView, scroll: UIScrollView){
             dateFormatter.dateFormat = "dd"
             if(dateFormatter.string(from: item.start) == dateFormatter.string(from: Date())){
                 print(item)
-                let frame = CGRect(x: CGFloat(5 + 120 * Int(screen.calScale) * task_cnt), y: 18, width: 100 * screen.calScale, height: 28 * screen.calScale)
+                let frame = CGRect(x: CGFloat(5 + 120 * Int(screen.calScale) * task_cnt), y: 18 * screen.calScale, width: 100 * screen.calScale, height: 28 * screen.calScale)
                 let TestView = makeTaskView(frame: frame, tag: Int(item.calendarid)!, title: item.title)
                 let color = UIColor(displayP3Red: CGFloat(item.color_r), green: CGFloat(item.color_g), blue: CGFloat(item.color_b), alpha: 1.0)
                 TestView.backgroundColor = color

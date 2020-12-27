@@ -15,7 +15,7 @@ import RealmSwift
 var currentPoint: CGPoint!
 
 
-func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, ReturnButton: UIButton){
+func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
     print("traceView")
     
     let x:CGFloat = 60
@@ -83,5 +83,6 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, Retur
         test_userDefaultData(view: add_view)
         new_addEvent(tag: add_view.tag)
     }
+    
     print("traceView終了")
 }

@@ -64,9 +64,17 @@ func getnowTime(content: UIView)->UILabel{
     let nowTime = formatter.string(from: now as Date) + "  (" + weeks[weekday] + ")"
     let nowTimeLabel = UILabel()
     let attrText = NSMutableAttributedString(string: nowTime)
-    attrText.addAttribute(.font,
-                          value: UIFont.boldSystemFont(ofSize: 25),
-                          range: NSMakeRange(6, 5))
+    let screen = ScreenSize()
+    if(screen.calScale >= 2){
+        attrText.addAttribute(.font,
+                              value: UIFont.boldSystemFont(ofSize: 40),
+                              range: NSMakeRange(6, 5))
+    }else{
+        attrText.addAttribute(.font,
+                              value: UIFont.boldSystemFont(ofSize: 25),
+                              range: NSMakeRange(6, 5))
+    }
+    
     // attributedTextとしてUILabelに追加します.
     nowTimeLabel.attributedText = attrText
     nowTimeLabel.textAlignment = NSTextAlignment.center

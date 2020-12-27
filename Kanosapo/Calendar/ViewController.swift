@@ -26,14 +26,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     var MenuFlag = false
     @IBOutlet weak var AlldayView: UIView!
     @IBOutlet weak var AlldayLabel: UILabel!
-    
     var startTransform:CGAffineTransform!
     var large = false
-    
     var screen = ScreenSize()
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(animated)
@@ -121,6 +116,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         let leftBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 1, height: MenuLabel.frame.size.height))
         leftBorder.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         MenuLabel.addSubview(leftBorder)
+        if(screen.calScale >= 2){
+            MenuLabel.font = MenuLabel.font.withSize(20)
+            AlldayLabel.font = AlldayLabel.font.withSize(20)
+        }else{
+            MenuLabel.font = MenuLabel.font.withSize(11)
+            AlldayLabel.font = AlldayLabel.font.withSize(11)
+        }
         
     }
     
@@ -147,14 +149,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         if(self.isViewLoaded && (self.view.window != nil)){
             print("フォアグラウンド")
             MyScrollView.contentOffset.y = 0
-            
             try! realm.write{
                 let results = realm.objects(DefaultCalendar.self)
                 realm.delete(results)
             }
             Initialization()
         }
-        
     }
     
     var menuPos = CGPoint(x: 0, y: 0)
@@ -178,14 +178,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     let realm = try! Realm()
     let eventStore = EKEventStore()
     var taskBorder = [CGFloat]()
-    
     var centerPoint = CGPoint()
     var scrollFlag = false
     var moveView1 = CGPoint()
     var moveView2 = CGPoint()
-    
     var leftFlag = false
-    
     var menuContentView = UIView()
     var allContentView = UIView()
     //scrollViewDidEndで使ってる？
@@ -194,15 +191,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         print("viewDidLoad")
         super.viewDidLoad()
         (UIApplication.shared.delegate as! AppDelegate).calendarFlag = true
-        //        //削除予定
-        //        dummyManu.constant = 0
-        //        dummyAll.constant = 50
-        //        dummyTarget.constant = 0
-        //        topBorder.frame = CGRect(x: 0, y: 0, width: 125, height: 1.0)
-        //        topBorder.backgroundColor = UIColor.black.cgColor
-        //        TargetView.layer.addSublayer(topBorder)
-        //        //
-        
         scrollViewFrame()
         autoLayout()
         NOW = NSDate()
@@ -214,7 +202,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         ActivityIndicator.hidesWhenStopped = true
         self.AnimationView.addSubview(ActivityIndicator)
         Initialization()
-        
         
         //UIGestureのインスタンス
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
@@ -232,12 +219,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         }
     }
     //deleteボタンの生成
-    func makeButton() -> UIButton{
+    func makeButton(view: UIView) -> UIButton{
         print("makeButton")
-        let button :UIButton = UIButton(frame: CGRect(x: 285,y: 0,width: 15,height: 15))
+        let screen = ScreenSize()
+        let button :UIButton = UIButton(frame: CGRect(x: view.frame.width - 15 * screen.calScale ,y: 0,width: 15 * screen.calScale,height: 15 * screen.calScale))
         button.setImage(UIImage(named:"close_black"), for: .normal)
         button.addTarget(self, action: #selector(deleteView(_:)), for: UIControl.Event.touchUpInside)
         return button
+        
     }
     //引数のView.subviewsのUIViewにLongPressedを付与
     func addLongPressed(view: UIView){
@@ -352,13 +341,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
     
     func setLabel(){
         print("setLabel")
+        let screen = ScreenSize()
         let calendar = Calendar.current
         let date = Date()
         let hour = calendar.component(.hour, from: date)
         for i in 0..<24{
             let Label = UILabel(frame: CGRect(x: 10, y: 10 + (i * 60), width: 100, height: 40))
             Label.backgroundColor = UIColor.clear
-            Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 11)
+            if(screen.calScale >= 2){
+                Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 15)
+            }else{
+                Label.font = UIFont(name: "Tsukushi A Round Gothic", size: 11)
+            }
             //Label.font = UIFont.systemFont(ofSize: 11)
             Label.text = String((hour+i) % 24) + ":00"
             Label.tag = i+1
@@ -564,12 +558,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 }
                 craftCalendar(base_view: ContentView)
                 craftNewAll(all: AlldayView, scroll: AllScrollView)
+                //
                 for item in AllScrollView.subviews{
                     if type(of: item) ==  UIView.self {
                         allContentView = item
                     }
                 }
                 addLongPressed(view: allContentView)
+//                updateViews(content: ContentView, allday: allContentView)
                 day.titleView = getnowTime(content: ContentView)
                 isRefreshing = false
             }
@@ -685,12 +681,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                     button.addTarget(self, action: #selector(deleteView(_:)), for: UIControl.Event.touchUpInside)
                     //                        traceView(userY: userY - CGFloat(65 + dummyAll.constant), height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
                     var pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
-                    traceView(userY: pointY, height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
-                    
-                    
+                    traceView(userY: pointY, height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView)
                     print("view戻す")
-                    
-                    
                 }
                 sender.view!.center = selevtViewCenter
                 MoveToRight(scroll: MenuScrollView,animation: false)
@@ -699,9 +691,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 
             }else if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 if(sender.view!.frame.minY > AlldayView.frame.height) {
-                    let button = makeButton()
                     var pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
-                    traceView(userY: pointY, height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
+                    traceView(userY: pointY, height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView)
                     //                    traceView(userY: userY - CGFloat(MyScrollView.frame.minY), height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
                     sender.view!.removeFromSuperview()
                     for View in allContentView.subviews{
@@ -718,11 +709,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                             moveView1 = moveView2
                         }
                     }
-                    
-                    //                    削除予定
-                    //                    if(dummyAllFlag){
-                    //                        dummyAll.constant = 25 + CGFloat((AlldayView.subviews.count / 4) * 25)
-                    //                    }
                 }else {
                     sender.view!.center = selevtViewCenter
                 }

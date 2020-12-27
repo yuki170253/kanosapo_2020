@@ -16,7 +16,6 @@ import RealmSwift
 func makeView(id:String, title:String, color:UIColor) -> SampleView{
     
     var currentPoint: CGPoint!
-    let button = ViewController().makeButton()
     let screen = ScreenSize()
     /*
      start 開始時間
@@ -82,9 +81,10 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
     tasktimeLabel.textColor = UIColor.white
     var imageView = UIImageView(image:UIImage(named:"x")!)
     calendarView.addSubview(titleLabel)
+    //カケル追加 12/26 buttonのxを機種に対応させる
+    let button = ViewController().makeButton(view: calendarView)
     calendarView.addSubview(button)
     calendarView.tag = Int(id)!
-    
     return calendarView
 }
 
