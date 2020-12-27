@@ -34,7 +34,13 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
     @IBOutlet weak var replay_button: UIButton!
     @IBOutlet weak var save_button: UIButton!
     @IBOutlet weak var dialogueTextLabel: UILabel!
-    
+    @IBOutlet weak var titleBaackground: UIView!
+    @IBOutlet weak var DialogueBackground: UIView!
+    @IBOutlet weak var menheraLabelBackground: UIView!
+    @IBOutlet weak var menheraLabel: UILabel!
+    @IBOutlet weak var playImage: UIImageView!
+    @IBOutlet weak var objectiveLable: UILabel!
+    @IBOutlet weak var LineView: UIView!
     var vc: EvaluViewController2?
     let userDefaults = UserDefaults.standard
     let image_play:UIImage = UIImage(named:"icons8-再生ボタン")!
@@ -45,8 +51,31 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
     let dialog: UIAlertController = UIAlertController(title: "経過を保存しました", message: "ストップウォッチを停止ました", preferredStyle: .alert)
     override func viewDidLoad() {
         super.viewDidLoad()
+        var scala:CGFloat?
+        if view.frame.width/375 > view.frame.height/667 {
+            scala = view.frame.height/667
+        } else {
+            scala = view.frame.width/375
+        }
         vc = storyboard?.instantiateViewController(withIdentifier: "popupmenu") as? EvaluViewController2
         button.layer.cornerRadius = 50.0
+
+        timeDisplay.frame = CGRect(x: view.frame.width*0.04, y: view.frame.height*0.4, width: view.frame.height*0.514, height: view.frame.height*0.03)
+        replay_button.frame = CGRect(x: view.frame.width*0.1, y: view.frame.height*0.6, width: view.frame.height*0.11, height: view.frame.height*0.11)
+        button.frame = CGRect(x: view.frame.width*0.365, y: view.frame.height*0.496, width: view.frame.height*0.15, height: 0.15)
+        LineView.frame = CGRect(x: view.frame.width*0.1, y: view.frame.height*0.38, width: view.frame.height*0.455, height: 1)
+        dotimeDisply.frame = CGRect(x: view.frame.width*0.12, y: view.frame.height*0.307, width: view.frame.height*0.413, height: view.frame.height*0.073)
+        save_button.frame = CGRect(x: view.frame.width*0.69, y: view.frame.height*0.617, width: view.frame.height*0.105, height: view.frame.height*0.105)
+        titleBaackground.frame = CGRect(x: view.frame.width*0.042, y: view.frame.height*0.115, width: view.frame.height*0.514, height: view.frame.height*0.18)
+        objectiveLable.frame = CGRect(x: view.frame.width*0.085, y: view.frame.height*0.118, width: view.frame.height*0.135, height: view.frame.height*0.04)
+        testlabel.frame = CGRect(x: 0, y: 0, width: view.frame.height*0.514, height: view.frame.height*0.1)
+        target_time_label.frame = CGRect(x: view.frame.width*0.44, y: view.frame.height*0.113, width: view.frame.height*0.156, height: view.frame.height*0.051)
+        DialogueBackground.frame = CGRect(x: view.frame.width*0.042, y: view.frame.height*0.82, width: view.frame.height*0.514, height: view.frame.height*0.1)
+        dialogueTextLabel.frame = CGRect(x: view.frame.width*0.024, y: view.frame.height*0.03, width: view.frame.height*0.505, height: view.frame.height*0.066)
+        menheraLabelBackground.frame = CGRect(x: view.frame.width*0.04, y: view.frame.height*0.81, width: view.frame.height*0.171, height: view.frame.height*0.039)
+        menheraLabel.frame = CGRect(x: view.frame.width*0.058, y: view.frame.height*0.0059, width: view.frame.height*0.126, height: view.frame.height*0.025)
+        playImage.frame = CGRect(x: view.frame.width*0.0026, y: view.frame.height*0.0059, width: view.frame.height*0.03, height: view.frame.height*0.025)
+        
         // 登録
         NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
             notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -76,7 +105,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
                          selector: #selector(changedAppStatus(_:)),
                          name: UIApplication.protectedDataDidBecomeAvailableNotification,
                          object: nil)
-
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(changedAppStatus(_:)),

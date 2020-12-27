@@ -82,11 +82,11 @@ class TodoTableViewController: UIViewController, UITableViewDataSource, UITableV
         cell.title.text = todo.title
         cell.todo = todo
         //セルのじチェックマーク状態をセット
-        if todo.todoDone {
-            cell.checkbutton.setImage(checkedImage, for: .normal)
-        } else {
-            cell.checkbutton.setImage(uncheckedImage, for: .normal)
-        }
+//        if todo.todoDone {
+//            cell.checkbutton.setImage(checkedImage, for: .normal)
+//        } else {
+//            cell.checkbutton.setImage(uncheckedImage, for: .normal)
+//        }
         if todo.InFlag{
             cell.run.isHidden = false
         }else{
