@@ -576,6 +576,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         }
     }
     
+    private let feedbackGenerator: Any? = {
+            if #available(iOS 10.0, *) {
+                let generator: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.prepare()
+                return generator
+            } else {
+                return nil
+            }
+        }()
+
     //168まで
     var selevtViewCenter = CGPoint()
     //長押し
@@ -598,6 +608,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         
         if(sender.state == UIGestureRecognizer.State.began) {
             print("長押し開始")
+            if #available(iOS 10.0, *), let generator = feedbackGenerator as? UIImpactFeedbackGenerator {
+                generator.impactOccurred()
+            }
             //            for view in sender.self.view!.superview!.subviews {
             //                print(view.tag)
             //            }
@@ -611,6 +624,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             
             selevtViewCenter = sender.self.view!.center
             moveView1 = sender.self.view!.frame.origin
+            sender.self.view!.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+            sender.self.view!.layer.shadowColor = UIColor.black.cgColor
+            sender.self.view!.layer.shadowOpacity = 0.6
+            sender.self.view!.layer.shadowRadius = 4
             
             if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 if(MenuFlag){
@@ -667,7 +684,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             print("長押し終了")
             
             //ContentViewにドロップした場合
-            
+            sender.self.view!.layer.shadowOpacity = 0.0
             print("moveManu")
             let savetag = sender.view!.tag
             //ManuViewのタスクが移動された場合

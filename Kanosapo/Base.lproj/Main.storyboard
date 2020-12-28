@@ -1158,11 +1158,6 @@ EExJTkU
             <point key="canvasLocation" x="455" y="-305"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="XNZ-Te-s4K">
-            <size key="intrinsicContentSize" width="286" height="46"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="2sU-ig-1d1"/>
     </inferredMetricsTieBreakers>

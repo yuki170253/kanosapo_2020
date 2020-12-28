@@ -16,7 +16,6 @@ class ScreenSize: NSObject {
     var no23point: Int = 1410
     
     override init() {
-        print("ScreenSize")
         if screenHeight > 926 {
             calScale = 2.0
         }
