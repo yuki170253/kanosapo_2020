@@ -146,7 +146,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menhera_meter.png" translatesAutoresizingMaskIntoConstraints="NO" id="uXZ-iz-6XK">
-                                <rect key="frame" x="30" y="30" width="317" height="41"/>
+                                <rect key="frame" x="7" y="30" width="317" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ふきだし_6.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-2l-DNi">
@@ -172,6 +172,13 @@
                                 <color key="progressTintColor" red="0.96078431369999995" green="0.60784313729999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4r-8O-luw">
+                                <rect key="frame" x="332" y="34" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" red="0.92013412714004517" green="0.34673741459846497" blue="0.97721701860427856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="info.circle" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="037-q1-eai"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,6 +196,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Vph-Kh-Ed9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="background" destination="h8J-gh-8dR" id="bTN-SP-6Kh"/>
                         <outlet property="calendarButton" destination="8I0-tE-jdW" id="I4e-hp-vMy"/>
                         <outlet property="desk" destination="HT2-qI-Uye" id="fIB-TA-Q8F"/>
                         <outlet property="feedbackButton" destination="dZf-dz-mnf" id="ltt-KU-e1N"/>
@@ -211,7 +219,7 @@
             <objects>
                 <viewController id="f4W-7C-tTc" customClass="EvaluViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OD1-Nx-Qbe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="目標時間達成まで 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-sC-noG">
@@ -397,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPR-aw-dGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.2" y="1177.961019490255"/>
+            <point key="canvasLocation" x="1121" y="1179"/>
         </scene>
         <!--Evalu Details View Controller-->
         <scene sceneID="zop-Hm-g2Z">
@@ -480,20 +488,20 @@
         <scene sceneID="OJW-pU-k20">
             <objects>
                 <viewController storyboardIdentifier="popupmenu" id="pwJ-dE-l7X" customClass="EvaluViewController2" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="dhf-Ji-ty8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                    <view key="view" contentMode="scaleToFill" id="dhf-Ji-ty8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORF-GJ-DL1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORF-GJ-DL1">
                                 <rect key="frame" x="28" y="135" width="321" height="408"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="メンヘラ_SD_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-hT-mWk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="メンヘラ_SD_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-hT-mWk">
                                         <rect key="frame" x="0.0" y="107" width="120" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hiT-hT-mWk" secondAttribute="height" multiplier="4:5" id="GLr-zZ-Zbg"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="top" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XNZ-Te-s4K" customClass="CosmosView" customModule="Cosmos">
+                                    <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="XNZ-Te-s4K" customClass="CosmosView" customModule="Cosmos">
                                         <rect key="frame" x="17.5" y="272" width="286" height="46"/>
                                         <color key="backgroundColor" red="0.98782163860000005" green="0.92113941909999997" blue="0.92038822170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -523,19 +531,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="できなかった" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7om-3z-H9K">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="できなかった" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7om-3z-H9K">
                                         <rect key="frame" x="17.5" y="318" width="80" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="できた" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-ts-och">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="できた" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-ts-och">
                                         <rect key="frame" x="266.5" y="318" width="37" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ex-ov-wXH" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ex-ov-wXH" customClass="CustomButton" customModule="Kanosapo" customModuleProvider="target">
                                         <rect key="frame" x="200" y="358" width="99" height="30"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.76078431369999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -752,7 +760,7 @@
             <objects>
                 <viewController id="qpW-sV-xfi" customClass="ResultViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1kg-YK-fOI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="メンヘラ_SD_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="0US-ar-Gu0">
@@ -1385,7 +1393,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="KWS-zU-rAs"/>
+        <segue reference="2sU-ig-1d1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="button_c.png" width="345" height="372"/>
@@ -1400,6 +1408,7 @@
         <image name="fill_heart.png" width="100" height="100"/>
         <image name="heart.png" width="100" height="100"/>
         <image name="icons8-再生ボタン.png" width="100" height="100"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="menhera_meter.png" width="820" height="129"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="replay_black_192x192.png" width="192" height="192"/>
