@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         requestAuthorization()
-        checkAuth()
+        
         
         tokenUpdate()
         FirebaseApp.configure()
@@ -149,6 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //vc.showAlert(title: "未許可", message: "許可がないため通知ができません")
                 }
             }
+            checkAuth()
         }
     }
 }
