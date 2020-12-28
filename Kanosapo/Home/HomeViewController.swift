@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     // スクリーン画面のサイズを取得
     let scWid: CGFloat = UIScreen.main.bounds.width     //画面の幅
     let scHei: CGFloat = UIScreen.main.bounds.height    //画面の高さ
-
+    
     @IBOutlet weak var talk: UILabel!
     @IBOutlet weak var menheraMeter: UIProgressView!
     @IBOutlet weak var meterBackground: UIImageView!
@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var desk: UIImageView!
     @IBOutlet weak var speechZone: UIImageView!
     
+    @IBOutlet weak var background: UIImageView!
     
     let realm = try! Realm()
     var score:Double = 75.0
@@ -45,9 +46,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() { //切り替えても呼び出されない...
         super.viewDidLoad()
-        //score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
-        timerMeter = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(HomeViewController.meterUpdate), userInfo: nil, repeats: true)//0.1秒毎にtimerUpdate
-
+        score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
+        percent = Int(score)
+        //        print(daylist7Reverse())
+        //        timerMeter = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(HomeViewController.meterUpdate), userInfo: nil, repeats: true)//0.1秒毎にtimerUpdate
+        background.contentMode = UIView.ContentMode.scaleAspectFill
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         let results = realm.objects(Calendar24.self).filter("start >= %@ AND start <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
         let task = results.first
@@ -64,14 +67,14 @@ class HomeViewController: UIViewController {
             talk.adjustsFontSizeToFitWidth = true
             talk.text = talkcontent
         }
-
+        
         var scala:CGFloat?
         if view.frame.width/375 > view.frame.height/667 {
             scala = view.frame.height/667
         } else {
             scala = view.frame.width/375
         }
-
+        
         speechZone.frame = CGRect(x: 0, y: view.frame.height*0.11, width: speechZone.frame.width*scala!, height: speechZone.frame.height*scala!)
         talk.frame = CGRect(x: view.frame.width*0.019, y: view.frame.height*0.15, width: talk.frame.width*scala!, height: talk.frame.height*scala!)
         calendarButton.frame = CGRect(x: view.frame.width*0.7, y: view.frame.height*0.14, width: calendarButton.frame.width*scala!, height: calendarButton.frame.height*scala!)
@@ -84,7 +87,22 @@ class HomeViewController: UIViewController {
         menheraMeter.layer.borderColor = UIColor.red.cgColor
         menheraMeter.layer.borderWidth = 0.0003 * view.frame.height
         menheraMeter.layer.masksToBounds = true
-        meterBackground.frame = CGRect(x: view.frame.width*0.08, y: view.frame.height*0.043, width: view.frame.width*0.85, height: view.frame.height*0.061)
+        meterBackground.frame = CGRect(x: view.frame.width*0.015, y: view.frame.height*0.043, width: view.frame.width*0.85, height: view.frame.height*0.061)
+        
+        let meterWhite = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 12))
+        let meterPink = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 12))
+        meterWhite.center = CGPoint(x: meterBackground.frame.size.width/2 , y: meterBackground.frame.size.height/2 - 3 * scala!)
+        meterWhite.backgroundColor = UIColor.white
+        meterWhite.layer.cornerRadius =  10
+        meterBackground.addSubview(meterWhite)
+        meterPink.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        meterPink.layer.cornerRadius =  10
+        meterPink.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        meterWhite.addSubview(meterPink)
+        menheraMeter.removeFromSuperview()
+        UIView.animate(withDuration: 2.0, delay: 0.0, options: .curveEaseInOut , animations: {
+            meterPink.frame.size.width = meterWhite.frame.size.width / 100 * CGFloat(self.percent)
+        }, completion: nil)
         
         if score <= 25{
             menhera.image = menhera_100
@@ -97,8 +115,7 @@ class HomeViewController: UIViewController {
         }
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTableViewController") as! HomeTableViewController
         vc.attach(to: self)
-        timerMeter?.invalidate()
-
+        //        timerMeter?.invalidate()
     }
     
 

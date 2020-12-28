@@ -50,6 +50,7 @@ class Todo: Object {
         ans += overTime - usedCount * 5
 
         if ans <= 0{
+            
             ans = 0
         }
         
@@ -137,4 +138,31 @@ func daylist7() -> [String]{
     return days
 }
 
+func daylist7Reverse() -> [String]{
+    var days:[String] = []
+    let date:Date = Date()
+    let f = DateFormatter()
+    f.timeStyle = .none
+    f.dateStyle = .full
+    f.locale = Locale(identifier: "ja_JP")
+    days.append("指定なし")
+    for i in 0...6 {
+        let modifiedDate = Calendar.current.date(byAdding: .day, value: -i, to: date)!
+        days.append(f.string(from: modifiedDate))
+    }
+    return days
+}
+
+func daylist7EnglishReverse() -> [String]{
+    var days:[String] = []
+    let date:Date = Date()
+    let f = DateFormatter()
+    f.dateFormat = "d MMM"
+    days.append("指定なし")
+    for i in 0...6 {
+        let modifiedDate = Calendar.current.date(byAdding: .day, value: -i, to: date)!
+        days.append(f.string(from: modifiedDate))
+    }
+    return days
+}
 

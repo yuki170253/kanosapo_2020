@@ -39,10 +39,8 @@ class DayResultViewController: UIViewController {
     
     
     var num:Int?
-//タスクの数.countにしたい/////////////////////////////////////////////////////////////////
-    //タスク終わった数どこで見れる？
-    private let numEntry = 10
-    
+    private let numEntry = 8
+    var rateAverage:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,25 +51,32 @@ class DayResultViewController: UIViewController {
         
         let realm = try! Realm()
         let myTodos = realm.objects(Todo.self)
+        let daylist7 = daylist7Reverse()
+        var average:Int = 0
+        for i in 0 ..< 8 {
+            let results = realm.objects(Todo.self).filter("datestring == %@", daylist7[i])
+            average = 0
+            for todo in results {
+                average += todo.rate
+            }
+            if results.count == 0{
+                self.rateAverage.append(0)
+            }else{
+                self.rateAverage.append(average/results.count)
+            }
+        }
+        
+        
         for myTodo in myTodos{
             if myTodo.todoDone == true{
                 print("OkBooooooooooooy")
-                                
-//                if let unevaluation:Int = myTodo.rate {
-//                    evaluation = unevaluation
-//                }
-//                if let undotime:Int = myTodo.dotime{
-//                    dotime = undotime
-//                }
-//                if let untitle:String = myTodo.title{
-//                    todotitle = untitle
-//                }
             }else{
                 print("まだ終わってない")
             }
         }
         self.view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        
+        print("8888888888888888888888888888888888888")
+        print(rateAverage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,22 +114,23 @@ class DayResultViewController: UIViewController {
     func generateRandomDataEntries() -> [DataEntry] {
         let colors = [#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)]
         var result: [DataEntry] = []
-        for i in 0..<numEntry {
+        let daylist7English = daylist7EnglishReverse()
+        for i in 0..<8 {
+
             //グラフの値が入る（タスク評価の値が入る）
-            let value = (arc4random() % 90) + 10
+            //let value = (arc4random() % 90) + 10
+            var value = 0.0
+            value = Double(rateAverage[i])
+            print("::::::::::::::::::::::::::::::::::::")
             
             
             let height: Float = Float(value) / 100.0
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(24*60*60*i))
-            result.append(DataEntry(color: colors[i % colors.count], height: height, textValue: "\(value)", title: formatter.string(from: date)))
+            //date.addTimeInterval(TimeInterval(24*60*60*i))
+            result.append(DataEntry(color: colors[i % colors.count], height: height, textValue: "\(value)", title: daylist7English[i]))
         }
         return result
     }
-
 }
 
 extension DayResultViewController: DayResultDelegate{
