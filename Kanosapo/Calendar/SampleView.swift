@@ -11,8 +11,9 @@ import UIKit
 
 class SampleView :UIView {
     
-    var no1point = 30
-    var no23point = 1410
+    var no1point: Int = 30
+    var no23point: Int = 1410
+    let screen = ScreenSize()
     
     var aTouch = UITouch()
     
@@ -34,43 +35,43 @@ class SampleView :UIView {
     let leftBorder = UIView()
     
     
-    var fakeView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 15))
+    var fakeView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
     
     
     override init(frame: CGRect) {
+        
+        no1point = screen.no1point
+        no23point = screen.no23point
+        
         super.init(frame: frame)
-        //self.backgroundColor = UIColor.blue
-//        let myLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 50,height: 20))
-//        taskTime.text = "Title"
-//        myLabel.text = "Title"
-//        myLabel.textColor = UIColor.white
         var color :UIColor = UIColor.black
         
         
         fake_taskTime.textColor = UIColor.white
         startTime.textColor = UIColor.white
         title.textColor = UIColor.white
-//        var font = UIFont(name: "Tsukushi A Round Gothic", size: 10)
-//        title.font = font?.bold
+        //        var font = UIFont(name: "Tsukushi A Round Gothic", size: 10)
+        //        title.font = font?.bold
         title.font = UIFont.boldSystemFont(ofSize: 13)
         title.layer.masksToBounds = true
         title.layer.cornerRadius = 4
         title.backgroundColor = color
-//        endTime.textColor = UIColor.white
+        //        endTime.textColor = UIColor.white
         
-        imageView.frame = CGRect(x:300, y: 588, width:59, height:59)
-        imageView.alpha = 1.0
-        self.superview?.addSubview(imageView)
+        //        imageView.frame = CGRect(x:300, y: 588, width:59, height:59)
+        //        imageView.alpha = 1.0
+        //        self.superview?.addSubview(imageView)
+        
         //imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
         //taskTime.font = taskTime.font.withSize(15.0)
         
         //content.addSubview(startTime)
         
-//        self.addSubview(endTime)
-//        self.addSubview(myLabel)
+        //        self.addSubview(endTime)
+        //        self.addSubview(myLabel)
         
         //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-        content.frame.size = CGSize(width: self.frame.size.width, height: self.frame.size.height - 20)
+        content.frame.size = CGSize(width: self.frame.size.width, height: self.frame.size.height - 20 * screen.calScale)
         
         //content.backgroundColor = color
         content.alpha = 0.3
@@ -88,9 +89,9 @@ class SampleView :UIView {
         circle.clipsToBounds = true
         //circle.layer.borderColor = UIColor.black.cgColor
         //circle.layer.borderWidth = 2
-//        let doTime = content.frame.size.height
-//        let timetext = String(format: "%02dh %02dm", Int(doTime/60), Int(round(Double(doTime) - Double(60*Int(doTime/60)))))
-//        dotimeLabel.text = "目標時間：" + timetext
+        //        let doTime = content.frame.size.height
+        //        let timetext = String(format: "%02dh %02dm", Int(doTime/60), Int(round(Double(doTime) - Double(60*Int(doTime/60)))))
+        //        dotimeLabel.text = "目標時間：" + timetext
         dotimeLabel.frame.origin.y = content.frame.size.height - 15
         dotimeLabel.textColor = UIColor.black
         dotimeLabel.font = UIFont(name: "Tsukushi A Round Gothic", size: 12)
@@ -107,6 +108,7 @@ class SampleView :UIView {
         
         
         fakeView.backgroundColor = color
+        fakeView.frame = self.content.frame
         fakeView.addSubview(title)
         //fakeView.addSubview(fake_taskTime)
         
@@ -121,23 +123,23 @@ class SampleView :UIView {
         
         getTaskTime_S()
         
-//        print("bfgosuezhfnclbvshgorue")
-//        print(self.superview!.superview?.superview)
+        //        print("bfgosuezhfnclbvshgorue")
+        //        print(self.superview!.superview?.superview)
         
         
-//        for view in (self.superview?.superview?.superview?.subviews)! {
-//            if type(of: view) ==  UIImageView.self{
-//                print("view", view)
-//            }
-//        }
-
+        //        for view in (self.superview?.superview?.superview?.subviews)! {
+        //            if type(of: view) ==  UIImageView.self{
+        //                print("view", view)
+        //            }
+        //        }
+        
         //panジェスチャーのインスタンスを作成する
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
-//        let circlePan = UIPanGestureRecognizer(target: self, action: #selector(self.circlePanGesture(_:)))
-//        //ジェスチャーを追加する
+        //        let circlePan = UIPanGestureRecognizer(target: self, action: #selector(self.circlePanGesture(_:)))
+        //        //ジェスチャーを追加する
         self.addGestureRecognizer(gesture)
-//        self.circle.addGestureRecognizer(circlePan)
-       
+        //        self.circle.addGestureRecognizer(circlePan)
+        
     }
     
     var scrollFlag = false
@@ -145,6 +147,7 @@ class SampleView :UIView {
     var alltracedView = [SampleView]()
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        print("panGesture")
         let hour = (no23point - no1point)/23
         let minute:Double
         var point: CGPoint
@@ -155,12 +158,14 @@ class SampleView :UIView {
         var changedheight: Double
         
         var separate:Double = Double(hour/4)
-
+        
         minute = Double(hour)/Double(60)
-        
-        
         if(gestureRecognizer.state == .began){
-            
+            if(gestureRecognizer.location(in: self).y > content.frame.height - 30 * screen.calScale && gestureRecognizer.location(in: self).x > circle.center.x - 50 * screen.calScale && gestureRecognizer.location(in: self).x < circle.center.x + 50 * screen.calScale){
+                flag = 1
+            }else {
+                flag = 0
+            }
             for label in self.subviews{
                 if type(of: label) == UILabel.self {
                     title.text = (label as! UILabel).text
@@ -168,7 +173,6 @@ class SampleView :UIView {
             }
             
             content.alpha = 1.0
-            
             alltracedView = []
             tracedView = []
             for sampleview in self.superview!.subviews{
@@ -186,53 +190,43 @@ class SampleView :UIView {
                 taskTime.alpha = 1.0
             }
             //移動量を取得する
-            var move = gestureRecognizer.translation(in: self)
-            movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
-            movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
-            if(gestureRecognizer.state == .ended){
-                for i in 0..<92 {
-                    if(Double(movedUnderPoint.y) > Double(no1point) + Double(hour*i/4) && Double(movedUnderPoint.y) <= Double(no1point) + Double(hour/8) + Double(hour*i/4)){
-                        changedheight = Double(hour*i/4)
-                        print("center",movedCenterPoint.y,i)
-                        print(self.frame.origin)
-                    }else if(Double(movedUnderPoint.y) <= Double(no1point) + Double(hour*(i+1)/4) && Double(movedUnderPoint.y) > Double(no1point) + Double(hour/8) + Double(hour*i/4)){
-                        changedheight = Double(hour*(i+1)/4)
-
-                        print("center",movedCenterPoint.y)
-                        print(self.frame.origin)
-                    }
+            //if(gestureRecognizer.state == .changed){
+                var move = gestureRecognizer.translation(in: self)
+                movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
+                movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
+                
+                if(content.frame.size.height + move.y > CGFloat(15 * minute)){
+                    self.frame.size.height += move.y
+                    content.frame.size.height += move.y
+                    leftBorder.frame.size.height += move.y
+                }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
+                    //move.y = 0
+                    self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
+                    content.frame.size.height = CGFloat(15 * minute)
+                    leftBorder.frame.size.height = CGFloat(15 * minute)
                 }
-            }
-            
-            if(content.frame.size.height + move.y > 15){
-                self.frame.size.height += move.y
-                content.frame.size.height += move.y
-                leftBorder.frame.size.height += move.y
-            }else {
-                self.frame.size.height = CGFloat(300 * minute + 20)
-                content.frame.size.height = CGFloat(300 * minute)
-                leftBorder.frame.size.height = CGFloat(300 * minute)
-            }
-            
-            
-            if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
-                //move.y = 0
-                self.frame.size.height = CGFloat(15 * minute + 20)
-                content.frame.size.height = CGFloat(15 * minute)
-                leftBorder.frame.size.height = CGFloat(15 * minute)
-            }
-            
-            //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-            dotimeLabel.frame.origin.y = content.frame.size.height - 15
-            taskTime.frame.origin.y = content.frame.size.height - 15
-            
-            circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
-            imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
-            //移動量をリセットする
-            gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+                if(content.frame.size.height + move.y > CGFloat(300 * minute)){
+                    self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
+                    content.frame.size.height = CGFloat(300 * minute)
+                    leftBorder.frame.size.height = CGFloat(300 * minute)
+                }
+                
+                //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
+                dotimeLabel.frame.origin.y = content.frame.size.height - 15
+                taskTime.frame.origin.y = content.frame.size.height - 15
+                
+                circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
+                imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
+                //移動量をリセットする
+                gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+            //}
             if(gestureRecognizer.state == .ended){
                 taskTime.alpha = 0.0
                 userDefaultData(view: self)
+                if(self.tag > 10000000000 && self.tag <= 100000000000){ //default
+                    print("default")
+                    new_addEvent(tag: self.tag)
+                }
             }
             
             
@@ -248,7 +242,7 @@ class SampleView :UIView {
                 fakeView.layer.shadowOpacity = 0.6
                 // 影をぼかし
                 fakeView.layer.shadowRadius = 4
-                fakeView.frame = CGRect(x: 60, y: self.frame.origin.y + (self.superview?.superview as! UIScrollView).frame.origin.y - (self.superview?.superview as! UIScrollView).contentOffset.y, width: 300, height: self.content.frame.size.height)
+                fakeView.frame = CGRect(x: 60, y: self.frame.origin.y + (self.superview?.superview as! UIScrollView).frame.origin.y - (self.superview?.superview as! UIScrollView).contentOffset.y, width: self.content.frame.size.width, height: self.content.frame.size.height)
                 
             }
             location = aTouch.location(in: fakeView) //in: には対象となるビューを入れます
@@ -257,27 +251,28 @@ class SampleView :UIView {
             movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + point.x, y: gestureRecognizer.view!.center.y + point.y)
             movedPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y - self.frame.size.height/2)
             if(gestureRecognizer.state == .changed){
+                print("gesloc",gestureRecognizer.location(in: self).y)
                 //fakeView.frame.origin.x = movedPoint.x
                 fakeView.frame.origin.y += point.y
                 gestureRecognizer.view!.center.y = fakeView.center.y + (self.superview?.superview as! UIScrollView).contentOffset.y - (self.superview?.superview as! UIScrollView).frame.origin.y +     10
-                print("location",location)
+                //print("location",location)
                 //print(self.frame.origin.y, fakeView.frame.origin.y)
                 print(gestureRecognizer.view!.frame.minY,gestureRecognizer.view!.frame.maxY)
                 //print(movedPoint.y - (self.superview?.superview as! UIScrollView).contentOffset.y)
                 imageView.alpha = 1.0
                 if(!scrollFlag){
-                    if(gestureRecognizer.view!.frame.maxY - (self.superview?.superview as! UIScrollView).contentOffset.y > 560){
+                    if(fakeView.frame.maxY > (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute)){
                             print("under")
                             scrollFlag = true
                             startAutoScroll(duration: 0.05, direction: .under)
-                    }else if(gestureRecognizer.view!.frame.minY - (self.superview?.superview as! UIScrollView).contentOffset.y < 30){
+                    }else if(fakeView.frame.minY < (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
 
                             print("upper")
                             scrollFlag = true
                             startAutoScroll(duration: 0.05, direction: .upper)
                     }
                 }
-                if(gestureRecognizer.view!.frame.maxY - (self.superview?.superview as! UIScrollView).contentOffset.y <= 560 && gestureRecognizer.view!.frame.minY - (self.superview?.superview as! UIScrollView).contentOffset.y >= 30){
+                if(fakeView.frame.maxY <= (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute) && fakeView.frame.minY >= (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
                     scrollFlag = false
                     stopAutoScrollIfNeeded()
                 }
@@ -314,11 +309,15 @@ class SampleView :UIView {
                         print(self.frame.origin)
                     }
                 }
-                overLaped()
+                //                overLaped()
                 scrollFlag = false
                 stopAutoScrollIfNeeded()
                 imageView.alpha = 0.0
                 userDefaultData(view: self)
+                if(self.tag > 10000000000 && self.tag <= 100000000000){ //default
+                    print("default")
+                    new_addEvent(tag: self.tag)
+                }
             }
         }
         getTaskTime_S()
@@ -357,7 +356,7 @@ class SampleView :UIView {
         startTime.text = format.string(from: startDate)
         //endTime.text = format.string(from: endDate)
         
-       // var tasktime = Double(endtime - starttime)
+        // var tasktime = Double(endtime - starttime)
         var tasktime = Double(self.content.frame.size.height) / minute
         let timetext = String(format: "%d:%02d", Int(tasktime/60), Int(tasktime - Double(60*Int(tasktime/60))))
         
@@ -367,52 +366,50 @@ class SampleView :UIView {
     
     
     func userDefaultData(view: SampleView){
-            print("userDefaultData")
-            let dateFormater = DateFormatter()
-
-            dateFormater.locale = Locale(identifier: "ja_JP")
-            dateFormater.dateFormat = "yyyy/MM/dd"
-            dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
-            print("userDefaultData-Content.subviews")
-
-            //        for view in content.subviews{
-            //            if(type(of: view) == SampleView.self){
-            print(view.tag)
-            print(view)
-            let result_d = realm.objects(DefaultCalendar.self)
-            let result_c = realm.objects(Calendar24.self)
-            print(result_d)
-            print(result_c)
-            let start = getTaskTime(y: view.frame.origin.y)
-            print("startTime---")
-            print(start)
-            let dotime = Int((view.frame.height-20) * 60)
-            //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
-            if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
-                try! realm.write{
-                    let day = start
-                    let end = Calendar.current.date(byAdding: .second, value: dotime, to: day)!
-                    let item = realm.object(ofType: Calendar24.self, forPrimaryKey: String(view.tag))
-                    item!.start = start
-                    item!.c_dotime = dotime
-                    item!.end = end
-                }
-            }else if(view.tag >= 10000000000){ //default
-                try! realm.write{
-                    let day = start
-                    let end = Calendar.current.date(byAdding: .second, value: dotime, to: day)!
-                    let item = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(view.tag))
-                    item!.start = start
-                    item!.c_dotime = dotime
-                    item!.end = end
-
-                    print(start)
-                    print(end)
-                }
+        print("userDefaultData")
+        let dateFormater = DateFormatter()
+        
+        dateFormater.locale = Locale(identifier: "ja_JP")
+        dateFormater.dateFormat = "yyyy/MM/dd"
+        dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        print("userDefaultData-Content.subviews")
+        
+        //        for view in content.subviews{
+        //            if(type(of: view) == SampleView.self){
+        print(view.tag)
+        print(view)
+        let result_d = realm.objects(DefaultCalendar.self)
+        let result_c = realm.objects(Calendar24.self)
+        print(result_d)
+        print(result_c)
+        let start = getTaskTime(y: view.frame.origin.y)
+        print("startTime---")
+        print(start)
+        let dotime = Int((view.frame.height - (20 * screen.calScale)) * 60 / screen.calScale)
+        //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
+        if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
+            try! realm.write{
+                let day = start
+                let end = Calendar.current.date(byAdding: .second, value: dotime, to: day)!
+                let item = realm.object(ofType: Calendar24.self, forPrimaryKey: String(view.tag))
+                item!.start = start
+                item!.c_dotime = dotime
+                item!.end = end
             }
-            //            }
-            //        }
+        }else if(view.tag >= 10000000000){ //default
+            try! realm.write{
+                let day = start
+                let end = Calendar.current.date(byAdding: .second, value: dotime, to: day)!
+                let item = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(view.tag))
+                item!.start = start
+                item!.c_dotime = dotime
+                item!.end = end
+                
+                print(start)
+                print(end)
+            }
         }
+    }
     
     var location = CGPoint()
     var flag = 0
@@ -431,7 +428,7 @@ class SampleView :UIView {
         }
         for view in tracedView{
             print(view.frame)
-           if((self.frame.origin.y >= view.frame.origin.y && self.frame.origin.y < view.frame.origin.y + view.content.frame.size.height) || (self.frame.origin.y + self.content.frame.size.height  > view.frame.origin.y && self.frame.origin.y + self.content.frame.size.height <= view.frame.origin.y + view.content.frame.size.height)){
+            if((self.frame.origin.y >= view.frame.origin.y && self.frame.origin.y < view.frame.origin.y + view.content.frame.size.height) || (self.frame.origin.y + self.content.frame.size.height  > view.frame.origin.y && self.frame.origin.y + self.content.frame.size.height <= view.frame.origin.y + view.content.frame.size.height)){
                 i += 1
                 
                 print("overlaped")
@@ -447,9 +444,9 @@ class SampleView :UIView {
                         object.frame.origin.x = self.frame.size.width - 15
                     }
                 }
+                
                 var v = self.superview!.viewWithTag(view.tag) as! SampleView
                 v.frame.origin.x = CGFloat(60 + (300 / (lap+1)) * i)
-                
                 v.frame.size.width = CGFloat(300 / (lap+1))
                 v.content.frame.size.width = CGFloat(300 / (lap+1))
                 v.circle.center.x = v.frame.size.width / 2
@@ -477,7 +474,6 @@ class SampleView :UIView {
                 }
             }
         }
-        
     }
     
     func overLap() {
@@ -493,7 +489,6 @@ class SampleView :UIView {
                 }
             }
             //view1.frame.size.width = CGRect(300 / indexs.count)
-            
             for i in 0..<indexs.count {
                 alltracedView[i].frame.origin.x = CGFloat((300/indexs.count) * (i+1) + 60)
             }

@@ -16,7 +16,7 @@ import RealmSwift
 func makeView(id:String, title:String, color:UIColor) -> SampleView{
     
     var currentPoint: CGPoint!
-    let button = ViewController().makeButton()
+    let screen = ScreenSize()
     /*
      start 開始時間
      c_dotime タスク幅
@@ -39,8 +39,8 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
         start = result.start
     }
     let now = Date()
-    let no1point = 30
-    let no23point = 1410
+    let no1point = screen.no1point
+    let no23point = screen.no23point
     let hour = (no23point - no1point)/23
     let minute:Double
     minute = Double(hour)/Double(60)
@@ -58,16 +58,16 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
     if(currentPoint != nil){
         y += currentPoint.y
     }
-    let frame:CGRect = CGRect(x: 60, y: y, width: 300, height: CGFloat(minute * Double(diffMin)) + 20)
+    let frame:CGRect = CGRect(x: 60, y: y, width: screen.screenWidth - 15 - 60, height: CGFloat(minute * Double(diffMin) + 20 * minute))
     let calendarView:SampleView = SampleView(frame: frame)
     calendarView.content.backgroundColor = color
     calendarView.leftBorder.backgroundColor = color
     calendarView.fakeView.backgroundColor = color
     calendarView.title.backgroundColor = color
     
-    let titleLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 300,height: 15))
+    let titleLabel: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: calendarView.frame.width,height: 15))
     //titleLabel.text = "  " + item.todo.first!.title
-    titleLabel.text = title
+    titleLabel.text = " " + title
     titleLabel.textColor = UIColor.white
     titleLabel.font = UIFont.boldSystemFont(ofSize: 13)
     titleLabel.layer.masksToBounds = true
@@ -81,9 +81,10 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
     tasktimeLabel.textColor = UIColor.white
     var imageView = UIImageView(image:UIImage(named:"x")!)
     calendarView.addSubview(titleLabel)
+    //カケル追加 12/26 buttonのxを機種に対応させる
+    let button = ViewController().makeButton(view: calendarView)
     calendarView.addSubview(button)
     calendarView.tag = Int(id)!
-    
     return calendarView
 }
 
@@ -96,9 +97,35 @@ func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
     ContentView.frame = CGRect(x: 0, y: 16, width: width, height: height-16)
     print(tag)
     TaskView.tag = tag
-    let taskTitle: UILabel = UILabel(frame: CGRect(x: 5,y: 1,width: TaskView.frame.size.width-5,height: 15))
-    taskTitle.text = title
-    taskTitle.textColor = UIColor.black
+    let taskTitle: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: TaskView.frame.size.width,height: 15))
+    taskTitle.text = " " + title
+    let dateString = realm.object(ofType: Todo.self, forPrimaryKey: String(tag))?.datestring
+    if dateString == "指定なし" {
+        taskTitle.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+        taskTitle.textColor = UIColor.black
+        ContentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        TaskView.layer.borderColor = UIColor.black.cgColor
+        TaskView.layer.borderWidth = 1
+    }else {
+        if(tag > 10000000000 && tag <= 100000000000){
+            taskTitle.textColor = UIColor.white
+            ContentView.backgroundColor = UIColor.white
+            ContentView.alpha = 0.3
+        }else {
+            taskTitle.textColor = UIColor.white
+            taskTitle.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            ContentView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+            TaskView.layer.borderColor = UIColor.black.cgColor
+            TaskView.layer.borderWidth = 1
+            let image = UIImageView(image:UIImage(named:"timeTask")!)
+            image.frame = CGRect(x: ContentView.frame.maxX - 16 * screen.calScale, y: 0, width: 15 * screen.calScale, height: 15 * screen.calScale)
+            image.frame.origin.y = ContentView.frame.maxY - image.frame.size.height - 16 - 1 * screen.calScale
+            ContentView.addSubview(image)
+        }
+        
+    }
+    
+    
     //フォントサイズ
     TaskView.layer.cornerRadius = 2
 //    taskTitle.textAlignment = NSTextAlignment.center
@@ -110,8 +137,8 @@ func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
 //        color = UIColor(displayP3Red: CGFloat(result.color_r), green: CGFloat(result.color_g), blue: CGFloat(result.color_b), alpha: 1.0)
 //    }
 //    TaskView.backgroundColor = UIColor.clear
-    ContentView.backgroundColor = color
-    ContentView.alpha = 0.3
+    
+//    ContentView.alpha = 0.3
     TaskView.addSubview(taskTitle)
     TaskView.addSubview(ContentView)
     return TaskView

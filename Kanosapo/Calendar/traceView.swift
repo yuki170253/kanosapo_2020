@@ -15,7 +15,7 @@ import RealmSwift
 var currentPoint: CGPoint!
 
 
-func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, ReturnButton: UIButton){
+func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
     print("traceView")
     
     let x:CGFloat = 60
@@ -59,6 +59,7 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, Retur
             cal.start = startTime
             cal.default_allday = false
             cal.c_dotime = result_t.dotime
+            cal.end = Calendar.current.date(byAdding: .second, value: result_t.dotime, to: startTime)!
             new_cal?.InFlag = true
             new_cal!.calendars.append(cal)
             let add_view = makeView(id: cal.calendarid, title: result_t.title, color: UIColor.black)
@@ -76,6 +77,12 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView, Retur
         let color = UIColor(displayP3Red: CGFloat(result_d.color_r), green: CGFloat(result_d.color_g), blue: CGFloat(result_d.color_b), alpha: 1.0)
         let add_view = makeView(id: result_d.calendarid, title: result_d.title, color: color)
         content.addSubview(add_view)
+        //かける追加 12/4
+        //追加したViewが標準カレンダーの終日のスケジュールだった場合addEventをする
+        
+        test_userDefaultData(view: add_view)
+        new_addEvent(tag: add_view.tag)
     }
+    
     print("traceView終了")
 }

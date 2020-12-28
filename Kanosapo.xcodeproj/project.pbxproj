@@ -105,6 +105,8 @@
 		8774EC8A255D0CEF00E8F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8774EC88255D0CEF00E8F0D3 /* LaunchScreen.storyboard */; };
 		8774EC95255D0CEF00E8F0D3 /* KanosapoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC94255D0CEF00E8F0D3 /* KanosapoTests.swift */; };
 		8774ECA0255D0CEF00E8F0D3 /* KanosapoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */; };
+		8780ACAD259A5ACA00F29C25 /* LINELink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780ACAC259A5AC900F29C25 /* LINELink.swift */; };
+		8780ACB2259A5AFE00F29C25 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8780ACB1259A5AFE00F29C25 /* Encryption.swift */; };
 		87FC30A2255E7DDE00651732 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */; };
 		87FC30A7255E7E0900651732 /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30A6255E7E0900651732 /* SampleView.swift */; };
 		87FC30B2255E7E4000651732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30B1255E7E4000651732 /* ViewController.swift */; };
@@ -246,6 +248,8 @@
 		8774EC9B255D0CEF00E8F0D3 /* KanosapoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanosapoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8774EC9F255D0CEF00E8F0D3 /* KanosapoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanosapoUITests.swift; sourceTree = "<group>"; };
 		8774ECA1255D0CEF00E8F0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8780ACAC259A5AC900F29C25 /* LINELink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LINELink.swift; sourceTree = "<group>"; };
+		8780ACB1259A5AFE00F29C25 /* Encryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		87FC30A1255E7DDE00651732 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		87FC30A6255E7E0900651732 /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		87FC30B1255E7E4000651732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 				87FC309B255E7D4900651732 /* ToDoList */,
 				87FC309C255E7D4A00651732 /* commons */,
 				8774EC7D255D0CE700E8F0D3 /* AppDelegate.swift */,
+				8780ACAC259A5AC900F29C25 /* LINELink.swift */,
+				8780ACB1259A5AFE00F29C25 /* Encryption.swift */,
 				8774EC7F255D0CE700E8F0D3 /* SceneDelegate.swift */,
 				8774EC83255D0CE700E8F0D3 /* Main.storyboard */,
 				8774EC86255D0CEF00E8F0D3 /* Assets.xcassets */,
@@ -933,6 +939,7 @@
 				874FFA622562D71400BC4998 /* WeekResultDetailViewController.swift in Sources */,
 				874FFA762562D78200BC4998 /* ArrayExtension.swift in Sources */,
 				874FFA372562D61B00BC4998 /* BasicBarChartPresenter.swift in Sources */,
+				8780ACAD259A5ACA00F29C25 /* LINELink.swift in Sources */,
 				874FFA122562D4C700BC4998 /* ConfirmationViewController.swift in Sources */,
 				874FFAA22562D87E00BC4998 /* NewCustomTableViewCell.swift in Sources */,
 				D8680A0F2599C8A400FBCDF0 /* feedbackTableViewCell.swift in Sources */,
@@ -943,6 +950,7 @@
 				87FC30CB255E7EB500651732 /* userDefaultData.swift in Sources */,
 				87FC30DA255E7F2300651732 /* Calendar.swift in Sources */,
 				874FFA3C2562D62E00BC4998 /* BasicBarEntry.swift in Sources */,
+				8780ACB2259A5AFE00F29C25 /* Encryption.swift in Sources */,
 				874FFA972562D83B00BC4998 /* HomeTableViewController.swift in Sources */,
 				874FF9D8256173CA00BC4998 /* CustomButton.swift in Sources */,
 				874FFA532562D6C100BC4998 /* DayResultViewController.swift in Sources */,

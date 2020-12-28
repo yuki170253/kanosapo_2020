@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Kanosapo/Pods-Kanosapo-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework
 ${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
+${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework
@@ -8,6 +9,7 @@ ${BUILT_PRODUCTS_DIR}/FirebaseDatabase/FirebaseDatabase.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
 ${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/LineSDKSwift/LineSDK.framework
 ${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/PullableSheet/PullableSheet.framework

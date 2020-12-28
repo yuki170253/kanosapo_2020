@@ -155,31 +155,68 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
             start = Date()
         }
         let result = realm.object(ofType: Todo.self, forPrimaryKey: "\(todoid)")
+        let score = UserDefaults.standard.object(forKey: "score") as! Double
         
         if timerRunning == true {
-            //目標時間経過時の通知
-            let target = UNMutableNotificationContent()
-            target.title = testlabel.text! //通知のタイトル
-            target.body = "目標時間になりました！" //通知の本文
-            var sumTime = result!.dotime - result!.donetime - countNum
-            if sumTime < 0 {
-                sumTime = 1
+            //かける追加 12/10 if(result!.dotime! <= countNum){}で囲う
+            if(result!.dotime >= countNum){
+                print("中")
+                //目標時間経過時の通知
+                let target = UNMutableNotificationContent()
+                target.title = testlabel.text! //通知のタイトル
+                target.body = "目標時間になりました！" //通知の本文
+                var sumTime = result!.dotime - result!.donetime - countNum
+                if sumTime < 0 {
+                    sumTime = 1
+                }
+                target.sound = UNNotificationSound.default //通知の音
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
+                let request = UNNotificationRequest(identifier: id, content: target,
+                                                    trigger: trigger) //通知のリクエスト
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
+                
             }
-            target.sound = UNNotificationSound.default //通知の音
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
-            let request = UNNotificationRequest(identifier: id, content: target,
-                                                trigger: trigger) //通知のリクエスト
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
+//            target.sound = UNNotificationSound.default //通知の音
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
+//            let request = UNNotificationRequest(identifier: id, content: target,
+//                                                trigger: trigger) //通知のリクエスト
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
             
             //アプリから離れた際の通知
             let outside = UNMutableNotificationContent()
             //outside.title = testlabel.text!
-            outside.body = "アプリに戻って！"
+            let happyMessage = ["それは急用なの？",
+                                "わたしと一緒にがんばろう？",
+                                "集中して取り組む姿をわたしに見せて！"]
+            let menheraMessage = ["集中して取り組まないとおこだぞ！！",
+                                  "わたしと一緒じゃがんばれないって言うの...？"]
+            var body = "アプリに戻って！"
+            
+            if usedCount > 0 { //アプリを離れて２度目以降
+                if score < 25{
+                    let index = Int.random(in: 0..<menheraMessage.count)
+                    body = menheraMessage[index]
+                }else if score < 50{
+                    let index = Int.random(in: 0..<menheraMessage.count)
+                    body = menheraMessage[index]
+                }else if score < 75{
+                    let index = Int.random(in: 0..<happyMessage.count)
+                    body = happyMessage[index]
+                }else{
+                    let index = Int.random(in: 0..<happyMessage.count)
+                    body = happyMessage[index]
+                }
+            }
+            
+            outside.body = body
             outside.sound = UNNotificationSound.default
-            let outsideTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let outsideTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.2, repeats: false)
             let outsideRequest = UNNotificationRequest(identifier: "outside", content: outside, trigger: outsideTrigger)
             UNUserNotificationCenter.current().add(outsideRequest, withCompletionHandler: nil)
             usedCount = usedCount + 1
+            try! realm.write { //ここにメンヘラメーターを変化させるような式を記述
+                result!.usedCount += 1
+            }
         }
     }
     
@@ -206,6 +243,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
                        animations: { () -> Void in
                                 self.button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0) }, completion: nil)
         if timerRunning == false {
+            NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
+                notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(EvaluViewController.updateDisplay), userInfo: nil, repeats: true)
             timerRunning = true
             sender.setImage(image_stop, for: .normal)
@@ -305,6 +344,12 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         /*
+         let evaludetailsviewcontroller = segue.destination as! EvaluDetailsViewController
+         evaludetailsviewcontroller.sepatime = countNum
+         evaludetailsviewcontroller.index = index
+         */
+        
         if (segue.identifier == "toResultViewController") {
             let vc = segue.destination as! ResultViewController
             vc.toDoId = todoid

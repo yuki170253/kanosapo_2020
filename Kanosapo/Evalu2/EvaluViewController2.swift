@@ -89,6 +89,16 @@ class EvaluViewController2: UIViewController {
             doneRate = Double(result!.donetime/result!.dotime)
         }
         
+        if score < 25{
+            score -= Double(result!.usedCount * 5)
+        }else if score < 50{
+            score -= Double(result!.usedCount * 3)
+        }else if score < 75{
+            score -= Double(result!.usedCount)
+        }else{
+            
+        }
+        
         let rate:Double = slideview.rating
         switch rate {
             case 1.0:

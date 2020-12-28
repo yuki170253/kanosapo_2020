@@ -15,6 +15,8 @@ target 'Kanosapo' do
   pod 'RealmSwift', '~> 5.4.3’
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'LineSDKSwift', '~> 5.0'
+  pod 'CryptoSwift'
   # Pods for Kanosapo
 
   target 'KanosapoTests' do

@@ -24,7 +24,16 @@ func writeFirebase(){
     let todo = realm.objects(Todo.self)
     let cal24 = realm.objects(Calendar24.self)
     let default_cal = realm.objects(DefaultCalendar.self)
-    
+    if UserDefaults.standard.object(forKey: "line_token") != nil {
+        print("lineTokenあり")
+        let line_token = ["Line_token": UserDefaults.standard.object(forKey: "line_token") as! String]
+        DBRef.child("users/" + user_id).updateChildValues(line_token) //更新
+    }
+    if UserDefaults.standard.object(forKey: "score") != nil {
+        let score = ["Score": UserDefaults.standard.object(forKey: "score") as! Int]
+        DBRef.child("users/" + user_id).updateChildValues(score) //更新
+    }
+    DBRef.child("users/" + user_id + "/Todo/").removeValue() //削除
     for item in todo {
         var date = ""
         if item.date != nil {
@@ -40,6 +49,7 @@ func writeFirebase(){
                     "base": item.base] as [String : Any]
         DBRef.child("users/" + user_id + "/Todo/" + item.todoid).updateChildValues(data) //更新
     }
+    DBRef.child("users/" + user_id + "/Calendar24/").removeValue() //削除
     for item in cal24 {
         let data = ["title": item.todo.first!.title,
                     "todoDone": item.todoDone,
@@ -50,11 +60,14 @@ func writeFirebase(){
                     "end": convert_string_details(date: item.end)] as [String : Any]
         DBRef.child("users/" + user_id + "/Calendar24/" + item.calendarid).updateChildValues(data) //更新
     }
+    print("default_cal")
+    DBRef.child("users/" + user_id + "/DefaultCalendar/").removeValue() //削除
     for item in default_cal {
         let data = ["title": item.title,
                     "start": convert_string_details(date: item.start),
                     "end": convert_string_details(date: item.end),
                     "allDay": item.allDay] as [String : Any]
+        print(data)
         DBRef.child("users/" + user_id + "/DefaultCalendar/" + item.calendarid).updateChildValues(data) //更新
     }
     //    DBRef.child("user/01").updateChildValues(["age": "20"]) //更新

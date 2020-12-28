@@ -50,7 +50,6 @@ class Todo: Object {
         ans += overTime - usedCount * 5
 
         if ans <= 0{
-            
             ans = 0
         }
         
