@@ -638,8 +638,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 //new_tagが0ではない場合指定ありのタスクで、新しくTodoへ追加される
                 //元のタスクのtagを新しいtodoIDへ変更する
                 if(new_tag > 0){
-                    sender.view!.tag = new_tag
+//                    sender.view!.tag = new_tag
                 }
+     
+                
             }else if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 if(sender.view!.frame.minY > AlldayView.frame.height) {
                     let pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y

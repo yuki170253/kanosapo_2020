@@ -54,7 +54,7 @@ func craftCalendar(base_view: UIView){
     let minute:Double
     minute = Double(hour)/Double(60)
     
-    let cal = realm.objects(Calendar24.self).filter("todoDone==false")
+    let cal = realm.objects(Calendar24.self)
     let defaultcal = realm.objects(DefaultCalendar.self)
     
     for item in cal {
