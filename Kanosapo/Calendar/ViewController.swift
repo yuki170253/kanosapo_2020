@@ -400,8 +400,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("OK")
-            let cal_d = self.realm.objects(DefaultCalendar.self)
-            let cal_c = self.realm.objects(Calendar24.self)
             
             if(sender.superview!.tag > 10000000000 && sender.superview!.tag <= 100000000000){
                 print("デフォルト削除")
@@ -424,14 +422,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 print("calendar24削除")
                 let result_c = self.realm.object(ofType: Calendar24.self, forPrimaryKey: String(sender.superview!.tag))
                 let result_t = self.realm.object(ofType: Todo.self, forPrimaryKey: result_c!.todo.first!.todoid)
-                print(result_c)
-                print(result_t)
                 try! self.realm.write{
-                    self.realm.cancelWrite() // 処理を止めて
-                    self.realm.beginWrite() // また始める
                     self.realm.delete(result_c!)
-                    print(result_c)
                     print(result_t!.calendars.count)
+                    //Todoの子カレンダーが0個だった時にTodoがカレンダーに設定されていないことにする。
                     if(result_t!.calendars.count == 0){
                         result_t?.InFlag = false
                         if(result_t!.base != ""){
@@ -564,6 +558,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                         allContentView = item
                     }
                 }
+                for item in MenuScrollView.subviews{
+                    if type(of: item) ==  UIView.self {
+                        menuContentView = item
+                    }
+                }
                 addLongPressed(view: allContentView)
 //                updateViews(content: ContentView, allday: allContentView)
                 day.titleView = getnowTime(content: ContentView)
@@ -584,34 +583,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
         //        var moveView1 = CGPoint()
         //        var moveView2 = CGPoint()
         
-        let result_t = realm.object(ofType: Todo.self, forPrimaryKey: String(sender.view!.tag))
-        
-        let x = sender.self.view!.frame.origin.x
-        let y = sender.self.view!.frame.origin.y
-        let w = sender.self.view!.frame.size.width
-        let center = sender.self.view!.center
-        
-        //削除予定
-        var index = Int()
-        var manuflag = Bool()
-        //
-        
         if(sender.state == UIGestureRecognizer.State.began) {
             print("長押し開始")
-            //            for view in sender.self.view!.superview!.subviews {
-            //                print(view.tag)
-            //            }
-            //            sender.self.view!.superview!.bringSubviewToFront(sender.self.view!)
-            //            print("after")
-            //            for view in sender.self.view!.superview!.subviews {
-            //
-            //                print(view.tag)
-            //            }
-            //sender.self.view!.setNeedsDisplay()
-            
             selevtViewCenter = sender.self.view!.center
             moveView1 = sender.self.view!.frame.origin
-            
             if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 if(MenuFlag){
                     MenuFlag = MenuOC(menu: NewMenuView, scroll: MenuScrollView, flag: MenuFlag)
@@ -635,34 +610,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 sender.self.view!.center.x = sender.location(in: self.view).x
                 sender.self.view!.center.y = sender.location(in: self.view).y - AlldayView.frame.minY + MenuScrollView.contentOffset.y
             }
-            
-            //                sender.self.view!.center.x += deltaX
-            //                sender.self.view!.center.y += deltaY
-            
-            //オートスクロール  (dummyAll削除につき変更)
-            //print(sender.location(in: self.view))
-            //            if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > MenuScrollView.frame.minY) {
-            //                if(!scrollFlag){
-            //                    if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > self.view.frame.height - 30){
-            //                    //if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 > 647){
-            //                        print("under")
-            //                        scrollFlag = true
-            //                        startAutoScroll(duration: 0.05, direction: .under)
-            //                    }else if(sender.location(in: self.view).y - sender.self.view!.frame.height/2 < MenuScrollView.frame.minY + 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 > MenuScrollView.frame.minY){
-            //                        print("upper")
-            //                        scrollFlag = true
-            //                        startAutoScroll(duration: 0.05, direction: .upper)
-            //                    }
-            //                }
-            //                if(sender.location(in: self.view).y + sender.self.view!.frame.height/2 <= self.view.frame.height - 30 && sender.location(in: self.view).y - sender.self.view!.frame.height/2 >= MenuScrollView.frame.minY + 30){
-            //                    scrollFlag = false
-            //                    stopAutoScrollIfNeeded()
-            //                }
-            //            }
             print(sender.location(in: self.view).y - sender.self.view!.frame.height/2, sender.location(in: self.view).y + sender.self.view!.frame.height/2 )
-            //            print(sender.view!.frame.maxX,menuContentView.subviews[0].frame.minX,sender.view!.frame.minY, MyScrollView.frame.minY,(self.navigationController?.navigationBar.frame.size.height)!, AlldayView.frame.height)
-            //sender.self.view!.center = sender.location(in: self.view)
-            //長押し終了
+        //長押し終了
         }else if(sender.state == UIGestureRecognizer.State.ended){
             print("長押し終了")
             
@@ -671,7 +620,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
             print("moveManu")
             let savetag = sender.view!.tag
             //ManuViewのタスクが移動された場合
-            
+            var new_tag = 0
             if(sender.view!.tag >= 1000000000 && sender.view!.tag < 10000000000){ //Todo
                 print("aakkaa",sender.view!.frame.minY)
                 if(sender.view!.frame.maxX <= menuContentView.subviews[0].frame.minX && sender.view!.frame.minY > 0) { //12/8 by 牧内
@@ -680,19 +629,21 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                     button.setImage(UIImage(named:"close_black"), for: .normal)
                     button.addTarget(self, action: #selector(deleteView(_:)), for: UIControl.Event.touchUpInside)
                     //                        traceView(userY: userY - CGFloat(65 + dummyAll.constant), height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
-                    var pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
-                    traceView(userY: pointY, height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView)
+                    let pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
+                    new_tag = traceView(userY: pointY, height: sender.view!.frame.height, tag: sender.view!.tag, content: ContentView)
                     print("view戻す")
                 }
                 sender.view!.center = selevtViewCenter
                 MoveToRight(scroll: MenuScrollView,animation: false)
-                
-                
-                
+                //new_tagが0ではない場合指定ありのタスクで、新しくTodoへ追加される
+                //元のタスクのtagを新しいtodoIDへ変更する
+                if(new_tag > 0){
+                    sender.view!.tag = new_tag
+                }
             }else if(sender.view!.tag > 10000000000 && sender.view!.tag <= 100000000000){ //allday
                 if(sender.view!.frame.minY > AlldayView.frame.height) {
-                    var pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
-                    traceView(userY: pointY, height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView)
+                    let pointY = sender.location(in: self.view).y - sender.self.view!.frame.height/2 - CGFloat(MyScrollView.frame.minY) + MyScrollView.contentOffset.y
+                    _ = traceView(userY: pointY, height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView)
                     //                    traceView(userY: userY - CGFloat(MyScrollView.frame.minY), height: sender.self.view!.frame.height, tag: sender.view!.tag, content: ContentView, ReturnButton: button)
                     sender.view!.removeFromSuperview()
                     for View in allContentView.subviews{

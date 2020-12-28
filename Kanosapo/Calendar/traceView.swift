@@ -15,7 +15,7 @@ import RealmSwift
 var currentPoint: CGPoint!
 
 
-func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
+func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView) -> Int{
     print("traceView")
     
     let x:CGFloat = 60
@@ -26,7 +26,7 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
     
     print("startTime-traceView")
     let startTime = getTaskTime(y: userY)
-    
+    var new_todoID : Int = 0
     let new_todo = Todo()
     var save_id = String()
     if(tag > 1000000000 && tag <= 10000000000){ //calendar24
@@ -41,6 +41,7 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
             if(result_t.datestring == "指定なし"){
                 new_todo.todoid = randomString(length: 10)
                 save_id = new_todo.todoid
+                new_todoID = Int(new_todo.todoid)!
                 new_todo.title = String(result_t.title)
                 new_todo.todoDone = false
                 new_todo.donetime = 0
@@ -83,6 +84,10 @@ func traceView(userY: CGFloat, height: CGFloat, tag: Int, content: UIView){
         test_userDefaultData(view: add_view)
         new_addEvent(tag: add_view.tag)
     }
-    
     print("traceView終了")
+
+    //0ではない場合
+    //指定ありのタスクで、新しくTodoへ追加される
+    //元のタスクのtagを新しいtodoIDへ変更する
+    return new_todoID
 }

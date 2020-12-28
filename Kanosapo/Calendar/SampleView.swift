@@ -191,34 +191,34 @@ class SampleView :UIView {
             }
             //移動量を取得する
             //if(gestureRecognizer.state == .changed){
-                var move = gestureRecognizer.translation(in: self)
-                movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
-                movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
-                
-                if(content.frame.size.height + move.y > CGFloat(15 * minute)){
-                    self.frame.size.height += move.y
-                    content.frame.size.height += move.y
-                    leftBorder.frame.size.height += move.y
-                }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
-                    //move.y = 0
-                    self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
-                    content.frame.size.height = CGFloat(15 * minute)
-                    leftBorder.frame.size.height = CGFloat(15 * minute)
-                }
-                if(content.frame.size.height + move.y > CGFloat(300 * minute)){
-                    self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
-                    content.frame.size.height = CGFloat(300 * minute)
-                    leftBorder.frame.size.height = CGFloat(300 * minute)
-                }
-                
-                //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-                dotimeLabel.frame.origin.y = content.frame.size.height - 15
-                taskTime.frame.origin.y = content.frame.size.height - 15
-                
-                circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
-                imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
-                //移動量をリセットする
-                gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+            var move = gestureRecognizer.translation(in: self)
+            movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
+            movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
+            
+            if(content.frame.size.height + move.y > CGFloat(15 * minute)){
+                self.frame.size.height += move.y
+                content.frame.size.height += move.y
+                leftBorder.frame.size.height += move.y
+            }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
+                //move.y = 0
+                self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
+                content.frame.size.height = CGFloat(15 * minute)
+                leftBorder.frame.size.height = CGFloat(15 * minute)
+            }
+            if(content.frame.size.height + move.y > CGFloat(300 * minute)){
+                self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
+                content.frame.size.height = CGFloat(300 * minute)
+                leftBorder.frame.size.height = CGFloat(300 * minute)
+            }
+            
+            //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
+            dotimeLabel.frame.origin.y = content.frame.size.height - 15
+            taskTime.frame.origin.y = content.frame.size.height - 15
+            
+            circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
+            imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
+            //移動量をリセットする
+            gestureRecognizer.setTranslation(CGPoint.zero, in: self)
             //}
             if(gestureRecognizer.state == .ended){
                 taskTime.alpha = 0.0
@@ -262,14 +262,14 @@ class SampleView :UIView {
                 imageView.alpha = 1.0
                 if(!scrollFlag){
                     if(fakeView.frame.maxY > (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute)){
-                            print("under")
-                            scrollFlag = true
-                            startAutoScroll(duration: 0.05, direction: .under)
+                        print("under")
+                        scrollFlag = true
+                        startAutoScroll(duration: 0.05, direction: .under)
                     }else if(fakeView.frame.minY < (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
-
-                            print("upper")
-                            scrollFlag = true
-                            startAutoScroll(duration: 0.05, direction: .upper)
+                        
+                        print("upper")
+                        scrollFlag = true
+                        startAutoScroll(duration: 0.05, direction: .upper)
                     }
                 }
                 if(fakeView.frame.maxY <= (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute) && fakeView.frame.minY >= (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
@@ -378,10 +378,6 @@ class SampleView :UIView {
         //            if(type(of: view) == SampleView.self){
         print(view.tag)
         print(view)
-        let result_d = realm.objects(DefaultCalendar.self)
-        let result_c = realm.objects(Calendar24.self)
-        print(result_d)
-        print(result_c)
         let start = getTaskTime(y: view.frame.origin.y)
         print("startTime---")
         print(start)
@@ -404,7 +400,6 @@ class SampleView :UIView {
                 item!.start = start
                 item!.c_dotime = dotime
                 item!.end = end
-                
                 print(start)
                 print(end)
             }
@@ -413,9 +408,6 @@ class SampleView :UIView {
     
     var location = CGPoint()
     var flag = 0
-    
-    
-    
     func overLaped() {
         print(tracedView)
         var lap = 0

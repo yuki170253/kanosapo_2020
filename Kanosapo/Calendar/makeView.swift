@@ -124,8 +124,6 @@ func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
         }
         
     }
-    
-    
     //フォントサイズ
     TaskView.layer.cornerRadius = 2
 //    taskTitle.textAlignment = NSTextAlignment.center

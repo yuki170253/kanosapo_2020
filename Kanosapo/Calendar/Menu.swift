@@ -42,8 +42,8 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     f.locale = Locale(identifier: "ja_JP")
     let Now = NSDate() as Date
     let date = f.string(from: Now)
-    let result_m = realm.objects(Todo.self).filter("datestring == '指定なし'")
-    let result_s = realm.objects(Todo.self).filter("datestring == %@", date)
+    let result_m = realm.objects(Todo.self).filter("datestring == '指定なし'").filter("todoDone==false")
+    let result_s = realm.objects(Todo.self).filter("datestring == %@", date).filter("todoDone==false")
     var task_cnt = 0  //追加したViewの個数を数える
     
     print("タスクView作成")
@@ -179,10 +179,10 @@ func MoveToLeft(scroll:UIScrollView, cOs:Bool, border:[CGFloat]){
                     color = TaskColor
                 }
                 views[j].backgroundColor = color.dark(brightnessRatio: ratio)
-//                views[j].backgroundColor = views[j].backgroundColor!.dark(brightnessRatio: ratio)
+                //                views[j].backgroundColor = views[j].backgroundColor!.dark(brightnessRatio: ratio)
                 for label in views[j].subviews{
                     if type(of: label) ==  UILabel.self {
-//                        (label as! UILabel).textColor = labelColor.dark(brightnessRatio: ratio)
+                        //                        (label as! UILabel).textColor = labelColor.dark(brightnessRatio: ratio)
                     }
                 }
                 //dark(taskview: views[j], level: alpha)
