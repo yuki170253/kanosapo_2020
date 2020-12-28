@@ -10,7 +10,7 @@
 		315AF0D625668C1D00177B9E /* NeedToFix in Resources */ = {isa = PBXBuildFile; fileRef = 315AF0D525668C1D00177B9E /* NeedToFix */; };
 		38A2E1244C0066CF4936233F /* Pods_Kanosapo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DDB002F1CEBEF0A7EC8B47 /* Pods_Kanosapo.framework */; };
 		5BC5F50B98CD91417BB8E6FB /* Pods_KanosapoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */; };
-		8732F47A2581E59000A6610E /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F4792581E59000A6610E /* Encryption.swift */; };
+		8741B8282598B62900EE4F4A /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B8272598B62900EE4F4A /* ScreenSize.swift */; };
 		874FF9D8256173CA00BC4998 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9D7256173CA00BC4998 /* CustomButton.swift */; };
 		874FF9DD256173E800BC4998 /* EvaluViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9DC256173E800BC4998 /* EvaluViewController.swift */; };
 		874FF9E2256174FE00BC4998 /* EvaluViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874FF9E1256174FE00BC4998 /* EvaluViewController2.swift */; };
@@ -146,7 +146,7 @@
 		315AF0D525668C1D00177B9E /* NeedToFix */ = {isa = PBXFileReference; lastKnownFileType = text; path = NeedToFix; sourceTree = "<group>"; };
 		4D5422898184E249E3D9B18E /* Pods-Kanosapo-KanosapoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo-KanosapoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		707965014416A43C6A24AF60 /* Pods-KanosapoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.debug.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8732F4792581E59000A6610E /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		8741B8272598B62900EE4F4A /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		874FF9D7256173CA00BC4998 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		874FF9DC256173E800BC4998 /* EvaluViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluViewController.swift; sourceTree = "<group>"; };
 		874FF9E1256174FE00BC4998 /* EvaluViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluViewController2.swift; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 				874FFABD2562D91100BC4998 /* MyTodo.swift */,
 				87CBB856258F38F20020845C /* LINELink.swift */,
 				874FFB422562E60000BC4998 /* Firebase.swift */,
-				8732F4792581E59000A6610E /* Encryption.swift */,
+				8741B8272598B62900EE4F4A /* ScreenSize.swift */,
 			);
 			path = Kanosapo;
 			sourceTree = "<group>";
@@ -922,6 +922,7 @@
 				87FC30B7255E7E5100651732 /* Menu.swift in Sources */,
 				874FFAC72562DBC500BC4998 /* ConfirmationTableViewCell.swift in Sources */,
 				874FFA262562D55100BC4998 /* ResultViewController.swift in Sources */,
+				8741B8282598B62900EE4F4A /* ScreenSize.swift in Sources */,
 				874FFABE2562D91100BC4998 /* MyTodo.swift in Sources */,
 				874FFB432562E60100BC4998 /* Firebase.swift in Sources */,
 				87FC30BC255E7E6400651732 /* traceView.swift in Sources */,
@@ -1130,14 +1131,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D3879X4HC8;
+				DEVELOPMENT_TEAM = 8LGNFWT247;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Kanosapo20213;
+				PRODUCT_BUNDLE_IDENTIFIER = Kanosapo2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1151,14 +1152,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D3879X4HC8;
+				DEVELOPMENT_TEAM = 8LGNFWT247;
 				INFOPLIST_FILE = Kanosapo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Kanosapo20213;
+				PRODUCT_BUNDLE_IDENTIFIER = Kanosapo2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

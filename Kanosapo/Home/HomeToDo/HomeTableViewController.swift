@@ -9,13 +9,26 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
     var resultsCount: Int = 0
     var resultArray:[Todo] = []
     var count: Int = 0
+    @IBOutlet weak var handleBar: UIView!
     var todoid: String = ""
+    var bottom:Float = 0.0
+    @IBOutlet weak var HeadLeftPartition: UIView!
+    @IBOutlet weak var HeadRightPartition: UIView!
+    @IBOutlet weak var CellLeftPartition: UIView!
+    @IBOutlet weak var CellRightPartition: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let headerCell: UITableViewCell = tableview.dequeueReusableCell(withIdentifier: "HeaderCell")!
         let headerView: UIView = headerCell.contentView
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         tableview.tableHeaderView = headerView
+        
+        handleBar.frame = CGRect(x: (view.frame.width/4), y: view.frame.height/250, width: view.frame.width/2, height: view.frame.height/75)
+        tableview.frame = CGRect(x: 0, y: view.frame.height/50, width: view.frame.width, height: view.frame.height - (view.frame.height/50)*2)
+        bottom = Float(view.frame.height/10.5)
+        
         
         let results = realm.objects(Calendar24.self).filter("end >= %@ AND end <= %@", Date(), Calendar.current.date(byAdding: .hour, value: 24, to: Date())!).sorted(byKeyPath: "start", ascending: true)
         

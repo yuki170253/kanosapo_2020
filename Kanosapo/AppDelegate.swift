@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         var dic = ["firstLaunch": true]
         defaults.register(defaults: dic)
-        if defaults.bool(forKey: "firstLaunch") { 
+        if defaults.bool(forKey: "firstLaunch") {
             UserDefaults.standard.set(randomString(length: 16), forKey: "user_id")
             UserDefaults.standard.set(50, forKey: "score")
             defaults.set(false, forKey: "firstLaunch")
@@ -103,14 +103,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
+        //NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
         print("applicationWillEnterForeground")
         
         if(calendarFlag!){
             test_getCalendar()
         }
-        
-        
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
