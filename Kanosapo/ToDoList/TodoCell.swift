@@ -38,6 +38,10 @@ class TodoCell: UITableViewCell {
         }else{
             try! realm.write {
                 result!.todoDone = true
+                let calendars = result?.calendars
+                for item in calendars!{
+                    item.todoDone = true
+                }
             }
             sender.setImage(checkedImage, for: .normal)
             print("trueに変更")

@@ -126,6 +126,10 @@ class EvaluViewController2: UIViewController {
             result!.selfEvaluation = slideview.rating
             result?.todoDone = true
             
+            let calendars = result?.calendars
+            for item in calendars!{
+                item.todoDone = true
+            }
         }
         print("保存しました。new")
         //画面遷移の処理 以下
