@@ -20,5 +20,113 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - dd06d064cdea04f7"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.MyScrollView.getter : Swift.Optional&lt;__C.UIScrollView&gt;"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - 7f1e5ef50107240b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.MyScrollView.setter : Swift.Optional&lt;__C.UIScrollView&gt;"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - 1a9a011937702227"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.MyScrollView.modify : Swift.Optional&lt;__C.UIScrollView&gt;"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - bd76742cc236062c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.MyScrollView.modify : Swift.Optional&lt;__C.UIScrollView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - a9affde45510cb79"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Kanosapo.ViewController"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+               <Location
+                  uuid = "C63EB631-59F4-4722-B5E1-4DAA4F3E9378 - e38ac90d338f0a27"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Kanosapo.ViewController&gt;"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_yuki3/kanosapo_2020/Kanosapo/Calendar/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1478">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -49,6 +49,56 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
     let realm = try! Realm()
     let texts: [String] = ["「タスク中に遊びに行ってはダメって言ったよね......」", "b", "c", "d"]
     let dialog: UIAlertController = UIAlertController(title: "経過を保存しました", message: "ストップウォッチを停止ました", preferredStyle: .alert)
+    
+   
+    
+    
+    func autoLayout(){
+        print("center",view.center)
+        let screen = ScreenSize()
+        let ratio = ScreenSize().ratio
+        let screenDif = screen.screenHeight - 667.0
+        // ステータスバーの高さを取得する
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // ナビゲーションバーの高さを取得する
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height
+        if screen.screenHeight > 926 {
+            titleBaackground.frame = CGRect(x: 0, y: statusBarHeight + navigationBarHeight! + 30 * ratio, width: titleBaackground.frame.size.width * ratio, height: titleBaackground.frame.size.height * ratio)
+        }else {
+            titleBaackground.frame = CGRect(x: 0, y: statusBarHeight + navigationBarHeight! + 30 * ratio + screenDif/2, width: titleBaackground.frame.size.width * ratio, height: titleBaackground.frame.size.height * ratio)
+        }
+        titleBaackground.center.x = view.center.x
+        objectiveLable.frame = CGRect(x: titleBaackground.frame.size.width/4, y: objectiveLable.frame.origin.y * ratio, width: objectiveLable.frame.size.width * ratio, height: objectiveLable.frame.size.height * ratio)
+        objectiveLable.center.x = titleBaackground.frame.size.width/4
+        testlabel.frame = CGRect(x: 0, y: 0, width: testlabel.frame.size.width * ratio, height: testlabel.frame.size.height * ratio)
+        target_time_label.frame = CGRect(x: target_time_label.frame.origin.x * ratio, y: target_time_label.frame.origin.y * ratio, width: target_time_label.frame.size.width * ratio, height: target_time_label.frame.size.height * ratio)
+        target_time_label.center.x = titleBaackground.frame.size.width/4 * 3
+        dotimeDisply.frame = CGRect(x: 0, y: titleBaackground.frame.maxY + 10 * ratio , width: dotimeDisply.frame.size.width * ratio, height: dotimeDisply.frame.size.height * ratio)
+        dotimeDisply.center.x = view.center.x
+        LineView.frame = CGRect(x: 0, y: dotimeDisply.frame.maxY, width: LineView.frame.size.width * ratio , height: 1)
+        LineView.center.x = view.center.x
+        timeDisplay.frame = CGRect(x: 0, y: LineView.frame.maxY + 5 * ratio, width: timeDisplay.frame.size.width * ratio, height: timeDisplay.frame.size.height * ratio)
+        timeDisplay.center.x = view.center.x
+        button.frame = CGRect(x: 0, y: timeDisplay.frame.maxY + 30 * ratio, width: button.frame.size.width * ratio, height: button.frame.size.height * ratio)
+        button.center.x = view.center.x
+        
+        replay_button.frame = CGRect(x: LineView.frame.minX, y: button.frame.maxY + 2 * ratio, width: replay_button.frame.size.width * ratio, height: replay_button.frame.size.height * ratio)
+        replay_button.center.x = LineView.frame.minX
+        save_button.frame = CGRect(x: LineView.frame.maxX, y: button.frame.maxY + 2 * ratio, width: save_button.frame.size.width * ratio, height: save_button.frame.size.height * ratio)
+        save_button.center.x = LineView.frame.maxX
+        DialogueBackground.frame = CGRect(x: 0, y: save_button.frame.maxY + 30 * ratio, width: DialogueBackground.frame.size.width * ratio, height: DialogueBackground.frame.size.height * ratio)
+        DialogueBackground.center.x = view.center.x
+        dialogueTextLabel.frame = CGRect(x: 0, y: 0, width: dialogueTextLabel.frame.size.width * ratio, height: dialogueTextLabel.frame.size.height * ratio)
+        dialogueTextLabel.center.x = view.center.x
+        dialogueTextLabel.center.y = DialogueBackground.frame.size.height/2
+        menheraLabelBackground.frame = CGRect(x: DialogueBackground.frame.origin.x, y: 0, width: menheraLabelBackground.frame.size.width * ratio, height: menheraLabelBackground.frame.size.height * ratio)
+        menheraLabelBackground.center.y = DialogueBackground.frame.origin.y
+        menheraLabel.frame = CGRect(x: menheraLabel.frame.origin.x * ratio, y: 0, width: menheraLabel.frame.size.width * ratio, height: menheraLabel.frame.size.height * ratio)
+        menheraLabel.center.y = menheraLabelBackground.frame.size.height / 2
+        playImage.frame = CGRect(x: playImage.frame.origin.x * ratio, y: 0, width: playImage.frame.size.width * ratio, height: playImage.frame.size.height * ratio)
+        playImage.center.y = menheraLabelBackground.frame.size.height / 2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var scala:CGFloat?
@@ -57,9 +107,14 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
         } else {
             scala = view.frame.width/375
         }
+        autoLayout()
         vc = storyboard?.instantiateViewController(withIdentifier: "popupmenu") as? EvaluViewController2
         button.layer.cornerRadius = 50.0
-        autoLayout()
+        
+        
+
+        
+        
         // 登録
         NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
             notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -344,12 +399,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         /*
-         let evaludetailsviewcontroller = segue.destination as! EvaluDetailsViewController
-         evaludetailsviewcontroller.sepatime = countNum
-         evaludetailsviewcontroller.index = index
-         */
-        
         if (segue.identifier == "toResultViewController") {
             let vc = segue.destination as! ResultViewController
             vc.toDoId = todoid
@@ -396,49 +445,4 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
         dotimeDisply.text = String(format: "%02d:%02d:%02d", (donetime / 3600), (donetime / 60) % 60, donetime % 60)
     }
     
-    func autoLayout(){
-            print("center",view.center)
-            let screen = ScreenSize()
-            let ratio = ScreenSize().ratio
-            let screenDif = screen.screenHeight - 667.0
-            // ステータスバーの高さを取得する
-            let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-            // ナビゲーションバーの高さを取得する
-            let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height
-            if screen.screenHeight > 926 {
-                titleBaackground.frame = CGRect(x: 0, y: statusBarHeight + navigationBarHeight! + 30 * ratio, width: titleBaackground.frame.size.width * ratio, height: titleBaackground.frame.size.height * ratio)
-            }else {
-                titleBaackground.frame = CGRect(x: 0, y: statusBarHeight + navigationBarHeight! + 30 * ratio + screenDif/2, width: titleBaackground.frame.size.width * ratio, height: titleBaackground.frame.size.height * ratio)
-            }
-            titleBaackground.center.x = view.center.x
-            objectiveLable.frame = CGRect(x: titleBaackground.frame.size.width/4, y: objectiveLable.frame.origin.y * ratio, width: objectiveLable.frame.size.width * ratio, height: objectiveLable.frame.size.height * ratio)
-            objectiveLable.center.x = titleBaackground.frame.size.width/4
-            testlabel.frame = CGRect(x: 0, y: 0, width: testlabel.frame.size.width * ratio, height: testlabel.frame.size.height * ratio)
-            target_time_label.frame = CGRect(x: target_time_label.frame.origin.x * ratio, y: target_time_label.frame.origin.y * ratio, width: target_time_label.frame.size.width * ratio, height: target_time_label.frame.size.height * ratio)
-            target_time_label.center.x = titleBaackground.frame.size.width/4 * 3
-            dotimeDisply.frame = CGRect(x: 0, y: titleBaackground.frame.maxY + 10 * ratio , width: dotimeDisply.frame.size.width * ratio, height: dotimeDisply.frame.size.height * ratio)
-            dotimeDisply.center.x = view.center.x
-            LineView.frame = CGRect(x: 0, y: dotimeDisply.frame.maxY, width: LineView.frame.size.width * ratio , height: 1)
-            LineView.center.x = view.center.x
-            timeDisplay.frame = CGRect(x: 0, y: LineView.frame.maxY + 5 * ratio, width: timeDisplay.frame.size.width * ratio, height: timeDisplay.frame.size.height * ratio)
-            timeDisplay.center.x = view.center.x
-            button.frame = CGRect(x: 0, y: timeDisplay.frame.maxY + 30 * ratio, width: button.frame.size.width * ratio, height: button.frame.size.height * ratio)
-            button.center.x = view.center.x
-            
-            replay_button.frame = CGRect(x: LineView.frame.minX, y: button.frame.maxY + 2 * ratio, width: replay_button.frame.size.width * ratio, height: replay_button.frame.size.height * ratio)
-            replay_button.center.x = LineView.frame.minX
-            save_button.frame = CGRect(x: LineView.frame.maxX, y: button.frame.maxY + 2 * ratio, width: save_button.frame.size.width * ratio, height: save_button.frame.size.height * ratio)
-            save_button.center.x = LineView.frame.maxX
-            DialogueBackground.frame = CGRect(x: 0, y: save_button.frame.maxY + 30 * ratio, width: DialogueBackground.frame.size.width * ratio, height: DialogueBackground.frame.size.height * ratio)
-            DialogueBackground.center.x = view.center.x
-            dialogueTextLabel.frame = CGRect(x: 0, y: 0, width: dialogueTextLabel.frame.size.width * ratio, height: dialogueTextLabel.frame.size.height * ratio)
-            dialogueTextLabel.center.x = view.center.x
-            dialogueTextLabel.center.y = DialogueBackground.frame.size.height/2
-            menheraLabelBackground.frame = CGRect(x: DialogueBackground.frame.origin.x, y: 0, width: menheraLabelBackground.frame.size.width * ratio, height: menheraLabelBackground.frame.size.height * ratio)
-            menheraLabelBackground.center.y = DialogueBackground.frame.origin.y
-            menheraLabel.frame = CGRect(x: menheraLabel.frame.origin.x * ratio, y: 0, width: menheraLabel.frame.size.width * ratio, height: menheraLabel.frame.size.height * ratio)
-            menheraLabel.center.y = menheraLabelBackground.frame.size.height / 2
-            playImage.frame = CGRect(x: playImage.frame.origin.x * ratio, y: 0, width: playImage.frame.size.width * ratio, height: playImage.frame.size.height * ratio)
-            playImage.center.y = menheraLabelBackground.frame.size.height / 2
-        }
 }
