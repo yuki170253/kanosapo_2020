@@ -117,6 +117,8 @@
 		87FC30D5255E7F1300651732 /* makeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30D4255E7F1300651732 /* makeView.swift */; };
 		87FC30DA255E7F2300651732 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30D9255E7F2300651732 /* Calendar.swift */; };
 		CD235466FF7F99DC73ECD967 /* Pods_Kanosapo_KanosapoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA04A39113456EDA047236F /* Pods_Kanosapo_KanosapoUITests.framework */; };
+		D8680A0F2599C8A400FBCDF0 /* feedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8680A0E2599C8A400FBCDF0 /* feedbackTableViewCell.swift */; };
+		D8F32C032598D835005B2242 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32C022598D835005B2242 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +259,8 @@
 		87FC30D9255E7F2300651732 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KanosapoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD46FA4517BB8E5B662898A /* Pods-Kanosapo-KanosapoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo-KanosapoUITests.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D8680A0E2599C8A400FBCDF0 /* feedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedbackTableViewCell.swift; sourceTree = "<group>"; };
+		D8F32C022598D835005B2242 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.release.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo/Pods-Kanosapo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -364,9 +368,10 @@
 		874FFA402562D64800BC4998 /* DayResultVC */ = {
 			isa = PBXGroup;
 			children = (
-				874FFA4A2562D6AB00BC4998 /* DayResultDetailViewController.swift */,
 				874FFA522562D6C100BC4998 /* DayResultViewController.swift */,
+				874FFA4A2562D6AB00BC4998 /* DayResultDetailViewController.swift */,
 				874FFA572562D6D900BC4998 /* SubDayResultDetailViewController.swift */,
+				D8680A0E2599C8A400FBCDF0 /* feedbackTableViewCell.swift */,
 			);
 			path = DayResultVC;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 		87FC309C255E7D4A00651732 /* commons */ = {
 			isa = PBXGroup;
 			children = (
+				D8F32C022598D835005B2242 /* ScreenSize.swift */,
 				874FFAB32562D8E600BC4998 /* UIView+Border.swift */,
 				874FFAB82562D8F500BC4998 /* database.swift */,
 			);
@@ -912,6 +918,7 @@
 				87FC30B7255E7E5100651732 /* Menu.swift in Sources */,
 				874FFAC72562DBC500BC4998 /* ConfirmationTableViewCell.swift in Sources */,
 				874FFA262562D55100BC4998 /* ResultViewController.swift in Sources */,
+				D8F32C032598D835005B2242 /* ScreenSize.swift in Sources */,
 				874FFABE2562D91100BC4998 /* MyTodo.swift in Sources */,
 				874FFB432562E60100BC4998 /* Firebase.swift in Sources */,
 				87FC30BC255E7E6400651732 /* traceView.swift in Sources */,
@@ -928,6 +935,7 @@
 				874FFA372562D61B00BC4998 /* BasicBarChartPresenter.swift in Sources */,
 				874FFA122562D4C700BC4998 /* ConfirmationViewController.swift in Sources */,
 				874FFAA22562D87E00BC4998 /* NewCustomTableViewCell.swift in Sources */,
+				D8680A0F2599C8A400FBCDF0 /* feedbackTableViewCell.swift in Sources */,
 				874FFA1C2562D51C00BC4998 /* HomeNavigationController.swift in Sources */,
 				8774EC80255D0CE700E8F0D3 /* SceneDelegate.swift in Sources */,
 				874FFAA72562D8AC00BC4998 /* TodoCell.swift in Sources */,

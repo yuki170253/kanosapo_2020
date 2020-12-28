@@ -27,15 +27,43 @@ class DayResultDetailViewController: TabmanViewController {
     
     weak var dayResultProtocol: DayResultDelegate?
     
-    private let numEntry = 10
-
+    var todoArray:[Todo]?
+    var titleArray:[[String]] = [[]]
+    var rateArray:[[String]] = [[]]
+    var selfEvaluationArray:[[String]] = [[]]
     
+    let substr : (String, Int, Int) -> String = { text, from, length in
+        let to = text.index(text.startIndex, offsetBy:from + length)
+        let from = text.index(text.startIndex, offsetBy:from)
+        return String(text[from...to])
+    }
+    
+    private var numEntry = 10
+    var daylist7 = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let realm = try! Realm()
+        let myTodos = realm.objects(Todo.self)
+        daylist7 = daylist7Reverse()
+        print("afnieufnuwanuiwgngnanunuiengawgneugiag")
+        print(daylist7)
+        let count = daylist7.count
+        
+        numEntry = count
+        for i in 0 ..< count {
+            let results = realm.objects(Todo.self).filter("datestring == %@", daylist7[i])
+            titleArray.append([String]())
+            rateArray.append([String]())
+            selfEvaluationArray.append([String]())
+            for todo in results {
+                titleArray[i].append(todo.title)
+                rateArray[i].append(String(todo.rate))
+                selfEvaluationArray[i].append(String(todo.selfEvaluation))
+            }
+        }
+        print(titleArray)
         print("first")
         loadData()
-        
     }
     
     
@@ -51,8 +79,8 @@ class DayResultDetailViewController: TabmanViewController {
         // Add ViewControllers
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         //viewControllers.removeAll()
-        guard numEntry > 0 else { return }
-        for _ in 0...numEntry-1 {
+        guard daylist7.count > 0 else { return }
+        for _ in 0...daylist7.count-1 {
             let SubDayResultDetailVC = storyboard.instantiateViewController(withIdentifier: "SubDayResultDetailViewController") as! SubDayResultDetailViewController
             viewControllers.append(SubDayResultDetailVC)
         }
@@ -84,30 +112,25 @@ class DayResultDetailViewController: TabmanViewController {
         let realm = try! Realm()
         let myTodos = realm.objects(Todo.self)
         for myTodo in myTodos{
-            if myTodo.todoDone == true{
-                print("OkBooooooooooooy")
-                                
-//                if let unevaluation:Int = myTodo.rate {
-//                    evaluation = unevaluation
-//                }
-//                if let undotime:Int = myTodo.dotime{
-//                    dotime = undotime
-//                }
-//                if let untitle:String = myTodo.title{
-//                    todotitle = untitle
-//                }
-            }else{
-                print("まだ終わってない")
-            }
+            print("OkBooooooooooooy")
+            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+            print(myTodo.selfEvaluation)
+            print(myTodo.dotime)
+            print(myTodo.title)
+
         }
-        
-   
     }
     
 
-    func sendValueToSub(){
-        let today:[String] = [menhera, achivement, selfEvaluate]
-        ud.set(today, forKey: "today")
+    func sendValueToSub(index:Int){
+        let todayTitle:[String] = titleArray[index]
+        ud.set(todayTitle, forKey: "todayTitle")
+        let todayRate:[String] = rateArray[index]
+        ud.set(todayRate, forKey: "todayRate")
+        let todaySelfEvaluation:[String] = selfEvaluationArray[index]
+        ud.set(todaySelfEvaluation, forKey: "todaySelfEvaluation")
+        dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
+        print("番号：\(index)")
     }
     
     
@@ -132,19 +155,21 @@ class DayResultDetailViewController: TabmanViewController {
 }
 
 extension DayResultDetailViewController: PageboyViewControllerDataSource, TMBarDataSource {
-  
+    
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         var items = [TMBarItem]()
-        var title:String?
-        for i in 0..<numEntry {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(24*60*60*i))
-            title = formatter.string(from: date)
-            let item = TMBarItem(title: title!)
+        for i in 0..<daylist7.count {
+            var s = daylist7[i]
+            if s != "指定なし"{
+                let arr:[String] = s.components(separatedBy: "年")
+                s = arr[1]
+            }
+            let item = TMBarItem(title: s)
             items.append(item)
         }
+        print("おおおおおおおおお")
+        print(items.count)
+        
         return items[index]
     }
 
@@ -156,48 +181,20 @@ extension DayResultDetailViewController: PageboyViewControllerDataSource, TMBarD
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
         sendValue()
-        if index == 0{
-            menhera = "タスク：\(todotitle)"
-            achivement = "実施時間：\(String(dotime))秒"
-            selfEvaluate = "自己評価：★★★☆"
-            dayResultProtocol?.moveCordinate(x1: 25, y1: 0)
-             
-        }else if index == 1 {
-            menhera = "タスク：\(todotitle)"
-            achivement = "実施時間：\(String(dotime))秒"
-            selfEvaluate = "自己評価：★★★★"
-            dayResultProtocol?.moveCordinate(x1: 25, y1: 0)
-            
-        }else if index == 2 {
-            menhera = "メンヘラ度：20%"
-            achivement = "実施時間：1h20m"
-            selfEvaluate = "自己評価：★★☆☆"
-            dayResultProtocol?.moveCordinate(x1: 29, y1: 0)
-            
-        }else if index == 3 {
-            menhera = "メンヘラ度：90%"
-            achivement = "実施時間：3h05m"
-            selfEvaluate = "自己評価：★☆☆☆"
-            dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
-            
-        }else if index == 4 {
-            menhera = "メンヘラ度：95%"
-            achivement = "実施時間：1h30m"
-            selfEvaluate = "自己評価：★★★☆"
-            dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
-            
-        }else{
-            menhera = "これ以降同じ"
-            achivement = "実施時間：1h30m"
-            selfEvaluate = "自己評価：★★★☆"
-            dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
-        }
-        print("番号：\(index)")
         
+//        if index == 0{
+//            menhera = "タスク：\(todotitle)"
+//            achivement = "実施時間：\(String(dotime))秒"
+//            selfEvaluate = "自己評価：★★★☆"
+//            dayResultProtocol?.moveCordinate(x1: 25, y1: 0)
+//
+//        }
         
+//        menhera = titleArray[index]
+//        achivement = String(rateArray[index])
+//        selfEvaluate = String(selfEvaluationArray[index])
         
-        sendValueToSub()
-        
+        sendValueToSub(index:index)
         return viewControllers[index]
     }
 

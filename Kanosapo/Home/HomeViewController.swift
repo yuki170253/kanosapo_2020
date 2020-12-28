@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() { //切り替えても呼び出されない...
         super.viewDidLoad()
         //score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
+        print(daylist7Reverse())
         timerMeter = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(HomeViewController.meterUpdate), userInfo: nil, repeats: true)//0.1秒毎にtimerUpdate
 
         print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -95,7 +96,6 @@ class HomeViewController: UIViewController {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTableViewController") as! HomeTableViewController
         vc.attach(to: self)
         timerMeter?.invalidate()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +115,7 @@ class HomeViewController: UIViewController {
             print(floor(progress*100)/100) //小数第３位を切り上げ
             print("stop")
         }
-    }
-    
+    }    
 }
 
 
