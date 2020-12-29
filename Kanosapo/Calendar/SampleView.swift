@@ -378,10 +378,6 @@ class SampleView :UIView {
         //            if(type(of: view) == SampleView.self){
         print(view.tag)
         print(view)
-        let result_d = realm.objects(DefaultCalendar.self)
-        let result_c = realm.objects(Calendar24.self)
-        print(result_d)
-        print(result_c)
         let start = getTaskTime(y: view.frame.origin.y)
         print("startTime---")
         print(start)
@@ -404,7 +400,6 @@ class SampleView :UIView {
                 item!.start = start
                 item!.c_dotime = dotime
                 item!.end = end
-                
                 print(start)
                 print(end)
             }
@@ -413,9 +408,6 @@ class SampleView :UIView {
     
     var location = CGPoint()
     var flag = 0
-    
-    
-    
     func overLaped() {
         print(tracedView)
         var lap = 0

@@ -110,11 +110,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
         autoLayout()
         vc = storyboard?.instantiateViewController(withIdentifier: "popupmenu") as? EvaluViewController2
         button.layer.cornerRadius = 50.0
-        
-        
-
-        
-        
         // 登録
         NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
             notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -231,12 +226,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
                 
             }
-//            target.sound = UNNotificationSound.default //通知の音
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(sumTime), repeats: false)
-//            let request = UNNotificationRequest(identifier: id, content: target,
-//                                                trigger: trigger) //通知のリクエスト
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
-            
             //アプリから離れた際の通知
             let outside = UNMutableNotificationContent()
             //outside.title = testlabel.text!

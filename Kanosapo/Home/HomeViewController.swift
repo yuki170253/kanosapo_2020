@@ -26,14 +26,12 @@ class HomeViewController: UIViewController {
     let scHei: CGFloat = UIScreen.main.bounds.height    //画面の高さ
     var barImageView: UIImageView!
     @IBOutlet weak var talk: UILabel!
-    @IBOutlet weak var menheraMeter: UIProgressView!
     @IBOutlet weak var meterBackground: UIImageView!
     @IBOutlet weak var todoButton: CustomButton!
     @IBOutlet weak var calendarButton: CustomButton!
     @IBOutlet weak var feedbackButton: CustomButton!
     @IBOutlet weak var menheraKanojo: UIImageView!
     @IBOutlet weak var desk: UIImageView!
-    @IBOutlet weak var speechZone: UIImageView!
     
     @IBOutlet weak var background: UIImageView!
     
@@ -55,21 +53,22 @@ class HomeViewController: UIViewController {
         changeMessage()
         
         score = UserDefaults.standard.object(forKey: "score") as! Double
-        drawgauge(stop: CGFloat(score))
+        //元々メーター削除
+//        drawgauge(stop: CGFloat(score))
         let screen = ScreenSize()
         let scala = screen.ratio
-        speechZone.frame = CGRect(x: 0, y: view.frame.height*0.11, width: speechZone.frame.width*scala, height: speechZone.frame.height*scala)
         talk.frame = CGRect(x: view.frame.width*0.019, y: view.frame.height*0.15, width: talk.frame.width*scala, height: talk.frame.height*scala)
         calendarButton.frame = CGRect(x: view.frame.width*0.7, y: view.frame.height*0.14, width: calendarButton.frame.width*scala, height: calendarButton.frame.height*scala)
         feedbackButton.frame = CGRect(x: view.frame.width*0.72, y: view.frame.height*0.5, width: feedbackButton.frame.width*scala, height: feedbackButton.frame.height*scala)
         todoButton.frame = CGRect(x: view.frame.width*0.0186, y: view.frame.height*0.41, width: todoButton.frame.width*scala, height: todoButton.frame.height*scala)
         desk.frame = CGRect(x: 0, y: view.frame.height*0.494, width: desk.frame.width*scala, height: desk.frame.height*scala)
-        menheraMeter.frame = CGRect(x: view.frame.width/4.3, y: view.frame.height/15, width: menheraMeter.frame.width*scala, height: menheraMeter.frame.height*scala)
-        menheraMeter.transform = CGAffineTransform(scaleX: 1.0, y: view.frame.height/180)
-        menheraMeter.layer.cornerRadius =  10
-        menheraMeter.layer.borderColor = UIColor.red.cgColor
-        menheraMeter.layer.borderWidth = 0.0003 * view.frame.height
-        menheraMeter.layer.masksToBounds = true
+        //元メーター削除
+//        menheraMeter.frame = CGRect(x: view.frame.width/4.3, y: view.frame.height/15, width: menheraMeter.frame.width*scala, height: menheraMeter.frame.height*scala)
+//        menheraMeter.transform = CGAffineTransform(scaleX: 1.0, y: view.frame.height/180)
+//        menheraMeter.layer.cornerRadius =  10
+//        menheraMeter.layer.borderColor = UIColor.red.cgColor
+//        menheraMeter.layer.borderWidth = 0.0003 * view.frame.height
+//        menheraMeter.layer.masksToBounds = true
         meterBackground.frame = CGRect(x: view.frame.width*0.015, y: view.frame.height*0.043, width: view.frame.width*0.85, height: view.frame.height*0.061)
         
         let meterWhite = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 12))
@@ -82,7 +81,8 @@ class HomeViewController: UIViewController {
         meterPink.layer.cornerRadius =  10
         meterPink.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         meterWhite.addSubview(meterPink)
-        menheraMeter.removeFromSuperview()
+        //元メーター削除
+//        menheraMeter.removeFromSuperview()
         UIView.animate(withDuration: 2.0, delay: 0.0, options: .curveEaseInOut , animations: {
             meterPink.frame.size.width = meterWhite.frame.size.width / 100 * CGFloat(self.percent)
         }, completion: nil)
@@ -99,12 +99,7 @@ class HomeViewController: UIViewController {
         }
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTableViewController") as! HomeTableViewController
         vc.attach(to: self)
-        
-        
-        
     }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -137,7 +132,7 @@ class HomeViewController: UIViewController {
         print(segue)
     }
     
-    @IBAction func pushed_Girl2Button(_ sender: Any) {
+    @IBAction func pushed_GirlButton2(_ sender: Any) {
         changeMessage()
     }
     @IBAction func pushed_GirlButton(_ sender: Any) {

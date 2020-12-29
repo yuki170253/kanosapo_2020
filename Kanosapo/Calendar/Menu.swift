@@ -42,10 +42,9 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
     f.locale = Locale(identifier: "ja_JP")
     let Now = NSDate() as Date
     let date = f.string(from: Now)
-    let result_m = realm.objects(Todo.self).filter("datestring == '指定なし'")
-    let result_s = realm.objects(Todo.self).filter("datestring == %@", date)
+    let result_m = realm.objects(Todo.self).filter("datestring == '指定なし'").filter("todoDone==false")
+    let result_s = realm.objects(Todo.self).filter("datestring == %@", date).filter("todoDone==false")
     var task_cnt = 0  //追加したViewの個数を数える
-    
     print("タスクView作成")
     for item in result_s{
         print(item.base)
@@ -56,12 +55,22 @@ func craftNewMenu(menu:UIView, scroll:UIScrollView) {
         let TestView = makeTaskView(frame: frame, tag: Int(item.todoid)!, title: item.title)
         TestView.center.x = WhiteView.center.x
         TestView.backgroundColor = TaskColor
-        
         DummyContentView.addSubview(TestView)
-        
         task_cnt += 1
     }
     for item in result_m{
+//        let results = realm.objects(Todo.self).filter("base==%@", item.todoid).filter("datestring==%@", date)
+//        var tag = String()
+//        var title = String()
+//        if(results.count == 0){//指定なしタスクを複製していない場合
+//            tag = item.todoid
+//            title = item.title
+//        }else{//指定なしタスクを複製していた場合
+//            for result in results{
+//                tag = result.todoid
+//                title = result.title
+//            }
+//        }
         let frame = CGRect(x: startPosi * screen.calScale, y: CGFloat(task_cnt) * 100 * screen.calScale + scroll.frame.size.height/2, width: 100 * screen.calScale, height: 45 * screen.calScale)
         let TestView = makeTaskView(frame: frame, tag: Int(item.todoid)!, title: item.title)
         TestView.center.x = WhiteView.center.x

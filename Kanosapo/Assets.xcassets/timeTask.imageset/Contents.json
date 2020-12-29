@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "baseline_menu_black_18dp.png",
+      "filename" : "時間指定あり-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "X2RvADhUEAFNrau1609049799_1609049836.png",
+      "filename" : "時間指定あり.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "X2RvADhUEAFNrau1609049799_1609049889.png",
+      "filename" : "時間指定あり-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

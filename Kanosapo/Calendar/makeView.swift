@@ -12,7 +12,6 @@ import EventKit
 import RealmSwift
 
 //, button: UIButton
-
 func makeView(id:String, title:String, color:UIColor) -> SampleView{
     
     var currentPoint: CGPoint!
@@ -89,6 +88,15 @@ func makeView(id:String, title:String, color:UIColor) -> SampleView{
 }
 
 func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
+    //かける追加12/28
+    let f = DateFormatter()
+    f.timeStyle = .none
+    f.dateStyle = .full
+    f.locale = Locale(identifier: "ja_JP")
+    let Now = NSDate() as Date
+    let date = f.string(from: Now)
+    
+    
     let TaskView = UIView()
     let ContentView = UIView()
     let width = frame.width
@@ -100,45 +108,73 @@ func makeTaskView(frame: CGRect, tag: Int, title: String) -> UIView{
     let taskTitle: UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: TaskView.frame.size.width,height: 15))
     taskTitle.text = " " + title
     let dateString = realm.object(ofType: Todo.self, forPrimaryKey: String(tag))?.datestring
-    if dateString == "指定なし" {
+    
+    if(dateString == date && realm.object(ofType: Todo.self, forPrimaryKey: String(tag))?.base == ""){
+        taskTitle.textColor = UIColor.white
+        taskTitle.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        ContentView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+        TaskView.layer.borderColor = UIColor.black.cgColor
+        TaskView.layer.borderWidth = 1
+        let image = UIImageView(image:UIImage(named:"timeTask")!)
+        image.frame = CGRect(x: ContentView.frame.maxX - 16 * screen.calScale, y: 0, width: 15 * screen.calScale, height: 15 * screen.calScale)
+        image.frame.origin.y = ContentView.frame.maxY - image.frame.size.height - 16 - 1 * screen.calScale
+        ContentView.addSubview(image)
+    }else if(tag > 10000000000 && tag <= 100000000000){
+        taskTitle.textColor = UIColor.white
+        ContentView.backgroundColor = UIColor.white
+        ContentView.alpha = 0.3
+    }else{
         taskTitle.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         taskTitle.textColor = UIColor.black
         ContentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         TaskView.layer.borderColor = UIColor.black.cgColor
         TaskView.layer.borderWidth = 1
-    }else {
-        if(tag > 10000000000 && tag <= 100000000000){
-            taskTitle.textColor = UIColor.white
-            ContentView.backgroundColor = UIColor.white
-            ContentView.alpha = 0.3
-        }else {
-            taskTitle.textColor = UIColor.white
-            taskTitle.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-            ContentView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
-            TaskView.layer.borderColor = UIColor.black.cgColor
-            TaskView.layer.borderWidth = 1
-            let image = UIImageView(image:UIImage(named:"timeTask")!)
-            image.frame = CGRect(x: ContentView.frame.maxX - 16 * screen.calScale, y: 0, width: 15 * screen.calScale, height: 15 * screen.calScale)
-            image.frame.origin.y = ContentView.frame.maxY - image.frame.size.height - 16 - 1 * screen.calScale
-            ContentView.addSubview(image)
-        }
-        
     }
     
-    
+    //    }else if(dateString == "指定なし"){
+    //        taskTitle.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+    //        taskTitle.textColor = UIColor.black
+    //        ContentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    //        TaskView.layer.borderColor = UIColor.black.cgColor
+    //        TaskView.layer.borderWidth = 1
+    //    }
+    //
+    //    if dateString == "指定なし" {
+    //        taskTitle.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+    //        taskTitle.textColor = UIColor.black
+    //        ContentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    //        TaskView.layer.borderColor = UIColor.black.cgColor
+    //        TaskView.layer.borderWidth = 1
+    //    }else {
+    //        if(tag > 10000000000 && tag <= 100000000000){
+    //            taskTitle.textColor = UIColor.white
+    //            ContentView.backgroundColor = UIColor.white
+    //            ContentView.alpha = 0.3
+    //        }else {
+    //            taskTitle.textColor = UIColor.white
+    //            taskTitle.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    //            ContentView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+    //            TaskView.layer.borderColor = UIColor.black.cgColor
+    //            TaskView.layer.borderWidth = 1
+    //            let image = UIImageView(image:UIImage(named:"timeTask")!)
+    //            image.frame = CGRect(x: ContentView.frame.maxX - 16 * screen.calScale, y: 0, width: 15 * screen.calScale, height: 15 * screen.calScale)
+    //            image.frame.origin.y = ContentView.frame.maxY - image.frame.size.height - 16 - 1 * screen.calScale
+    //            ContentView.addSubview(image)
+    //        }
+    //    }
     //フォントサイズ
     TaskView.layer.cornerRadius = 2
-//    taskTitle.textAlignment = NSTextAlignment.center
+    //    taskTitle.textAlignment = NSTextAlignment.center
     taskTitle.textAlignment = NSTextAlignment.left
     taskTitle.font = UIFont(name: "Tsukushi A Round Gothic", size: 12)
     var color = UIColor.white
-//    if(tag > 10000000000 && tag <= 100000000000){ //defaultCalendar
-//        let result = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(tag))!
-//        color = UIColor(displayP3Red: CGFloat(result.color_r), green: CGFloat(result.color_g), blue: CGFloat(result.color_b), alpha: 1.0)
-//    }
-//    TaskView.backgroundColor = UIColor.clear
+    //    if(tag > 10000000000 && tag <= 100000000000){ //defaultCalendar
+    //        let result = realm.object(ofType: DefaultCalendar.self, forPrimaryKey: String(tag))!
+    //        color = UIColor(displayP3Red: CGFloat(result.color_r), green: CGFloat(result.color_g), blue: CGFloat(result.color_b), alpha: 1.0)
+    //    }
+    //    TaskView.backgroundColor = UIColor.clear
     
-//    ContentView.alpha = 0.3
+    //    ContentView.alpha = 0.3
     TaskView.addSubview(taskTitle)
     TaskView.addSubview(ContentView)
     return TaskView

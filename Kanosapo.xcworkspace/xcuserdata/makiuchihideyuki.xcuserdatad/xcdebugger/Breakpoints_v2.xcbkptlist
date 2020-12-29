@@ -128,5 +128,229 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B04D9DB-D9BE-43BA-AB3D-6DC0A578BB7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B8120B3D-6C46-4720-AD61-ED6D6E767BF0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81FDB864-5EA5-4F41-B41A-2AB744B85538"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "81FDB864-5EA5-4F41-B41A-2AB744B85538 - dec62a3409029357"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "3365">
+               </Location>
+               <Location
+                  uuid = "81FDB864-5EA5-4F41-B41A-2AB744B85538 - 2bdc1a8c3ed63e8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "384">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB5826C5-78E8-4F61-8A78-90992A591CD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC8CBC15-7DD6-4E95-A83F-24B679BCD8B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "BC8CBC15-7DD6-4E95-A83F-24B679BCD8B3 - dec62a34090295fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "4564">
+               </Location>
+               <Location
+                  uuid = "BC8CBC15-7DD6-4E95-A83F-24B679BCD8B3 - 818d9818916ee261"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "390">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBC9D353-88CC-45A4-A804-0AAFEFA0FB2C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEBBB9D9-BA56-4C65-8E5C-D2B1A47028FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "BEBBB9D9-BA56-4C65-8E5C-D2B1A47028FA - dec62a3409029788"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "5135">
+               </Location>
+               <Location
+                  uuid = "BEBBB9D9-BA56-4C65-8E5C-D2B1A47028FA - f7bf1f9763e9565f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in Kanosapo.traceView(userY: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat, tag: Swift.Int, content: __C.UIView) -&gt; Swift.Int"
+                  moduleName = "Kanosapo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makiuchihideyuki/Desktop/kanosapo_Github/kanosapo_2020/Kanosapo/Calendar/traceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "468">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2768C418-54EB-4864-98B5-83D1B83F3B62"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kanosapo/Calendar/traceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "traceView(userY:height:tag:content:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
