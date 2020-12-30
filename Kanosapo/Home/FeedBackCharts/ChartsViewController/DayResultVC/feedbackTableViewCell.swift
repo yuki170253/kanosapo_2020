@@ -15,6 +15,8 @@ class feedbackTableViewCell: UITableViewCell {
     
     @IBOutlet weak var evaluation: UILabel!
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +26,7 @@ class feedbackTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func feedbackset(title: String, rate: String, evaluation: String){
+    func feedbackset(title: String, rate: String, evaluation: String, width: Int){
         self.title.text = title
         self.rate.text = rate
         if evaluation == "1.0"{

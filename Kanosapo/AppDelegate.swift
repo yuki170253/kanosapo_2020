@@ -104,12 +104,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.post(name: .stopwatch, object: nil)
         print("applicationWillEnterForeground")
         
         if(calendarFlag!){
             test_getCalendar()
         }
-        
         
     }
     

@@ -14,7 +14,13 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
     
     var ud = UserDefaults.standard
     
+    @IBOutlet weak var sepaLeftView: UIView!
+    @IBOutlet weak var sepaRightView: UIView!
+    @IBOutlet weak var taskLable: UILabel!
+    @IBOutlet weak var evaluLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var transMiller = CGAffineTransform()
     var todayTitle:[String] = []
     var todayRate:[String] = []
@@ -50,6 +56,7 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
         let headerCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedbackHeader")!
         let headerView: UIView = headerCell.contentView
         tableView.tableHeaderView = headerView
+        print("width：\(tableView.tableHeaderView?.frame.width)")
         self.view.bringSubviewToFront(tableView)
         
         
@@ -75,7 +82,7 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
         // セルに表示する値を設定する
         
         
-        cell.feedbackset(title: "\(todayTitle[indexPath.row])", rate: "\(todayRate[indexPath.row])", evaluation: "\(todaySelfEvaluation[indexPath.row])")
+        cell.feedbackset(title: "\(todayTitle[indexPath.row])", rate: "\(todayRate[indexPath.row])", evaluation: "\(todaySelfEvaluation[indexPath.row])", width: Int(view.frame.width))
         
         //todayTitle[indexPath.row]
         return cell

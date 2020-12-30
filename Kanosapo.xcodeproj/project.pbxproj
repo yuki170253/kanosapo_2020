@@ -126,6 +126,7 @@
 		D8EA51A6259C321B002C445E /* ふりかえり.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A2259C3217002C445E /* ふりかえり.mp4 */; };
 		D8EA51A7259C321B002C445E /* ToDoリスト.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A3259C3219002C445E /* ToDoリスト.mp4 */; };
 		D8EA51A8259C321B002C445E /* カレンダー.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A4259C321B002C445E /* カレンダー.mp4 */; };
+		D8EA51B0259C79AA002C445E /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA51AF259C79AA002C445E /* extention.swift */; };
 		D8F32C032598D835005B2242 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32C022598D835005B2242 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
@@ -276,6 +277,7 @@
 		D8EA51A2259C3217002C445E /* ふりかえり.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ふりかえり.mp4"; sourceTree = "<group>"; };
 		D8EA51A3259C3219002C445E /* ToDoリスト.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ToDoリスト.mp4"; sourceTree = "<group>"; };
 		D8EA51A4259C321B002C445E /* カレンダー.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "カレンダー.mp4"; sourceTree = "<group>"; };
+		D8EA51AF259C79AA002C445E /* extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
 		D8F32C022598D835005B2242 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.release.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo/Pods-Kanosapo.release.xcconfig"; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				D8F32C022598D835005B2242 /* ScreenSize.swift */,
 				874FFAB32562D8E600BC4998 /* UIView+Border.swift */,
 				874FFAB82562D8F500BC4998 /* database.swift */,
+				D8EA51AF259C79AA002C445E /* extention.swift */,
 			);
 			path = commons;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				8780ACAD259A5ACA00F29C25 /* LINELink.swift in Sources */,
 				874FFA122562D4C700BC4998 /* ConfirmationViewController.swift in Sources */,
 				874FFAA22562D87E00BC4998 /* NewCustomTableViewCell.swift in Sources */,
+				D8EA51B0259C79AA002C445E /* extention.swift in Sources */,
 				D8680A0F2599C8A400FBCDF0 /* feedbackTableViewCell.swift in Sources */,
 				874FFA1C2562D51C00BC4998 /* HomeNavigationController.swift in Sources */,
 				8774EC80255D0CE700E8F0D3 /* SceneDelegate.swift in Sources */,

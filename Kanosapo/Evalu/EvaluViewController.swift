@@ -110,9 +110,10 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
         autoLayout()
         vc = storyboard?.instantiateViewController(withIdentifier: "popupmenu") as? EvaluViewController2
         button.layer.cornerRadius = 50.0
-        // 登録
+        //登録
+//        NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground), name: .stopwatch, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
-            notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+                                                notification:)), name: .stopwatch, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(EnterBackground(
         notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         print("viewWillappear")
@@ -192,10 +193,12 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
             end = Date()
             let diff = end.timeIntervalSince(start)
             countNum += Int(diff)
-            donetime += Int(diff)
-            print(donetime)
+//            donetime += Int(diff)
             let randn = Int.random(in: 0 ... texts.count-1)
             dialogueTextLabel.text = texts[randn]
+            print("diff\(diff)")
+            print("countNum:\(countNum)")
+            
         }
     }
     
@@ -224,7 +227,6 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
                 let request = UNNotificationRequest(identifier: id, content: target,
                                                     trigger: trigger) //通知のリクエスト
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) //通知を実装
-                
             }
             //アプリから離れた際の通知
             let outside = UNMutableNotificationContent()
@@ -287,8 +289,8 @@ class EvaluViewController: UIViewController, UIApplicationDelegate, UINavigation
                        animations: { () -> Void in
                                 self.button.transform = CGAffineTransform(scaleX: 1.0, y: 1.0) }, completion: nil)
         if timerRunning == false {
-            NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
-                notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(EnterForeground(
+//                notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(EvaluViewController.updateDisplay), userInfo: nil, repeats: true)
             timerRunning = true
             sender.setImage(image_stop, for: .normal)
