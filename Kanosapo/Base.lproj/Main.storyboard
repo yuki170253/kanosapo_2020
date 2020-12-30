@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81D-hV-o7r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81D-hV-o7r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -183,6 +183,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" red="0.92013412714004517" green="0.34673741459846497" blue="0.97721701860427856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="info.circle" catalog="system"/>
+                                <connections>
+                                    <segue destination="fP5-du-Sj7" kind="show" id="RVb-cv-pMT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxt-Uz-Hzq" userLabel="GirlButton2">
                                 <rect key="frame" x="118" y="233" width="179" height="75"/>
@@ -229,7 +232,7 @@
             <objects>
                 <viewController id="f4W-7C-tTc" customClass="EvaluViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OD1-Nx-Qbe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="目標時間達成まで 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-sC-noG">
@@ -499,7 +502,7 @@
             <objects>
                 <viewController storyboardIdentifier="popupmenu" id="pwJ-dE-l7X" customClass="EvaluViewController2" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhf-Ji-ty8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORF-GJ-DL1">
@@ -739,7 +742,7 @@
             <objects>
                 <viewController id="qpW-sV-xfi" customClass="ResultViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1kg-YK-fOI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="メンヘラ_SD_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="0US-ar-Gu0">
@@ -946,6 +949,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="1950.6746626686659"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UVF-ZI-S0L">
+            <objects>
+                <viewController id="RmQ-ec-LwI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="flf-or-RXh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Gcv-wx-57j"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTY-j7-Iey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-895" y="-458"/>
         </scene>
         <!--Home Table View Controller-->
         <scene sceneID="azY-qJ-3pO">
@@ -1337,24 +1355,82 @@
             </objects>
             <point key="canvasLocation" x="4726" y="2390"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial View Controller-->
         <scene sceneID="4W9-3a-jjC">
             <objects>
-                <viewController id="fP5-du-Sj7" sceneMemberID="viewController">
+                <viewController id="fP5-du-Sj7" customClass="tutorialViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CFY-tr-nqq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-Gs-orD">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutorialCell" rowHeight="128" id="k6r-e3-EYq" customClass="tutorialTableViewCell" customModule="Kanosapo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6r-e3-EYq" id="Yfw-hs-UdI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nk5-gm-gPY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="124" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="nk5-gm-gPY" secondAttribute="height" multiplier="31:32" id="rix-L2-ov2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJ2-VP-T1h">
+                                                    <rect key="frame" x="124" y="0.0" width="251" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="OJ2-VP-T1h" secondAttribute="height" multiplier="251:128" id="9ez-C0-Jqg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OJ2-VP-T1h" firstAttribute="top" secondItem="Yfw-hs-UdI" secondAttribute="top" id="0eh-RJ-dC3"/>
+                                                <constraint firstAttribute="bottom" secondItem="OJ2-VP-T1h" secondAttribute="bottom" id="HO4-yS-ho7"/>
+                                                <constraint firstAttribute="trailing" secondItem="OJ2-VP-T1h" secondAttribute="trailing" id="IaA-nH-TjQ"/>
+                                                <constraint firstItem="nk5-gm-gPY" firstAttribute="top" secondItem="Yfw-hs-UdI" secondAttribute="top" id="YEQ-QB-vtR"/>
+                                                <constraint firstItem="nk5-gm-gPY" firstAttribute="leading" secondItem="Yfw-hs-UdI" secondAttribute="leading" id="cQA-bN-913"/>
+                                                <constraint firstItem="OJ2-VP-T1h" firstAttribute="leading" secondItem="nk5-gm-gPY" secondAttribute="trailing" id="gkh-Bq-NdD"/>
+                                                <constraint firstAttribute="bottom" secondItem="nk5-gm-gPY" secondAttribute="bottom" id="z24-eF-OhY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="label" destination="OJ2-VP-T1h" id="4E9-Yz-Mtm"/>
+                                            <outlet property="tutorialImageView" destination="nk5-gm-gPY" id="KNT-Ui-Sb2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pUD-m7-1Ss"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YKq-Gs-orD" firstAttribute="bottom" secondItem="pUD-m7-1Ss" secondAttribute="bottom" id="Ayd-XT-Wpo"/>
+                            <constraint firstItem="YKq-Gs-orD" firstAttribute="top" secondItem="pUD-m7-1Ss" secondAttribute="top" id="fRP-Qa-UJc"/>
+                            <constraint firstItem="YKq-Gs-orD" firstAttribute="leading" secondItem="pUD-m7-1Ss" secondAttribute="leading" id="moj-4P-o6A"/>
+                            <constraint firstItem="YKq-Gs-orD" firstAttribute="trailing" secondItem="pUD-m7-1Ss" secondAttribute="trailing" id="vYa-LJ-Iau"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bj1-ZN-6bt"/>
+                    <connections>
+                        <outlet property="tableView" destination="YKq-Gs-orD" id="BG1-Rj-cU8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9D-1R-sD0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="-305"/>
+            <point key="canvasLocation" x="-844" y="391.75412293853077"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2sU-ig-1d1"/>
+        <segue reference="KWS-zU-rAs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="button_c.png" width="345" height="372"/>
@@ -1379,6 +1455,15 @@
         <image name="メンヘラ_SD_100.png" width="329.14285278320312" height="395"/>
         <image name="メンヘラ彼女_75.png" width="595.337158203125" height="842"/>
         <image name="背景_test.png" width="1145" height="1935"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

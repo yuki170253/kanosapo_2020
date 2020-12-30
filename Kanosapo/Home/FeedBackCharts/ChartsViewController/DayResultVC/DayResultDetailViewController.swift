@@ -38,19 +38,17 @@ class DayResultDetailViewController: TabmanViewController {
         return String(text[from...to])
     }
     
-    private var numEntry = 10
+    private var numEntry = 7
     var daylist7 = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        let myTodos = realm.objects(Todo.self)
         daylist7 = daylist7Reverse()
         print("afnieufnuwanuiwgngnanunuiengawgneugiag")
         print(daylist7)
-        let count = daylist7.count
         
-        numEntry = count
-        for i in 0 ..< count {
+        numEntry = daylist7.count
+        for i in 0 ..< daylist7.count {
             let results = realm.objects(Todo.self).filter("datestring == %@", daylist7[i])
             titleArray.append([String]())
             rateArray.append([String]())
@@ -109,16 +107,16 @@ class DayResultDetailViewController: TabmanViewController {
 
     
     func sendValue(){
-        let realm = try! Realm()
-        let myTodos = realm.objects(Todo.self)
-        for myTodo in myTodos{
-            print("OkBooooooooooooy")
-            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-            print(myTodo.selfEvaluation)
-            print(myTodo.dotime)
-            print(myTodo.title)
-
-        }
+//        let realm = try! Realm()
+//        let myTodos = realm.objects(Todo.self)
+//        for myTodo in myTodos{
+//            print("OkBooooooooooooy")
+//            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+//            print(myTodo.selfEvaluation)
+//            print(myTodo.dotime)
+//            print(myTodo.title)
+//
+//        }
     }
     
 

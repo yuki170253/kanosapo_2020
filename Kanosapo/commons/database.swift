@@ -144,7 +144,6 @@ func daylist7Reverse() -> [String]{
     f.timeStyle = .none
     f.dateStyle = .full
     f.locale = Locale(identifier: "ja_JP")
-    days.append("指定なし")
     for i in 0...6 {
         let modifiedDate = Calendar.current.date(byAdding: .day, value: -i, to: date)!
         days.append(f.string(from: modifiedDate))
@@ -157,7 +156,6 @@ func daylist7EnglishReverse() -> [String]{
     let date:Date = Date()
     let f = DateFormatter()
     f.dateFormat = "d MMM"
-    days.append("指定なし")
     for i in 0...6 {
         let modifiedDate = Calendar.current.date(byAdding: .day, value: -i, to: date)!
         days.append(f.string(from: modifiedDate))

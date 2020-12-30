@@ -120,6 +120,12 @@
 		87FC30DA255E7F2300651732 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FC30D9255E7F2300651732 /* Calendar.swift */; };
 		CD235466FF7F99DC73ECD967 /* Pods_Kanosapo_KanosapoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA04A39113456EDA047236F /* Pods_Kanosapo_KanosapoUITests.framework */; };
 		D8680A0F2599C8A400FBCDF0 /* feedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8680A0E2599C8A400FBCDF0 /* feedbackTableViewCell.swift */; };
+		D8EA518D259C28B9002C445E /* tutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA518C259C28B9002C445E /* tutorialViewController.swift */; };
+		D8EA5192259C29C0002C445E /* tutorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA5191259C29C0002C445E /* tutorialTableViewCell.swift */; };
+		D8EA51A5259C321B002C445E /* ホーム.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A1259C3215002C445E /* ホーム.mp4 */; };
+		D8EA51A6259C321B002C445E /* ふりかえり.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A2259C3217002C445E /* ふりかえり.mp4 */; };
+		D8EA51A7259C321B002C445E /* ToDoリスト.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A3259C3219002C445E /* ToDoリスト.mp4 */; };
+		D8EA51A8259C321B002C445E /* カレンダー.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8EA51A4259C321B002C445E /* カレンダー.mp4 */; };
 		D8F32C032598D835005B2242 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32C022598D835005B2242 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +270,12 @@
 		BC8D4B67A6C952A680E32B19 /* Pods_KanosapoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KanosapoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD46FA4517BB8E5B662898A /* Pods-Kanosapo-KanosapoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo-KanosapoUITests.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo-KanosapoUITests/Pods-Kanosapo-KanosapoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D8680A0E2599C8A400FBCDF0 /* feedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedbackTableViewCell.swift; sourceTree = "<group>"; };
+		D8EA518C259C28B9002C445E /* tutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tutorialViewController.swift; path = Kanosapo/tutorialViewController.swift; sourceTree = SOURCE_ROOT; };
+		D8EA5191259C29C0002C445E /* tutorialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialTableViewCell.swift; sourceTree = "<group>"; };
+		D8EA51A1259C3215002C445E /* ホーム.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ホーム.mp4"; sourceTree = "<group>"; };
+		D8EA51A2259C3217002C445E /* ふりかえり.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ふりかえり.mp4"; sourceTree = "<group>"; };
+		D8EA51A3259C3219002C445E /* ToDoリスト.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ToDoリスト.mp4"; sourceTree = "<group>"; };
+		D8EA51A4259C321B002C445E /* カレンダー.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "カレンダー.mp4"; sourceTree = "<group>"; };
 		D8F32C022598D835005B2242 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		E8CE1BF240EAC4FC2D452796 /* Pods-KanosapoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanosapoTests.release.xcconfig"; path = "Target Support Files/Pods-KanosapoTests/Pods-KanosapoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E91AB84DAC2DC6DCF3E3E4 /* Pods-Kanosapo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kanosapo.release.xcconfig"; path = "Target Support Files/Pods-Kanosapo/Pods-Kanosapo.release.xcconfig"; sourceTree = "<group>"; };
@@ -393,6 +405,10 @@
 		8774EC71255D0CE700E8F0D3 = {
 			isa = PBXGroup;
 			children = (
+				D8EA51A3259C3219002C445E /* ToDoリスト.mp4 */,
+				D8EA51A4259C321B002C445E /* カレンダー.mp4 */,
+				D8EA51A2259C3217002C445E /* ふりかえり.mp4 */,
+				D8EA51A1259C3215002C445E /* ホーム.mp4 */,
 				315AF0D525668C1D00177B9E /* NeedToFix */,
 				8774EC7C255D0CE700E8F0D3 /* Kanosapo */,
 				8774EC93255D0CEF00E8F0D3 /* KanosapoTests */,
@@ -416,6 +432,7 @@
 		8774EC7C255D0CE700E8F0D3 /* Kanosapo */ = {
 			isa = PBXGroup;
 			children = (
+				D8EA5188259C27CA002C445E /* Tutorial */,
 				87FC3094255E7CE100651732 /* Add */,
 				87FC3090255E7CA300651732 /* Calendar */,
 				87FC3096255E7D2B00651732 /* Evalu */,
@@ -613,6 +630,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D8EA5188259C27CA002C445E /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				D8EA518C259C28B9002C445E /* tutorialViewController.swift */,
+				D8EA5191259C29C0002C445E /* tutorialTableViewCell.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -721,6 +747,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EA51A5259C321B002C445E /* ホーム.mp4 in Resources */,
+				D8EA51A6259C321B002C445E /* ふりかえり.mp4 in Resources */,
+				D8EA51A7259C321B002C445E /* ToDoリスト.mp4 in Resources */,
+				D8EA51A8259C321B002C445E /* カレンダー.mp4 in Resources */,
 				874FFB3E2562E2BB00BC4998 /* TsukushiAMaruGothic.ttc in Resources */,
 				874FFB302562E04200BC4998 /* close.png in Resources */,
 				874FFB222562E04200BC4998 /* メンヘラ彼女_0.png in Resources */,
@@ -914,6 +944,7 @@
 				87FC30D0255E7F0200651732 /* craftCalendars.swift in Sources */,
 				87FC30C1255E7E7B00651732 /* reload.swift in Sources */,
 				874FFA212562D53600BC4998 /* HomeViewController.swift in Sources */,
+				D8EA518D259C28B9002C445E /* tutorialViewController.swift in Sources */,
 				874FFAAC2562D8CB00BC4998 /* TodoTableViewController.swift in Sources */,
 				874FFA5D2562D6F700BC4998 /* SubWeekResultDetailViewController.swift in Sources */,
 				874FFA6C2562D74A00BC4998 /* BasicLineChart.swift in Sources */,
@@ -931,6 +962,7 @@
 				874FFA802562D7D700BC4998 /* CustomSegments.swift in Sources */,
 				874FFA7B2562D79F00BC4998 /* CALayerExtension.swift in Sources */,
 				87FC30D5255E7F1300651732 /* makeView.swift in Sources */,
+				D8EA5192259C29C0002C445E /* tutorialTableViewCell.swift in Sources */,
 				87FC30A2255E7DDE00651732 /* AddTodoViewController.swift in Sources */,
 				874FFA922562D82800BC4998 /* CustomTableViewCell.swift in Sources */,
 				874FFAB42562D8E600BC4998 /* UIView+Border.swift in Sources */,
