@@ -1115,7 +1115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ur-NR-B3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="391.75412293853077"/>
+            <point key="canvasLocation" x="-10" y="290"/>
         </scene>
         <!--Home Navigation Controller-->
         <scene sceneID="YkO-Ik-GNb">
@@ -1358,7 +1358,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="4W9-3a-jjC">
             <objects>
-                <viewController id="fP5-du-Sj7" customClass="tutorialViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fP5-du-Sj7" customClass="TutorialViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CFY-tr-nqq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
