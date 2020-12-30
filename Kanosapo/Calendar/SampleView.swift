@@ -385,28 +385,105 @@ class SampleView :UIView {
         print("startTime---")
         print(start)
         let dotime = Int((view.frame.height - (20 * screen.calScale)) * 60 / screen.calScale)
-        
-        let results = realm.objects(Todo.self).filter("base!=%@","")//指定なしから複製されてるものを検索
-        
         //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
         if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
             try! realm.write{
                 let day = start
                 let end = Calendar.current.date(byAdding: .second, value: dotime, to: day)!
                 let item = realm.object(ofType: Calendar24.self, forPrimaryKey: String(view.tag))
-                item!.start = start
-                item!.c_dotime = dotime
-                item!.end = end
+//                item!.start = start
+//                item!.c_dotime = dotime
+//                item!.end = end
                 //かける追加 12/30
+                //指定なしタスクの開始時間を変更した際のデータの動き
+                let results = realm.objects(Todo.self).filter("base!=%@","")//指定なしから複製されてるものを検索
+                //data：選択しているタスクのTodo
+                //search_Todo：変更先のTodo
                 for data in results{
                     for i in 0..<data.calendars.count{
+                        //変更したViewをTodoのcalednarsから検索
                         if(data.calendars[i].calendarid == String(view.tag)){
                             if(data.datestring != f.string(from: start)){
-                                data.datestring = f.string(from: start)
+//                                data.datestring = f.string(from: start)
+                                
+                                //変更するデータのbaseが同じかつtodoidが異なるデータを検索
+                                let search_Todo = realm.objects(Todo.self).filter("base==%@", data.base).filter("todoid!=%@", data.todoid)
+                                
+                                //item(移動させるcalendar24データ)を複製
+                                let new_cal = Calendar24()
+                                
+                                new_cal.calendarid = item!.calendarid
+                                
+                                new_cal.todoDone = item!.todoDone
+                                new_cal.start = start  //開始時間だけ変更
+                                new_cal.default_allday = item!.default_allday
+                                new_cal.c_dotime = item!.c_dotime
+                                new_cal.end = end
+                                if(search_Todo.count > 0){
+                                    
+                                    for search_data in search_Todo{
+                                        
+                                        
+                                        //追加先の開始時間が同じだった時
+                                        if(search_data.datestring == f.string(from: start)){
+                                            realm.delete(item!)
+                                            search_data.calendars.append(new_cal)
+                                            
+                                            if(data.calendars.count == 0){
+                                                realm.delete(data)
+                                            }
+                                            break
+                                        }else{
+                                            
+//                                            if(search_Todo[l].calendars.count == 0){
+                                                let new_todo = Todo()
+                                                new_todo.todoid = randomString(length: 10)
+                                                new_todo.title = String(data.title)
+                                                new_todo.todoDone = false
+                                                new_todo.donetime = 0
+                                                new_todo.dotime = data.dotime
+                                                new_todo.date = start
+                                                new_todo.datestring = f.string(from: start)
+                                                new_todo.InFlag = true
+                                                new_todo.base = data.base
+                                                realm.add(new_todo)
+                                                
+                                                realm.delete(item!)
+                                                new_todo.calendars.append(new_cal)
+                                                
+//                                            }
+//                                            data.datestring = f.string(from: start)
+//                                            realm.delete(item!)
+//                                            search_Todo.first?.calendars.append(new_cal)
+                                            if(data.calendars.count == 0){
+                                                realm.delete(data)
+                                            }
+                                            break
+                                        }
+                                    }
+                                }else{
+                                    let new_todo = Todo()
+                                    new_todo.todoid = randomString(length: 10)
+                                    new_todo.title = String(data.title)
+                                    new_todo.todoDone = false
+                                    new_todo.donetime = 0
+                                    new_todo.dotime = data.dotime
+                                    new_todo.date = start
+                                    new_todo.datestring = f.string(from: start)
+                                    new_todo.InFlag = true
+                                    new_todo.base = data.base
+                                    realm.add(new_todo)
+                                    realm.delete(item!)
+                                    new_todo.calendars.append(new_cal)
+                                    if(data.calendars.count == 0){
+                                        realm.delete(data)
+                                    }
+                                    break
+                                }
                             }
-                            
                         }
                     }
+                    
                 }
                 
             }
