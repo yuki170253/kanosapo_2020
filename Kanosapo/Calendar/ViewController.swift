@@ -240,7 +240,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognize
                 // 指の数（デフォルト1本）
                 longPress.numberOfTouchesRequired = 1
                 // 時間（デフォルト0.5秒）
-                longPress.minimumPressDuration = 0.5
+                longPress.minimumPressDuration = 0.3
                 // 許容範囲（デフォルト1px）
                 longPress.allowableMovement = 150
                 //                longPress.delegate = self as? UIGestureRecognizerDelegate
