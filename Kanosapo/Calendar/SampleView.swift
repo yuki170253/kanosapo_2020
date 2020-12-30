@@ -191,34 +191,34 @@ class SampleView :UIView {
             }
             //移動量を取得する
             //if(gestureRecognizer.state == .changed){
-                var move = gestureRecognizer.translation(in: self)
-                movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
-                movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
-                
-                if(content.frame.size.height + move.y > CGFloat(15 * minute)){
-                    self.frame.size.height += move.y
-                    content.frame.size.height += move.y
-                    leftBorder.frame.size.height += move.y
-                }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
-                    //move.y = 0
-                    self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
-                    content.frame.size.height = CGFloat(15 * minute)
-                    leftBorder.frame.size.height = CGFloat(15 * minute)
-                }
-                if(content.frame.size.height + move.y > CGFloat(300 * minute)){
-                    self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
-                    content.frame.size.height = CGFloat(300 * minute)
-                    leftBorder.frame.size.height = CGFloat(300 * minute)
-                }
-                
-                //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
-                dotimeLabel.frame.origin.y = content.frame.size.height - 15
-                taskTime.frame.origin.y = content.frame.size.height - 15
-                
-                circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
-                imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
-                //移動量をリセットする
-                gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+            var move = gestureRecognizer.translation(in: self)
+            movedCenterPoint = CGPoint(x: gestureRecognizer.view!.center.x + move.x, y: gestureRecognizer.view!.center.y + move.y)
+            movedUnderPoint = CGPoint(x: movedCenterPoint.x - self.frame.size.width/2 ,y: movedCenterPoint.y + self.frame.size.height/2)
+            
+            if(content.frame.size.height + move.y > CGFloat(15 * minute)){
+                self.frame.size.height += move.y
+                content.frame.size.height += move.y
+                leftBorder.frame.size.height += move.y
+            }else if(Double(self.content.frame.size.height + move.y) <= 15 * minute && move.y < 0){
+                //move.y = 0
+                self.frame.size.height = CGFloat(15 + 20) * CGFloat(minute)
+                content.frame.size.height = CGFloat(15 * minute)
+                leftBorder.frame.size.height = CGFloat(15 * minute)
+            }
+            if(content.frame.size.height + move.y > CGFloat(300 * minute)){
+                self.frame.size.height = CGFloat(300 + 20) * CGFloat(minute)
+                content.frame.size.height = CGFloat(300 * minute)
+                leftBorder.frame.size.height = CGFloat(300 * minute)
+            }
+            
+            //scrollView.contentSize = CGSize(width: 200, height: content.bounds.height)
+            dotimeLabel.frame.origin.y = content.frame.size.height - 15
+            taskTime.frame.origin.y = content.frame.size.height - 15
+            
+            circle.center = CGPoint(x: self.frame.size.width/2, y: self.content.frame.size.height)
+            imageView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 10)
+            //移動量をリセットする
+            gestureRecognizer.setTranslation(CGPoint.zero, in: self)
             //}
             if(gestureRecognizer.state == .ended){
                 taskTime.alpha = 0.0
@@ -262,14 +262,14 @@ class SampleView :UIView {
                 imageView.alpha = 1.0
                 if(!scrollFlag){
                     if(fakeView.frame.maxY > (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute)){
-                            print("under")
-                            scrollFlag = true
-                            startAutoScroll(duration: 0.05, direction: .under)
+                        print("under")
+                        scrollFlag = true
+                        startAutoScroll(duration: 0.05, direction: .under)
                     }else if(fakeView.frame.minY < (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
-
-                            print("upper")
-                            scrollFlag = true
-                            startAutoScroll(duration: 0.05, direction: .upper)
+                        
+                        print("upper")
+                        scrollFlag = true
+                        startAutoScroll(duration: 0.05, direction: .upper)
                     }
                 }
                 if(fakeView.frame.maxY <= (self.superview?.superview as! UIScrollView).frame.maxY - CGFloat(60 * minute) && fakeView.frame.minY >= (self.superview?.superview as! UIScrollView).frame.minY + CGFloat(60 * minute)){
@@ -366,14 +366,17 @@ class SampleView :UIView {
     
     
     func userDefaultData(view: SampleView){
-        print("userDefaultData")
-        let dateFormater = DateFormatter()
-        
+        print("userDefaultData-sample")
+        let dateFormater = DateFormatter()//開始時間用
         dateFormater.locale = Locale(identifier: "ja_JP")
         dateFormater.dateFormat = "yyyy/MM/dd"
         dateFormater.timeZone = TimeZone(identifier: "Asia/Tokyo")
         print("userDefaultData-Content.subviews")
-        
+        //かける 追加12/30
+        let f = DateFormatter()//日付用
+        f.timeStyle = .none
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
         //        for view in content.subviews{
         //            if(type(of: view) == SampleView.self){
         print(view.tag)
@@ -382,6 +385,9 @@ class SampleView :UIView {
         print("startTime---")
         print(start)
         let dotime = Int((view.frame.height - (20 * screen.calScale)) * 60 / screen.calScale)
+        
+        let results = realm.objects(Todo.self).filter("base!=%@","")//指定なしから複製されてるものを検索
+        
         //            let end = convert_string_details(date: Calendar.current.date(byAdding: .second, value: dotime, to: startTime)!)
         if(view.tag > 1000000000 && view.tag < 10000000000){ //calendar24
             try! realm.write{
@@ -391,6 +397,18 @@ class SampleView :UIView {
                 item!.start = start
                 item!.c_dotime = dotime
                 item!.end = end
+                //かける追加 12/30
+                for data in results{
+                    for i in 0..<data.calendars.count{
+                        if(data.calendars[i].calendarid == String(view.tag)){
+                            if(data.datestring != f.string(from: start)){
+                                data.datestring = f.string(from: start)
+                            }
+                            
+                        }
+                    }
+                }
+                
             }
         }else if(view.tag >= 10000000000){ //default
             try! realm.write{
