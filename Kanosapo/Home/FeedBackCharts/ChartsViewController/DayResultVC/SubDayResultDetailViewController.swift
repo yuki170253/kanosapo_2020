@@ -53,11 +53,10 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
 //        tabman.menhera100Pic.transform = transMiller
         //}
         
-        let headerCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedbackHeader")!
-        let headerView: UIView = headerCell.contentView
-        tableView.tableHeaderView = headerView
-        print("width：\(tableView.tableHeaderView?.frame.width)")
-        self.view.bringSubviewToFront(tableView)
+//        let headerCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedbackHeader")!
+//        let headerView: UIView = headerCell.contentView
+//        tableView.tableHeaderView = headerView
+//        self.view.bringSubviewToFront(tableView)
         
         
         self.todayTitle = ud.array(forKey: "todayTitle") as! [String]
@@ -73,7 +72,7 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
         print(todayTitle)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayTitle.count
+        return todayTitle.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +80,11 @@ class SubDayResultDetailViewController: UIViewController, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedback", for: indexPath) as! feedbackTableViewCell
         // セルに表示する値を設定する
         
-        
-        cell.feedbackset(title: "\(todayTitle[indexPath.row])", rate: "\(todayRate[indexPath.row])", evaluation: "\(todaySelfEvaluation[indexPath.row])", width: Int(view.frame.width))
+        if indexPath.row == 0{
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.9173266267, blue: 0.9186108733, alpha: 1)
+        }else{
+            cell.feedbackset(title: "\(todayTitle[indexPath.row-1])", rate: "\(todayRate[indexPath.row-1])", evaluation: "\(todaySelfEvaluation[indexPath.row-1])", width: Int(view.frame.width))
+        }
         
         //todayTitle[indexPath.row]
         return cell

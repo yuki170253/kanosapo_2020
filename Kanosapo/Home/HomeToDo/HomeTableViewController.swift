@@ -20,11 +20,10 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let headerCell: UITableViewCell = tableview.dequeueReusableCell(withIdentifier: "HeaderCell")!
-        let headerView: UIView = headerCell.contentView
+//        let headerCell: UITableViewCell = tableview.dequeueReusableCell(withIdentifier: "HeaderCell")!
+//        let headerView: UIView = headerCell.contentView
+//        tableview.tableHeaderView = headerView
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        tableview.tableHeaderView = headerView
-        
         handleBar.frame = CGRect(x: (view.frame.width/4), y: view.frame.height/250, width: view.frame.width/2, height: view.frame.height/75)
         tableview.frame = CGRect(x: 0, y: view.frame.height/50, width: view.frame.width, height: view.frame.height - (view.frame.height/50)*2)
         bottom = Float(view.frame.height/10.5)
@@ -80,23 +79,30 @@ class HomeTableViewController: BottomSheetController ,UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultArray.count
+        return resultArray.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewCustomTableViewCell
-        let rate = resultArray[indexPath.row].rate
-        
-        cell.set(taskname: resultArray[indexPath.row].title, target_time: "\(rate)％", achi_rate: resultArray[indexPath.row].dotime_string)
-        
-        return cell
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewCustomTableViewCell
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8538099315, blue: 0.9171784912, alpha: 1)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.setHeader(taskname: "本日のタスク", target_time: "目標時間", achi_rate: "達成度")
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewCustomTableViewCell
+            cell.set(taskname: resultArray[indexPath.row-1].title, target_time: "\(resultArray[indexPath.row-1].rate)％", achi_rate: resultArray[indexPath.row-1].dotime_string)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.index = search_id(arrays: todoListArray, id: calendarListArray[indexs_c[indexPath.row]].randomID)
-        todoid = resultArray[indexPath.row].todoid
-        //myTodo = todoListArray[self.index]
-        performSegue(withIdentifier: "to_evalu", sender: nil)
+        //self.index = search_id(arrays: todoListArray, id: calendarListArray[indexs_c[indexPath.row]].randomID
+        if indexPath.row != 0 {
+            todoid = resultArray[indexPath.row-1].todoid
+            //myTodo = todoListArray[self.index]
+            performSegue(withIdentifier: "to_evalu", sender: nil)
+        }
     }
     
     //画面遷移の処理

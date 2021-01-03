@@ -29,6 +29,16 @@ class NewCustomTableViewCell: UITableViewCell {
         self.taskname.text = taskname
         self.target_time.text = target_time
         self.achi_rate.text = achi_rate
+    
+    }
+    
+    func setHeader(taskname: String, target_time: String, achi_rate: String){
+        self.taskname.font = UIFont.boldSystemFont(ofSize: 17.0)
+        self.target_time.font = UIFont.boldSystemFont(ofSize: 17.0)
+        self.achi_rate.font = UIFont.boldSystemFont(ofSize: 17.0)
+        self.taskname.text = taskname
+        self.target_time.text = target_time
+        self.achi_rate.text = achi_rate
     }
 }
 //
