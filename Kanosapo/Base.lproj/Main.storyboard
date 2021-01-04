@@ -44,26 +44,38 @@
                                 <color key="backgroundColor" red="1" green="0.91372549020000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.91372549020000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todocell" id="7Uf-RF-bgH" customClass="TodoCell" customModule="Kanosapo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todocell" rowHeight="40" id="7Uf-RF-bgH" customClass="TodoCell" customModule="Kanosapo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Uf-RF-bgH" id="PHM-6f-HTq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N6-Oo-iCQ">
-                                                    <rect key="frame" x="9" y="11" width="326" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N6-Oo-iCQ">
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Aca-uQ-6qN"/>
+                                                        <constraint firstAttribute="width" secondItem="0N6-Oo-iCQ" secondAttribute="height" multiplier="67:8" id="BeA-81-15X"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="TsukuARdGothic-Bold" family="Tsukushi A Round Gothic" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="c_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xNc-QC-hSZ">
-                                                    <rect key="frame" x="337" y="7" width="33" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xNc-QC-hSZ">
+                                                    <rect key="frame" x="342" y="0.0" width="33" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xNc-QC-hSZ" secondAttribute="height" multiplier="33:40" id="9Ya-H4-6ms"/>
+                                                        <constraint firstAttribute="height" constant="40" id="ShJ-hV-gf8"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.9137254901960784" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="0N6-Oo-iCQ" firstAttribute="top" secondItem="PHM-6f-HTq" secondAttribute="top" id="GPy-jF-t6q"/>
+                                                <constraint firstItem="xNc-QC-hSZ" firstAttribute="top" secondItem="PHM-6f-HTq" secondAttribute="top" id="Zfl-2A-A0B"/>
+                                                <constraint firstAttribute="trailing" secondItem="xNc-QC-hSZ" secondAttribute="trailing" id="bro-eh-xuJ"/>
+                                                <constraint firstItem="0N6-Oo-iCQ" firstAttribute="leading" secondItem="PHM-6f-HTq" secondAttribute="leading" constant="20" id="tK5-QF-Scc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="run" destination="xNc-QC-hSZ" id="iqy-ZO-TRd"/>
@@ -104,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="857" y="392"/>
+            <point key="canvasLocation" x="856.79999999999995" y="391.75412293853077"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="8K5-Am-l4n">
@@ -211,6 +223,10 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Vph-Kh-Ed9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="GirlButton" destination="FuU-qK-gTi" id="O57-Bd-qYt"/>
+                        <outlet property="GirlButton2" destination="cxt-Uz-Hzq" id="qmQ-tc-uTl"/>
+                        <outlet property="HelpButton" destination="i4r-8O-luw" id="Jqj-fP-bT7"/>
+                        <outlet property="LINEButton" destination="oi3-tX-U9S" id="AHR-Ze-K3M"/>
                         <outlet property="background" destination="h8J-gh-8dR" id="bTN-SP-6Kh"/>
                         <outlet property="calendarButton" destination="8I0-tE-jdW" id="I4e-hp-vMy"/>
                         <outlet property="desk" destination="HT2-qI-Uye" id="fIB-TA-Q8F"/>
@@ -979,7 +995,7 @@
         <scene sceneID="azY-qJ-3pO">
             <objects>
                 <viewController storyboardIdentifier="HomeTableViewController" id="SUy-zB-FYs" customClass="HomeTableViewController" customModule="Kanosapo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" alpha="0.80000000000000004" contentMode="scaleToFill" id="d70-Bb-bcg">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="d70-Bb-bcg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1073,7 +1089,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="HqX-fu-fJf" secondAttribute="height" multiplier="106:15" id="6TR-gQ-v45"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Bold" family="Tsukushi A Round Gothic" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Regular" family="Tsukushi A Round Gothic" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1082,7 +1098,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="aLt-hv-9gn" secondAttribute="height" multiplier="79:30" id="D3u-df-usO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Bold" family="Tsukushi A Round Gothic" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Regular" family="Tsukushi A Round Gothic" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1105,7 +1121,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Abb-9y-Ki2" secondAttribute="height" multiplier="79:30" id="ht5-KH-gZA"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Bold" family="Tsukushi A Round Gothic" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TsukuARdGothic-Regular" family="Tsukushi A Round Gothic" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

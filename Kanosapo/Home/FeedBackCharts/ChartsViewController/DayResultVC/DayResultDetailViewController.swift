@@ -127,7 +127,12 @@ class DayResultDetailViewController: TabmanViewController {
         ud.set(todayRate, forKey: "todayRate")
         let todaySelfEvaluation:[String] = selfEvaluationArray[index]
         ud.set(todaySelfEvaluation, forKey: "todaySelfEvaluation")
-        dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
+        
+        let scala = ScreenSize().widthScala()
+        dayResultProtocol?.moveCordinate(x1: Int(29*scala)+Int(72*scala)*(index-2), y1: 0) //yuki変更1/4
+        //dayResultProtocol?.moveCordinate(x1: 29+72*(index-2), y1: 0)
+        print(29+72*(index-2))
+        print(72*(index-2))
         print("番号：\(index)")
     }
     

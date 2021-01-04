@@ -32,7 +32,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var feedbackButton: CustomButton!
     @IBOutlet weak var menheraKanojo: UIImageView!
     @IBOutlet weak var desk: UIImageView!
-    
+    @IBOutlet weak var LINEButton: UIButton!
+    @IBOutlet weak var GirlButton: UIButton!
+    @IBOutlet weak var GirlButton2: UIButton!
+    @IBOutlet weak var HelpButton: UIButton!
     @IBOutlet weak var background: UIImageView!
     
     let realm = try! Realm()
@@ -42,7 +45,7 @@ class HomeViewController: UIViewController {
     var progress:Float = 0.0
     
     
-    override func viewDidLoad() { //切り替えても呼び出されない...
+    override func viewDidLoad() {
         super.viewDidLoad()
         score = UserDefaults.standard.object(forKey: "score") as! Double //取り出し
         percent = Int(score)
@@ -57,11 +60,18 @@ class HomeViewController: UIViewController {
 //        drawgauge(stop: CGFloat(score))
         let screen = ScreenSize()
         let scala = screen.ratio
+        print("scala")
+        print(scala)
         talk.frame = CGRect(x: view.frame.width*0.019, y: view.frame.height*0.15, width: talk.frame.width*scala, height: talk.frame.height*scala)
         calendarButton.frame = CGRect(x: view.frame.width*0.7, y: view.frame.height*0.14, width: calendarButton.frame.width*scala, height: calendarButton.frame.height*scala)
         feedbackButton.frame = CGRect(x: view.frame.width*0.72, y: view.frame.height*0.5, width: feedbackButton.frame.width*scala, height: feedbackButton.frame.height*scala)
         todoButton.frame = CGRect(x: view.frame.width*0.0186, y: view.frame.height*0.41, width: todoButton.frame.width*scala, height: todoButton.frame.height*scala)
         desk.frame = CGRect(x: 0, y: view.frame.height*0.494, width: desk.frame.width*scala, height: desk.frame.height*scala)
+        meterBackground.frame = CGRect(x: view.frame.width*0.015, y: view.frame.height*0.043, width: view.frame.width*0.85, height: view.frame.height*0.061)
+        HelpButton.frame = CGRect(x: meterBackground.frame.maxX + 10*scala, y: meterBackground.frame.minY, width: HelpButton.frame.width*scala, height: HelpButton.frame.height*scala)
+        LINEButton.frame = CGRect(x: talk.frame.minX - 10*scala, y: talk.frame.minY, width: talk.frame.width + 30*scala, height: talk.frame.height)
+        GirlButton.frame = CGRect(x: GirlButton.frame.minX*screen.widthScala(), y: GirlButton.frame.minY*scala, width: GirlButton.frame.width*screen.widthScala(), height: GirlButton.frame.height*scala)
+        GirlButton2.frame = CGRect(x: GirlButton2.frame.minX*screen.widthScala(), y: GirlButton2.frame.minY*scala, width: GirlButton2.frame.width*screen.widthScala(), height: GirlButton2.frame.height*scala)
         //元メーター削除
 //        menheraMeter.frame = CGRect(x: view.frame.width/4.3, y: view.frame.height/15, width: menheraMeter.frame.width*scala, height: menheraMeter.frame.height*scala)
 //        menheraMeter.transform = CGAffineTransform(scaleX: 1.0, y: view.frame.height/180)
@@ -69,14 +79,15 @@ class HomeViewController: UIViewController {
 //        menheraMeter.layer.borderColor = UIColor.red.cgColor
 //        menheraMeter.layer.borderWidth = 0.0003 * view.frame.height
 //        menheraMeter.layer.masksToBounds = true
-        meterBackground.frame = CGRect(x: view.frame.width*0.015, y: view.frame.height*0.043, width: view.frame.width*0.85, height: view.frame.height*0.061)
         
         let meterWhite = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 12))
         let meterPink = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 12))
-        meterWhite.center = CGPoint(x: meterBackground.frame.size.width/2 , y: meterBackground.frame.size.height/2 - 3 * scala)
+        meterWhite.frame = CGRect(x: meterBackground.frame.minX + (60 * ScreenSize().widthScala()), y: meterBackground.frame.minY - (17.5 * scala), width: meterBackground.frame.width - (130 * ScreenSize().widthScala()), height: meterBackground.frame.height - (30 * scala))
+        //meterWhite.center = CGPoint(x: meterBackground.frame.size.width/2 , y: meterBackground.frame.size.height/2 - 3 * scala)
         meterWhite.backgroundColor = UIColor.white
         meterWhite.layer.cornerRadius =  10
         meterBackground.addSubview(meterWhite)
+        meterPink.frame.size.height = meterWhite.frame.height
         meterPink.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         meterPink.layer.cornerRadius =  10
         meterPink.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
@@ -103,27 +114,6 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        //let realm = try! Realm()
-        //        try! realm.write {
-        //            print("addされました。")
-        //            let todo = Todo()
-        //            let todo2 = Todo()
-        //            todo.title = "テストデータ"
-        //            todo2.title = "勉強"
-        //            todo.date = Date()
-        //            todo2.date = Date() + 1
-        //            let calendar1 = Calendar24()
-        //            let calendar2 = Calendar24()
-        //            // UserとCommunityに対して
-        //            // １対多の関連を作るには、次のようにして、
-        //            // List<Community>のプロパティにcommunityオブジェクトを
-        //            // 追加します。
-        //            todo.calendars.append(calendar1)
-        //            todo.calendars.append(calendar2)
-        //            realm.add(todo)
-        //            realm.add(todo2)
-        //        }
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         loadView()
         viewDidLoad()
@@ -209,8 +199,6 @@ class HomeViewController: UIViewController {
             talk.adjustsFontSizeToFitWidth = true
             talk.text = talkcontent
             }
-            
-            
 //            talk.text = talkcontent
         }
         return talkcontent
@@ -284,9 +272,6 @@ class HomeViewController: UIViewController {
                 print(error)
             }
         }
-        
-        
-        
     }
     
     

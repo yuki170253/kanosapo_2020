@@ -38,4 +38,10 @@ class ScreenSize: NSObject {
             ratio = screenWidth / 375.0
         }
     }
+    
+    func widthScala() -> CGFloat {
+        var ration: CGFloat = 1.0
+        ration = UIScreen.main.bounds.size.width / 375.0
+        return ration
+    }
 }

@@ -17,8 +17,8 @@ class BasicBarChart: UIView {
     private let mainLayer: CALayer = CALayer()
     let scrollView: UIScrollView = UIScrollView()
     
-    private let presenter = BasicBarChartPresenter(barWidth: 142, space: -70)
-    
+    let presenter = BasicBarChartPresenter(barWidth: 142*ScreenSize().widthScala(), space: -(142*ScreenSize().widthScala())/2) //yuki変更1/4
+    //let presenter = BasicBarChartPresenter(barWidth: 142, space: -70)
     private var animated: Bool = false
     
     private var barEntries: [BasicBarEntry] = [] {
